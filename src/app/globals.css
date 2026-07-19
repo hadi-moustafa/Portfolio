@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0c0b09;
+  --bg2: #131109;
+  --ink: #f2ece2;
+  --ink-dim: #9c9488;
+  --amber: #f59e0b;
+  --amber-dim: #8a5f10;
+  --line: rgba(255, 255, 255, 0.1);
+  --paper: #f2ece2;
+  --paper-ink: #1c1912;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-amber: var(--amber);
+  --color-amber-dim: var(--amber-dim);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-accent-serif);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  background-image: radial-gradient(rgba(245, 158, 11, 0.14) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
