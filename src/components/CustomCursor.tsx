@@ -60,11 +60,11 @@ export default function CustomCursor() {
     <div ref={wrapperRef} className="opacity-0">
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[100] w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full bg-amber"
+        className="pointer-events-none fixed top-0 left-0 z-[300] w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full bg-amber"
       />
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 z-[100] w-7 h-7 -ml-3.5 -mt-3.5 rounded-full border transition-[width,height,border-color] duration-150"
+        className="pointer-events-none fixed top-0 left-0 z-[300] w-7 h-7 -ml-3.5 -mt-3.5 rounded-full border transition-[width,height,border-color] duration-150"
         style={{ borderColor: "rgba(245,158,11,0.5)" }}
       />
     </div>

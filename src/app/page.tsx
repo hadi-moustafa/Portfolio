@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import StatBar from "@/components/StatBar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
-import AmbientQuote from "@/components/AmbientQuote";
 import SiteFooter from "@/components/SiteFooter";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <StatBar />
       <About />
       <Projects />
-      <AmbientQuote />
       <SiteFooter />
     </div>
   );

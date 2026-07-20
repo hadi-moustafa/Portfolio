@@ -30,8 +30,30 @@
 body {
   background: var(--bg);
   color: var(--ink);
+}
+
+/* Each top-level section is a full-viewport panel that stays pinned at the
+   top of the scroll while the next panel (higher z-index, opaque) slides in
+   and covers it — the "stacking cards" scroll effect. Height is fixed (not
+   min-height) so the panel never grows taller than the viewport; if content
+   would overflow, it scrolls internally instead of being clipped. */
+.stack-panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: var(--bg);
   background-image: radial-gradient(rgba(245, 158, 11, 0.14) 1px, transparent 1px);
   background-size: 26px 26px;
+}
+
+.stack-panel-inner {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @keyframes pulse-dot {
