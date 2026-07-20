@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 export default function SiteFooter() {
   return (
     <section id="contact" className="stack-panel z-[80]">
+      <div className="stack-panel-scroll">
       <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6">
         <Reveal>
           <div className="text-center py-16">
@@ -41,6 +42,7 @@ export default function SiteFooter() {
             <div className="font-mono text-xs text-ink-dim">// built by hand, not a template</div>
           </div>
         </footer>
+      </div>
       </div>
     </section>
   );

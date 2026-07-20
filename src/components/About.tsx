@@ -4,6 +4,7 @@ import Reveal from "./Reveal";
 export default function About() {
   return (
     <section id="about" className="stack-panel z-[30]">
+      <div className="stack-panel-scroll">
       <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6 py-10">
         <Reveal>
           <div className="font-mono text-xs tracking-wide uppercase text-amber mb-3.5">
@@ -57,6 +58,7 @@ export default function About() {
             </div>
           </Reveal>
         </div>
+      </div>
       </div>
     </section>
   );

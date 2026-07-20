@@ -9,33 +9,41 @@ export default function ScrollChrome() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+
+    const update = () => {
       const doc = document.documentElement;
       const scrollable = doc.scrollHeight - doc.clientHeight;
       setProgress(scrollable > 0 ? Math.round((doc.scrollTop / scrollable) * 100) : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const match = sections.find((s) => s.id === entry.target.id);
-            if (match) setActiveLabel(match.label);
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" }
-    );
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+      // Sections are stacked with position:sticky, so several can be
+      // geometrically "stuck" at the same on-screen position at once —
+      // IntersectionObserver can't tell which one is actually painted on
+      // top. Instead: walk sections in document order and keep the last
+      // one whose top has reached the activation line — that's always the
+      // most-recently-covering (i.e. currently visible) panel.
+      let current: string = sections[0].label;
+      const threshold = window.innerHeight * 0.5;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= threshold) {
+          current = s.label;
+        }
+      }
+      setActiveLabel(current);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (

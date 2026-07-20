@@ -6,6 +6,7 @@ export default function Projects() {
     <div id="projects">
       {flagships.map((p, i) => (
         <section key={p.title} className="stack-panel" style={{ zIndex: 40 + i * 10 }}>
+          <div className="stack-panel-scroll">
           <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6 py-10">
             {i === 0 && (
               <Reveal>
@@ -68,10 +69,12 @@ export default function Projects() {
               </div>
             </Reveal>
           </div>
+          </div>
         </section>
       ))}
 
       <section className="stack-panel" style={{ zIndex: 40 + flagships.length * 10 }}>
+        <div className="stack-panel-scroll">
         <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6 py-10">
           <Reveal>
             <div className="font-mono text-xs tracking-wide uppercase text-amber mb-3.5">
@@ -98,6 +101,7 @@ export default function Projects() {
               ))}
             </div>
           </Reveal>
+        </div>
         </div>
       </section>
     </div>
