@@ -38,3 +38,8 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
+
+html.cursor-none-desktop,
+html.cursor-none-desktop * {
+  cursor: none !important;
+}

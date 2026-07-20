@@ -40,17 +40,17 @@ export default function ScrollChrome() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-3 bg-bg/75 backdrop-blur-md border-b border-line">
-        <div className="flex items-center gap-3 text-sm">
-          <span className="font-extrabold tracking-tight">
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3.5 sm:px-5 py-3 bg-bg/75 backdrop-blur-md border-b border-line">
+        <div className="flex items-center gap-3 text-sm min-w-0">
+          <span className="font-extrabold tracking-tight shrink-0">
             hadi<span className="text-amber">.</span>
           </span>
-          <span className="text-line">|</span>
-          <span className="font-mono text-xs text-ink-dim transition-opacity">
+          <span className="hidden sm:inline text-line">|</span>
+          <span className="hidden sm:inline font-mono text-xs text-ink-dim transition-opacity truncate">
             {activeLabel}
           </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <span className="font-mono text-xs text-amber">{progress}%</span>
           <a
             href="#contact"
@@ -61,7 +61,7 @@ export default function ScrollChrome() {
         </div>
       </div>
 
-      <div className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-bg2/85 backdrop-blur-sm border border-line rounded-[10px] px-2.5 py-2">
+      <div className="hidden sm:flex fixed bottom-6 left-6 z-50 items-center gap-2 bg-bg2/85 backdrop-blur-sm border border-line rounded-[10px] px-2.5 py-2">
         <span className="font-mono text-[0.65rem] text-ink-dim pr-1">theme</span>
         <div className="w-3.5 h-3.5 rounded-[4px] bg-amber border-2 border-[#3a2c0c]" />
         <button
