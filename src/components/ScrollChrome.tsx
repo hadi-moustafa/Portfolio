@@ -69,9 +69,7 @@ export default function ScrollChrome() {
         </div>
       </div>
 
-      <div className="hidden sm:block">
-        <ThemeDock />
-      </div>
+      <ThemeDock />
     </>
   );
 }
