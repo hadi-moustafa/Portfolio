@@ -70,7 +70,7 @@ export default function Hero() {
               </div>
               <div className="w-full max-w-xs bg-paper text-paper-ink px-5 py-4 rounded shadow-xl rotate-1">
                 <div className="font-extrabold text-base">reliable</div>
-                <div className="font-mono text-xs text-[#6b6355] mb-2">
+                <div className="font-mono text-xs text-paper-ink/60 mb-2">
                   /rɪˈlaɪ.ə.bəl/ · adj.
                 </div>
                 <div className="text-[0.82rem] leading-relaxed">
@@ -103,7 +103,7 @@ export default function Hero() {
             className="z-10 hidden lg:block absolute top-56 right-[-30px] w-[300px] bg-paper text-paper-ink px-5 py-4 rounded shadow-2xl"
           >
             <div className="font-extrabold text-base">reliable</div>
-            <div className="font-mono text-xs text-[#6b6355] mb-2">/rɪˈlaɪ.ə.bəl/ · adj.</div>
+            <div className="font-mono text-xs text-paper-ink/60 mb-2">/rɪˈlaɪ.ə.bəl/ · adj.</div>
             <div className="text-[0.82rem] leading-relaxed">
               from Old French <i>relier</i> — to bind together again. what I&apos;m actually
               optimizing for in every system:{" "}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import { ThemeProvider, NO_FLASH_SCRIPT } from "@/components/ThemeProvider";
+import ThemeFX from "@/components/ThemeFX";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +37,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${accentSerif.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: NO_FLASH_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col bg-bg text-ink">
-        <CustomCursor />
-        {children}
+        <ThemeProvider>
+          <CustomCursor />
+          <ThemeFX />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

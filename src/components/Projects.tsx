@@ -21,20 +21,20 @@ export default function Projects() {
                 {p.definition && (
                   <div className="hidden md:block absolute -top-8 -left-5 w-[260px] bg-paper text-paper-ink px-4.5 py-4 rounded shadow-2xl -rotate-2 z-10">
                     <div className="font-extrabold text-sm">{p.definition.word}</div>
-                    <div className="font-mono text-[0.7rem] text-[#6b6355] mb-1.5">
+                    <div className="font-mono text-[0.7rem] text-paper-ink/60 mb-1.5">
                       {p.definition.pronunciation}
                     </div>
                     <div className="text-[0.78rem] leading-snug">{p.definition.body}</div>
                   </div>
                 )}
-                <div className="h-44 sm:h-56 rounded-t-2xl border-b border-line bg-gradient-to-br from-[#1a1610] to-bg flex items-center justify-center px-4 text-center font-mono text-xs sm:text-sm text-ink-dim">
+                <div className="h-44 sm:h-56 rounded-t-2xl border-b border-line bg-gradient-to-br from-bg2 to-bg flex items-center justify-center px-4 text-center font-mono text-xs sm:text-sm text-ink-dim">
                   [ live demo / architecture — {p.title} ]
                 </div>
                 <div className="px-5 sm:px-7 py-6 sm:py-7">
                   {p.definition && (
                     <div className="md:hidden mb-5 bg-paper text-paper-ink px-4 py-3.5 rounded shadow-lg -rotate-1 max-w-xs">
                       <div className="font-extrabold text-sm">{p.definition.word}</div>
-                      <div className="font-mono text-[0.7rem] text-[#6b6355] mb-1.5">
+                      <div className="font-mono text-[0.7rem] text-paper-ink/60 mb-1.5">
                         {p.definition.pronunciation}
                       </div>
                       <div className="text-[0.78rem] leading-snug">{p.definition.body}</div>

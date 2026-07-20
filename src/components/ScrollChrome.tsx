@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { sections } from "@/lib/content";
+import ThemeDock from "./ThemeDock";
 
 export default function ScrollChrome() {
   const [activeLabel, setActiveLabel] = useState<string>(sections[0].label);
   const [progress, setProgress] = useState(0);
-  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     let raf = 0;
@@ -69,16 +69,8 @@ export default function ScrollChrome() {
         </div>
       </div>
 
-      <div className="hidden sm:flex fixed bottom-6 left-6 z-[100] items-center gap-2 bg-bg2/85 backdrop-blur-sm border border-line rounded-[10px] px-2.5 py-2">
-        <span className="font-mono text-[0.65rem] text-ink-dim pr-1">theme</span>
-        <div className="w-3.5 h-3.5 rounded-[4px] bg-amber border-2 border-[#3a2c0c]" />
-        <button
-          onClick={() => setDark((d) => !d)}
-          className="w-[26px] h-[26px] rounded-md flex items-center justify-center text-xs font-mono text-ink-dim hover:text-ink"
-          aria-label="Toggle theme"
-        >
-          {dark ? "☾" : "☀"}
-        </button>
+      <div className="hidden sm:block">
+        <ThemeDock />
       </div>
     </>
   );

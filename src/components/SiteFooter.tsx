@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <Reveal>
           <div className="text-center py-16">
             <blockquote
-              className="text-lg italic max-w-xl mx-auto text-[#d8d2c6]"
+              className="text-lg italic max-w-xl mx-auto text-ink-dim"
               style={{ fontFamily: "var(--font-accent-serif)" }}
             >
               &ldquo;[ a line you choose — quote, thinker, or reflection goes here ]&rdquo;

@@ -16,7 +16,7 @@ export default function About() {
           <Reveal delay={0.05}>
             <div>
               <h2 className="text-3xl font-bold mb-5">Architecture over stack.</h2>
-              <div className="space-y-4 text-[#d8d2c6]">
+              <div className="space-y-4 text-ink-dim">
                 <p>
                   I&apos;m a backend engineer finishing an M.Sc. in Computer &amp; Communication
                   Engineering. Most of my work lives in the JavaScript ecosystem, but the

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-:root {
+:root,
+:root[data-theme="dark-amber"] {
   --bg: #0c0b09;
   --bg2: #131109;
   --ink: #f2ece2;
@@ -10,6 +11,125 @@
   --line: rgba(255, 255, 255, 0.1);
   --paper: #f2ece2;
   --paper-ink: #1c1912;
+  --dot: rgba(245, 158, 11, 0.14);
+}
+
+:root[data-theme="dark-blue"] {
+  --bg: #0a0e14;
+  --bg2: #0f1620;
+  --ink: #eef2f7;
+  --ink-dim: #8fa1b3;
+  --amber: #3b82f6;
+  --amber-dim: #1d4ed8;
+  --line: rgba(255, 255, 255, 0.1);
+  --paper: #eef2f7;
+  --paper-ink: #0f1620;
+  --dot: rgba(59, 130, 246, 0.16);
+}
+
+:root[data-theme="dark-green"] {
+  --bg: #0a0f0a;
+  --bg2: #0f160f;
+  --ink: #ecf5ec;
+  --ink-dim: #8fab8f;
+  --amber: #22c55e;
+  --amber-dim: #15803d;
+  --line: rgba(255, 255, 255, 0.1);
+  --paper: #ecf5ec;
+  --paper-ink: #0f160f;
+  --dot: rgba(34, 197, 94, 0.16);
+}
+
+:root[data-theme="light-amber"] {
+  --bg: #f6f0e4;
+  --bg2: #ede3cf;
+  --ink: #1c1912;
+  --ink-dim: #6b6355;
+  --amber: #b45309;
+  --amber-dim: #92400e;
+  --line: rgba(0, 0, 0, 0.1);
+  --paper: #fffdf8;
+  --paper-ink: #1c1912;
+  --dot: rgba(180, 83, 9, 0.14);
+}
+
+:root[data-theme="light-blue"] {
+  --bg: #eef2f9;
+  --bg2: #dfe7f3;
+  --ink: #101828;
+  --ink-dim: #55637a;
+  --amber: #2563eb;
+  --amber-dim: #1e3a8a;
+  --line: rgba(0, 0, 0, 0.08);
+  --paper: #ffffff;
+  --paper-ink: #101828;
+  --dot: rgba(37, 99, 235, 0.14);
+}
+
+:root[data-theme="light-green"] {
+  --bg: #eef6ee;
+  --bg2: #dcebdc;
+  --ink: #0f1f13;
+  --ink-dim: #4f6b56;
+  --amber: #16a34a;
+  --amber-dim: #14532d;
+  --line: rgba(0, 0, 0, 0.08);
+  --paper: #ffffff;
+  --paper-ink: #0f1f13;
+  --dot: rgba(22, 163, 74, 0.14);
+}
+
+/* Presets: named moods with their own palette + ambient animation */
+:root[data-theme="autumn"] {
+  --bg: #1f140d;
+  --bg2: #2b1c11;
+  --ink: #f5e6d3;
+  --ink-dim: #c9a876;
+  --amber: #e8743b;
+  --amber-dim: #a84f22;
+  --line: rgba(255, 220, 180, 0.14);
+  --paper: #f5e6d3;
+  --paper-ink: #2b1c11;
+  --dot: rgba(232, 116, 59, 0.16);
+}
+
+:root[data-theme="winter"] {
+  --bg: #0d1420;
+  --bg2: #131e2e;
+  --ink: #eaf2fb;
+  --ink-dim: #8fa6bf;
+  --amber: #7dd3fc;
+  --amber-dim: #3b82f6;
+  --line: rgba(255, 255, 255, 0.14);
+  --paper: #eaf2fb;
+  --paper-ink: #0d1420;
+  --dot: rgba(125, 211, 252, 0.18);
+}
+
+:root[data-theme="cozy"] {
+  --bg: #241a12;
+  --bg2: #32251a;
+  --ink: #f0e4d0;
+  --ink-dim: #b8a688;
+  --amber: #d4a05a;
+  --amber-dim: #8a6a3a;
+  --line: rgba(255, 230, 190, 0.14);
+  --paper: #f0e4d0;
+  --paper-ink: #32251a;
+  --dot: rgba(212, 160, 90, 0.14);
+}
+
+:root[data-theme="retro"] {
+  --bg: #030a03;
+  --bg2: #06140a;
+  --ink: #33ff66;
+  --ink-dim: #1f9e46;
+  --amber: #33ff66;
+  --amber-dim: #0f7a2c;
+  --line: rgba(51, 255, 102, 0.25);
+  --paper: #06140a;
+  --paper-ink: #33ff66;
+  --dot: rgba(51, 255, 102, 0.18);
 }
 
 @theme inline {
@@ -30,6 +150,7 @@
 body {
   background: var(--bg);
   color: var(--ink);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Each top-level section is a full-viewport panel that stays pinned at the
@@ -46,8 +167,9 @@ body {
   height: 100vh;
   width: 100%;
   background-color: var(--bg);
-  background-image: radial-gradient(rgba(245, 158, 11, 0.14) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
   background-size: 26px 26px;
+  transition: background-color 0.3s ease;
 }
 
 .stack-panel-scroll {
@@ -71,4 +193,20 @@ body {
 html.cursor-none-desktop,
 html.cursor-none-desktop * {
   cursor: none !important;
+}
+
+/* Theme FX particle keyframes */
+@keyframes leaf-fall {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); }
+  100% { transform: translate3d(var(--drift, 40px), 110vh, 0) rotate(360deg); }
+}
+
+@keyframes snow-fall {
+  0% { transform: translate3d(0, -10vh, 0); }
+  100% { transform: translate3d(var(--drift, 20px), 110vh, 0); }
+}
+
+@keyframes cozy-float {
+  0% { transform: translate3d(-10vw, var(--y, 40vh), 0); }
+  100% { transform: translate3d(110vw, var(--y, 40vh), 0); }
 }
