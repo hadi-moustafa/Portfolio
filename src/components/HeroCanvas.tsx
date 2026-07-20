@@ -2,9 +2,15 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useTheme } from "./ThemeProvider";
 
 export default function HeroCanvas() {
   const mountRef = useRef<HTMLDivElement>(null);
+  const materialsRef = useRef<{
+    lines?: THREE.LineBasicMaterial;
+    points?: THREE.PointsMaterial;
+  }>({});
+  const { theme } = useTheme();
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -24,20 +30,31 @@ export default function HeroCanvas() {
 
     const group = new THREE.Group();
 
+    const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
+    const accentColor = accentHex ? new THREE.Color(accentHex) : new THREE.Color(0xf59e0b);
+
     const coreGeo = new THREE.IcosahedronGeometry(2.1, 1);
     const coreWire = new THREE.WireframeGeometry(coreGeo);
-    const coreLines = new THREE.LineSegments(
-      coreWire,
-      new THREE.LineBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: 0.28 })
-    );
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: accentColor,
+      transparent: true,
+      opacity: 0.28,
+    });
+    const coreLines = new THREE.LineSegments(coreWire, lineMaterial);
     group.add(coreLines);
 
     const pointsGeo = new THREE.IcosahedronGeometry(2.1, 1);
-    const points = new THREE.Points(
-      pointsGeo,
-      new THREE.PointsMaterial({ color: 0xf59e0b, size: 0.05, transparent: true, opacity: 0.7 })
-    );
+    const pointsMaterial = new THREE.PointsMaterial({
+      color: accentColor,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.7,
+    });
+    const points = new THREE.Points(pointsGeo, pointsMaterial);
     group.add(points);
+
+    materialsRef.current.lines = lineMaterial;
+    materialsRef.current.points = pointsMaterial;
 
     scene.add(group);
 
@@ -69,10 +86,23 @@ export default function HeroCanvas() {
       coreGeo.dispose();
       coreWire.dispose();
       pointsGeo.dispose();
+      lineMaterial.dispose();
+      pointsMaterial.dispose();
       renderer.dispose();
       mount.removeChild(renderer.domElement);
+      materialsRef.current = {};
     };
   }, []);
+
+  // Re-tint the wireframe whenever the active theme's accent color changes,
+  // instead of tearing down and rebuilding the whole WebGL scene.
+  useEffect(() => {
+    const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
+    if (!accentHex) return;
+    const color = new THREE.Color(accentHex);
+    materialsRef.current.lines?.color.set(color);
+    materialsRef.current.points?.color.set(color);
+  }, [theme]);
 
   return (
     <div
