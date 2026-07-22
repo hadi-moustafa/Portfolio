@@ -108,6 +108,19 @@ export const secondaryProjects = [
   },
 ];
 
+export const quotes = [
+  "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
+  "Two things fill the mind with ever new and increasing admiration and awe: the starry heavens above me and the moral law within me.",
+  "Science is organized knowledge. Wisdom is organized life.",
+  "He who is cruel to animals becomes hard also in his dealings with men.",
+  "Enlightenment is man's emergence from his self-incurred immaturity.",
+  "The mystery of human existence lies not in just staying alive, but in finding something to live for.",
+  "Man is what he believes.",
+  "To live without Hope is to Cease to live.",
+  "Much unhappiness has come into the world because of bewilderment and things left unsaid.",
+  "Above all, don't lie to yourself.",
+];
+
 export const contact = {
   email: "hadimoustafa3@gmail.com",
   github: "https://github.com/hadi-moustafa",
