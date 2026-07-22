@@ -80,14 +80,14 @@ export default function Projects() {
             <div className="font-mono text-xs tracking-wide uppercase text-amber mb-3.5">
               also on the bench
             </div>
-            <div className="grid sm:grid-cols-3 gap-4.5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4.5">
               {secondaryProjects.map((p) => (
                 <div key={p.title} className="border border-line rounded-[10px] p-5 bg-bg2">
-                  <h3 className="font-bold mb-1.5 flex items-center gap-2">
+                  <h3 className="font-bold mb-1.5 flex flex-wrap items-center gap-2">
                     {p.title}
-                    {p.wip && (
+                    {p.badge && (
                       <span className="font-mono text-[0.62rem] text-amber border border-amber-dim rounded px-1.5 py-0.5">
-                        IN PROGRESS
+                        {p.badge}
                       </span>
                     )}
                   </h3>

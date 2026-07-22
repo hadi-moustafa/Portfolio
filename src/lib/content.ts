@@ -50,10 +50,9 @@ export const flagships: Flagship[] = [
     tag: "01 — LLM INFRASTRUCTURE",
     title: "Governor",
     description:
-      "Atomic budget checks before a request goes out. Mid-stream cancellation the instant a cap is hit. Built so \"the AI bill spiraled\" stops being a story teams tell.",
-    stack: ["Node.js", "TypeScript", "PostgreSQL", "WebSockets"],
-    github: "#",
-    demo: "#",
+      "A lightweight LLM gateway, built in Go (learning Go as I go). Real-time cost visibility and hard spend caps — atomic budget checks before a request goes out, mid-stream cancellation the instant one is hit — without standing up LiteLLM/Helicone-style infrastructure.",
+    stack: ["Go", "LLM Gateway", "Cost Enforcement"],
+    github: "https://github.com/hadi-moustafa",
     definition: {
       word: "governor",
       pronunciation: "/ˈɡʌv.ər.nər/ · n.",
@@ -66,8 +65,7 @@ export const flagships: Flagship[] = [
     description:
       "Resident records, requests, internal workflows — built to hold up under the unglamorous, high-stakes load public systems actually see.",
     stack: ["Next.js", "PostgreSQL", "REST"],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/hadi-moustafa",
   },
   {
     tag: "03 — SHIPPED & RUNNING",
@@ -75,8 +73,7 @@ export const flagships: Flagship[] = [
     description:
       "A management system for a working auto-service business in Africa — real customers, still in production. Built for reliability first: this one can't go down mid-shift.",
     stack: ["React", "Node.js", "MongoDB"],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/hadi-moustafa",
   },
 ];
 
@@ -84,22 +81,30 @@ export const secondaryProjects = [
   {
     title: "Paws",
     description:
-      "Stray animal tracking & adoption platform for a village in South Lebanon. Live, mobile-first.",
-    href: "#",
-    wip: false,
+      "Animal shelter management system built to organize pets and products, with vet integration and medical records for each pet. Originally built to digitise stray animal tracking and adoption for a village in South Lebanon.",
+    href: "https://paws-gamma-three.vercel.app/",
+    badge: undefined,
   },
   {
-    title: "TechTalks",
+    title: "TechTalks (LFM)",
     description:
-      "Marketplace for Lebanese freelancers, built as team lead during internship. Live.",
-    href: "#",
-    wip: false,
+      "A centralized freelance marketplace empowering local Lebanese talent — creatives display portfolios and reach clients directly. Built as a collaborative internship project with TechTalks on the T3 stack (Next.js & Supabase).",
+    href: "https://techtalks-lebanese-freelance-market.vercel.app/",
+    badge: undefined,
   },
   {
     title: "Njoum",
-    description: "A support & SOS app for women — quiet, safety-first design. More soon.",
+    description:
+      "A full system (mobile app + web platform) for enhancing the safety and support of girls and young women — real-time SOS emergency alerts and live location sharing via map APIs.",
     href: undefined,
-    wip: true,
+    badge: "IN PROGRESS",
+  },
+  {
+    title: "Nexus",
+    description:
+      "A multi-platform news app (Flutter/Next.js) with a world-map UI. Supabase/PostgreSQL-backed, using Gemini AI for summaries, quizzes, and toxicity filtering — schema tracks users, articles, and engagement across web and mobile.",
+    href: undefined,
+    badge: "CLIENT PROJECT",
   },
 ];
 
