@@ -26,7 +26,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeId>(DEFAULT_THEME);
 
   useEffect(() => {
+    // The DOM's data-theme attribute is already set correctly pre-hydration by
+    // NO_FLASH_SCRIPT; this just syncs React state to match so UI controls
+    // (e.g. ThemeDock's active-selection highlight) reflect the real theme.
+    // Reading localStorage during render instead would cause a hydration
+    // mismatch, since the server has no access to it.
     const stored = (localStorage.getItem(STORAGE_KEY) as ThemeId | null) ?? DEFAULT_THEME;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setThemeState(stored);
   }, []);
 

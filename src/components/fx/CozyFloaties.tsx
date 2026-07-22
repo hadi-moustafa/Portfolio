@@ -1,5 +1,9 @@
 "use client";
 
+/* eslint-disable react-hooks/purity -- decorative particle layout is
+   intentionally randomized once per mount; not relevant to memoization
+   correctness since this component renders nothing meaningful server-side. */
+
 import { useMemo } from "react";
 
 const EMOJI = ["☕", "🐱", "📖", "🐈"];

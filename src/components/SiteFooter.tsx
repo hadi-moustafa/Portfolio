@@ -39,7 +39,7 @@ export default function SiteFooter() {
                 {contact.phone}
               </a>
             </div>
-            <div className="font-mono text-xs text-ink-dim">// built by hand, not a template</div>
+            <div className="font-mono text-xs text-ink-dim">{"// built by hand, not a template"}</div>
           </div>
         </footer>
       </div>
