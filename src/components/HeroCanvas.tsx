@@ -1,14 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  Color,
+  Group,
+  IcosahedronGeometry,
+  LineBasicMaterial,
+  LineSegments,
+  PerspectiveCamera,
+  Points,
+  PointsMaterial,
+  Scene,
+  WebGLRenderer,
+  WireframeGeometry,
+} from "three";
 import { useTheme } from "./ThemeProvider";
 
 export default function HeroCanvas() {
   const mountRef = useRef<HTMLDivElement>(null);
   const materialsRef = useRef<{
-    lines?: THREE.LineBasicMaterial;
-    points?: THREE.PointsMaterial;
+    lines?: LineBasicMaterial;
+    points?: PointsMaterial;
   }>({});
   const { theme } = useTheme();
 
@@ -19,38 +31,38 @@ export default function HeroCanvas() {
     const width = mount.clientWidth;
     const height = mount.clientHeight;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(45, width / height, 0.1, 100);
     camera.position.z = 6.5;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     mount.appendChild(renderer.domElement);
 
-    const group = new THREE.Group();
+    const group = new Group();
 
     const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
-    const accentColor = accentHex ? new THREE.Color(accentHex) : new THREE.Color(0xf59e0b);
+    const accentColor = accentHex ? new Color(accentHex) : new Color(0xf59e0b);
 
-    const coreGeo = new THREE.IcosahedronGeometry(2.1, 1);
-    const coreWire = new THREE.WireframeGeometry(coreGeo);
-    const lineMaterial = new THREE.LineBasicMaterial({
+    const coreGeo = new IcosahedronGeometry(2.1, 1);
+    const coreWire = new WireframeGeometry(coreGeo);
+    const lineMaterial = new LineBasicMaterial({
       color: accentColor,
       transparent: true,
       opacity: 0.28,
     });
-    const coreLines = new THREE.LineSegments(coreWire, lineMaterial);
+    const coreLines = new LineSegments(coreWire, lineMaterial);
     group.add(coreLines);
 
-    const pointsGeo = new THREE.IcosahedronGeometry(2.1, 1);
-    const pointsMaterial = new THREE.PointsMaterial({
+    const pointsGeo = new IcosahedronGeometry(2.1, 1);
+    const pointsMaterial = new PointsMaterial({
       color: accentColor,
       size: 0.05,
       transparent: true,
       opacity: 0.7,
     });
-    const points = new THREE.Points(pointsGeo, pointsMaterial);
+    const points = new Points(pointsGeo, pointsMaterial);
     group.add(points);
 
     materialsRef.current.lines = lineMaterial;
@@ -99,7 +111,7 @@ export default function HeroCanvas() {
   useEffect(() => {
     const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
     if (!accentHex) return;
-    const color = new THREE.Color(accentHex);
+    const color = new Color(accentHex);
     materialsRef.current.lines?.color.set(color);
     materialsRef.current.points?.color.set(color);
   }, [theme]);

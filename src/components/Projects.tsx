@@ -1,9 +1,11 @@
+import Image from "next/image";
+import Link from "next/link";
 import { flagships, secondaryProjects } from "@/lib/content";
 import Reveal from "./Reveal";
 
 export default function Projects() {
   return (
-    <div id="projects">
+    <div id="case-studies">
       {flagships.map((p, i) => (
         <section key={p.title} className="stack-panel" style={{ zIndex: 40 + i * 10 }}>
           <div className="stack-panel-scroll">
@@ -11,15 +13,15 @@ export default function Projects() {
             {i === 0 && (
               <Reveal>
                 <div className="font-mono text-xs tracking-wide uppercase text-amber mb-3.5">
-                  03 — selected work
+                  03 — case studies
                 </div>
-                <h2 className="text-3xl font-bold mb-10">Flagship systems</h2>
+                <h2 className="text-3xl font-bold mb-10">Case studies: systems I&apos;ve built</h2>
               </Reveal>
             )}
             <Reveal>
               <div className="relative border border-line rounded-2xl bg-bg2 overflow-visible">
                 {p.definition && (
-                  <div className="hidden md:block absolute -top-8 -left-5 w-[260px] bg-paper text-paper-ink px-4.5 py-4 rounded shadow-2xl -rotate-2 z-10">
+                  <div className="hidden md:block absolute -top-8 right-6 w-[260px] bg-paper text-paper-ink px-4.5 py-4 rounded shadow-2xl rotate-2 z-10">
                     <div className="font-extrabold text-sm">{p.definition.word}</div>
                     <div className="font-mono text-[0.7rem] text-paper-ink/60 mb-1.5">
                       {p.definition.pronunciation}
@@ -27,9 +29,15 @@ export default function Projects() {
                     <div className="text-[0.78rem] leading-snug">{p.definition.body}</div>
                   </div>
                 )}
-                <div className="h-44 sm:h-56 rounded-t-2xl border-b border-line bg-gradient-to-br from-bg2 to-bg flex items-center justify-center px-4 text-center font-mono text-xs sm:text-sm text-ink-dim">
-                  [ live demo / architecture — {p.title} ]
-                </div>
+                {p.image && (
+                  <Image
+                    src={p.image.src}
+                    alt={p.image.alt}
+                    width={p.image.width}
+                    height={p.image.height}
+                    className="w-full h-auto rounded-t-2xl border-b border-line"
+                  />
+                )}
                 <div className="px-5 sm:px-7 py-6 sm:py-7">
                   {p.definition && (
                     <div className="md:hidden mb-5 bg-paper text-paper-ink px-4 py-3.5 rounded shadow-lg -rotate-1 max-w-xs">
@@ -53,7 +61,10 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-5 text-sm">
+                  <div className="flex gap-5 text-sm flex-wrap">
+                    <Link href={`/work/${p.slug}`} className="text-amber font-semibold">
+                      Read the case study →
+                    </Link>
                     {p.github && (
                       <a href={p.github} className="text-amber">
                         GitHub →

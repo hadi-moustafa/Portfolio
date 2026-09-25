@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { contact, quotes } from "@/lib/content";
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 const QUOTE_INTERVAL_MS = 6000;
@@ -18,7 +19,7 @@ export default function SiteFooter() {
   }, []);
 
   return (
-    <section id="contact" className="stack-panel z-[80]">
+    <section id="closing" className="stack-panel z-[95]">
       <div className="stack-panel-scroll">
         <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6">
           <Reveal>
@@ -49,7 +50,7 @@ export default function SiteFooter() {
             </div>
           </Reveal>
 
-          <footer className="border-t border-line pt-10 pb-10">
+          <footer className="border-t border-line pt-10 pb-32 sm:pb-10">
             <div className="flex justify-between flex-wrap gap-5">
               <div>
                 <a href={`mailto:${contact.email}`} className="mr-4.5 text-sm hover:text-amber">
@@ -68,8 +69,13 @@ export default function SiteFooter() {
                   {contact.phone}
                 </a>
               </div>
-              <div className="font-mono text-xs text-ink-dim">
-                {"// built by hand, not a template"}
+              <div className="flex gap-4 items-center text-sm">
+                <Link href="/privacy" className="hover:text-amber">
+                  Privacy policy
+                </Link>
+                <span className="font-mono text-xs text-ink-dim">
+                  {"// built by hand, not a template"}
+                </span>
               </div>
             </div>
           </footer>

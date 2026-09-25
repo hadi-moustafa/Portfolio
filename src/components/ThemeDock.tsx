@@ -11,7 +11,7 @@ export default function ThemeDock() {
   const preset = isPreset(theme) ? theme : null;
 
   return (
-    <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[100]">
+    <div className="fixed bottom-28 left-4 sm:bottom-6 sm:left-6 z-[100]">
       {open && (
         <div className="mb-2 w-56 max-w-[80vw] rounded-[10px] border border-line bg-bg2/95 backdrop-blur-sm p-3.5 shadow-2xl">
           <div className="mb-3">

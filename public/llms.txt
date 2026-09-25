@@ -1,0 +1,18 @@
+# Hadi Moustafa — Backend Engineer
+
+> Freelance backend engineer building systems that hold under load: public infrastructure, production business systems, and AI/LLM tooling. Based in Lebanon, working remotely worldwide. Replies to inquiries within 24 hours.
+
+## Pages
+
+- [Home](https://hadimoustafa.dev/): about, case studies, FAQ and contact form
+- [Governor case study](https://hadimoustafa.dev/work/governor): lightweight Go LLM gateway with atomic budget checks and mid-stream cancellation
+- [M2C municipality platform case study](https://hadimoustafa.dev/work/m2c-municipality-platform): resident records, requests and workflows on Next.js + PostgreSQL
+- [MelhemAuto case study](https://hadimoustafa.dev/work/melhemauto): production management system for an auto-service business in Africa
+- [Privacy policy](https://hadimoustafa.dev/privacy)
+
+## Contact
+
+- Email: hadimoustafa3@gmail.com
+- GitHub: https://github.com/hadi-moustafa
+- LinkedIn: https://linkedin.com/in/hadi-moustafa-3a30b3363
+- Résumé (PDF): https://hadimoustafa.dev/resume.pdf

@@ -1,16 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { responseTime } from "@/lib/content";
 
 const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
 export default function Hero() {
+  // The canvas is only shown at lg+ (hidden via CSS below that), so only
+  // download three.js on screens that will actually render it.
+  const [showCanvas, setShowCanvas] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setShowCanvas(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
     <section id="hero" className="stack-panel z-[10]">
       <div className="stack-panel-scroll">
         <div className="stack-panel-inner relative max-w-[1000px] mx-auto w-full px-6 py-10">
-          <HeroCanvas />
+          {showCanvas && <HeroCanvas />}
 
           <div className="relative z-10">
             <div className="mb-6">
@@ -47,17 +60,20 @@ export default function Hero() {
               className="mt-8 flex gap-3.5 flex-wrap items-center"
             >
               <a
-                href="#projects"
+                href="#contact"
                 className="font-mono text-sm font-bold px-5 py-3 rounded-md bg-amber text-[#161105]"
               >
-                View Governor →
+                Start a project →
               </a>
               <a
-                href="#contact"
+                href="#case-studies"
                 className="font-mono text-sm px-5 py-3 rounded-md border border-line text-ink"
               >
-                Get in touch
+                See case studies
               </a>
+              <span className="w-full font-mono text-xs text-ink-dim">
+                Available for freelance work · I reply within {responseTime}
+              </span>
             </motion.div>
 
             {/* mobile annotation stack — same content as the floating desktop cards, laid out inline instead of absolutely positioned */}
