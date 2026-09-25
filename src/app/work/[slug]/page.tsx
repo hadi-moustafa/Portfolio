@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { flagships, responseTime } from "@/lib/content";
+import { categoryLabels, flagships, services } from "@/lib/content";
 import PageShell from "@/components/PageShell";
+import CtaBox from "@/components/CtaBox";
 
 export const dynamicParams = false;
 
@@ -20,13 +21,12 @@ export async function generateMetadata(props: PageProps<"/work/[slug]">): Promis
   const p = getProject(slug);
   if (!p) return {};
   const title = `${p.title.split(" — ")[0]} case study`;
-  const description = p.metaDescription;
   return {
     title,
-    description,
+    description: p.metaDescription,
     alternates: { canonical: `/work/${p.slug}` },
-    openGraph: { title, description, url: `/work/${p.slug}`, type: "article" },
-    twitter: { title, description },
+    openGraph: { title, description: p.metaDescription, url: `/work/${p.slug}`, type: "article" },
+    twitter: { title, description: p.metaDescription },
   };
 }
 
@@ -36,19 +36,22 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   if (!p) notFound();
 
   const others = flagships.filter((f) => f.slug !== p.slug);
+  const related = services.filter((s) => s.proof === "all" || (p.categories as string[]).includes(s.proof));
 
   return (
-    <PageShell crumbs={[{ name: "Case studies", path: "/#case-studies" }, { name: p.title, path: `/work/${p.slug}` }]}>
+    <PageShell crumbs={[{ name: "Work", path: "/#work" }, { name: p.title.split(" — ")[0], path: `/work/${p.slug}` }]}>
       <article>
-        <div className="font-mono text-xs text-amber mb-3">{p.tag}</div>
-        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">{p.title}</h1>
-        <p className="text-lg text-ink-dim mb-6">{p.description}</p>
-        <ul className="flex gap-2 flex-wrap mb-10" aria-label="Tech stack">
+        <p className="eyebrow mb-3">{p.tag}</p>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-navy sm:text-5xl">{p.title}</h1>
+        <p className="mt-5 text-lg">{p.description}</p>
+        <ul className="mt-6 flex flex-wrap gap-2" aria-label="Categories and tech stack">
+          {p.categories.map((c) => (
+            <li key={c} className="rounded-full bg-teal/15 px-2.5 py-0.5 text-xs font-semibold text-teal-ink">
+              {categoryLabels[c]}
+            </li>
+          ))}
           {p.stack.map((s) => (
-            <li
-              key={s}
-              className="font-mono text-[0.7rem] px-2.5 py-0.5 rounded-full border border-line text-ink-dim"
-            >
+            <li key={s} className="rounded-full border border-line px-2.5 py-0.5 text-xs text-muted">
               {s}
             </li>
           ))}
@@ -61,32 +64,41 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
             width={p.image.width}
             height={p.image.height}
             priority
-            className="w-full h-auto rounded-xl border border-line mb-10"
+            className="mt-10 h-auto w-full rounded-xl border border-line"
           />
         )}
 
-        <h2 className="text-2xl font-bold mb-3">The problem</h2>
-        <p className="text-ink-dim mb-8">{p.caseStudy.problem}</p>
-
-        <h2 className="text-2xl font-bold mb-3">The approach</h2>
-        <ul className="list-disc pl-5 space-y-2 text-ink-dim mb-8">
-          {p.caseStudy.approach.map((a) => (
-            <li key={a}>{a}</li>
-          ))}
-        </ul>
-
-        <h2 className="text-2xl font-bold mb-3">The result</h2>
-        <p className="text-ink-dim mb-8">{p.caseStudy.result}</p>
+        <div className="mt-12 space-y-10">
+          <section>
+            <h2 className="mb-3 font-display text-2xl font-bold text-navy">The problem</h2>
+            <p>{p.caseStudy.problem}</p>
+          </section>
+          <section>
+            <h2 className="mb-3 font-display text-2xl font-bold text-navy">The approach</h2>
+            <ul className="space-y-3">
+              {p.caseStudy.approach.map((a) => (
+                <li key={a} className="flex gap-3">
+                  <span aria-hidden="true" className="font-display font-bold text-teal-ink">/</span>
+                  {a}
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <h2 className="mb-3 font-display text-2xl font-bold text-navy">The result</h2>
+            <p>{p.caseStudy.result}</p>
+          </section>
+        </div>
 
         {(p.github || p.demo) && (
-          <div className="flex gap-5 text-sm mb-12">
+          <div className="mt-8 flex flex-wrap gap-x-6 font-semibold">
             {p.github && (
-              <a href={p.github} className="text-amber" rel="noopener">
+              <a href={p.github} className="inline-flex min-h-11 items-center text-coral-ink hover:underline">
                 GitHub →
               </a>
             )}
             {p.demo && (
-              <a href={p.demo} className="text-amber" rel="noopener">
+              <a href={p.demo} className="inline-flex min-h-11 items-center text-coral-ink hover:underline">
                 Live demo →
               </a>
             )}
@@ -94,30 +106,28 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         )}
       </article>
 
-      <aside className="border border-line rounded-2xl bg-bg2 p-6 mb-12">
-        <h2 className="text-xl font-bold mb-2">Need a system like this?</h2>
-        <p className="text-ink-dim text-sm mb-4">
-          Tell me what you&apos;re building. I reply within {responseTime}.
-        </p>
-        <Link
-          href="/#contact"
-          className="inline-block font-mono text-sm font-bold px-5 py-3 rounded-md bg-amber text-[#161105]"
-        >
-          Start a project →
-        </Link>
-      </aside>
+      <CtaBox title="Need a system like this?" />
+
+      <nav aria-label="Related services" className="mb-10">
+        <h2 className="eyebrow mb-3">related services</h2>
+        <ul className="flex flex-wrap gap-2">
+          {related.map((s) => (
+            <li key={s.slug}>
+              <Link href={`/services/${s.slug}`} className="inline-flex min-h-11 items-center rounded-full border-2 border-navy px-4 text-sm font-semibold text-navy hover:bg-navy hover:text-offwhite">
+                {s.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <nav aria-label="More case studies">
-        <h2 className="font-mono text-xs uppercase tracking-wide text-amber mb-4">More case studies</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <h2 className="eyebrow mb-4">more case studies</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
           {others.map((o) => (
-            <Link
-              key={o.slug}
-              href={`/work/${o.slug}`}
-              className="border border-line rounded-[10px] p-5 hover:border-amber"
-            >
-              <div className="font-bold mb-1">{o.title}</div>
-              <div className="text-sm text-ink-dim line-clamp-2">{o.description}</div>
+            <Link key={o.slug} href={`/work/${o.slug}`} className="rounded-xl border border-line bg-surface p-5 hover:border-teal-ink">
+              <div className="font-display font-semibold text-navy">{o.title}</div>
+              <div className="mt-1 line-clamp-2 text-sm text-muted">{o.description}</div>
             </Link>
           ))}
         </div>

@@ -1,17 +1,29 @@
-# Hadi Moustafa — Backend Engineer
+# se.hadi — Hadi Moustafa
 
-> Freelance backend engineer building systems that hold under load: public infrastructure, production business systems, and AI/LLM tooling. Based in Lebanon, working remotely worldwide. Replies to inquiries within 24 hours.
+> Software engineer and digital marketer based in Lebanon, working remotely worldwide. "I build it. I market it. I fix it. I grow it." Four services: engineering (web apps, e-commerce, management systems, financial trackers), marketing (paid ads, growth strategy, content), support (onboarding, maintenance, troubleshooting) and growth (social strategy, content creation, community management). Projects from $120. Replies to inquiries within 24 hours.
+
+## Services
+
+- [Web & software development](https://hadimoustafa.dev/services/engineering)
+- [Digital marketing](https://hadimoustafa.dev/services/marketing)
+- [Website support & maintenance](https://hadimoustafa.dev/services/support)
+- [Social media growth](https://hadimoustafa.dev/services/growth)
+
+## Case studies
+
+- [Governor](https://hadimoustafa.dev/work/governor): lightweight Go LLM gateway with atomic budget checks and mid-stream cancellation
+- [M2C municipality platform](https://hadimoustafa.dev/work/m2c-municipality-platform): resident records, requests and workflows on Next.js + PostgreSQL
+- [MelhemAuto](https://hadimoustafa.dev/work/melhemauto): production management system for an auto-service business in Africa
 
 ## Pages
 
-- [Home](https://hadimoustafa.dev/): about, case studies, FAQ and contact form
-- [Governor case study](https://hadimoustafa.dev/work/governor): lightweight Go LLM gateway with atomic budget checks and mid-stream cancellation
-- [M2C municipality platform case study](https://hadimoustafa.dev/work/m2c-municipality-platform): resident records, requests and workflows on Next.js + PostgreSQL
-- [MelhemAuto case study](https://hadimoustafa.dev/work/melhemauto): production management system for an auto-service business in Africa
+- [Home](https://hadimoustafa.dev/): services, work, about, process, FAQ and contact form
 - [Privacy policy](https://hadimoustafa.dev/privacy)
 
 ## Contact
 
+- Instagram: https://instagram.com/se.hadimoustafa (@se.hadimoustafa)
+- WhatsApp: https://wa.me/96181277281
 - Email: hadimoustafa3@gmail.com
 - GitHub: https://github.com/hadi-moustafa
 - LinkedIn: https://linkedin.com/in/hadi-moustafa-3a30b3363

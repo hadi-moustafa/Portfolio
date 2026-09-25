@@ -1,10 +1,11 @@
-import { contact } from "./content";
+import { contact, services } from "./content";
 
 export const SITE_URL = "https://hadimoustafa.dev";
 export const SITE_NAME = "Hadi Moustafa";
-export const SITE_TAGLINE = "Backend Engineer";
+export const BRAND = "se.hadi";
+export const SITE_TAGLINE = "Software Engineer & Digital Marketer in Lebanon";
 export const SITE_DESCRIPTION =
-  "Freelance backend engineer building systems that hold under load — public infrastructure, production business systems, and AI/LLM tooling.";
+  "I build it, market it, fix it and grow it. Hadi Moustafa (se.hadi) is a software engineer and digital marketer in Lebanon: web apps, marketing, support and social growth.";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 // Formspree form IDs are public (they appear in the form action), so a default is safe.
@@ -16,7 +17,7 @@ export function absoluteUrl(path = "/") {
 
 /** Person + ProfessionalService (a LocalBusiness subtype) for the root layout. */
 export function siteJsonLd() {
-  const sameAs = [contact.github, contact.linkedin];
+  const sameAs = [contact.instagram, contact.github, contact.linkedin];
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -24,7 +25,8 @@ export function siteJsonLd() {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: SITE_NAME,
-        jobTitle: "Backend Engineer",
+        jobTitle: "Software Engineer & Digital Marketer",
+        image: absoluteUrl("/images/hadi-moustafa-headshot.webp"),
         url: SITE_URL,
         email: `mailto:${contact.email}`,
         telephone: contact.phone.replace(/\s/g, ""),
@@ -33,16 +35,39 @@ export function siteJsonLd() {
       {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#business`,
-        name: `${SITE_NAME} — Backend Engineering`,
+        name: BRAND,
+        alternateName: `${SITE_NAME} — ${SITE_TAGLINE}`,
         description: SITE_DESCRIPTION,
         url: SITE_URL,
         image: absoluteUrl("/opengraph-image"),
         email: contact.email,
         telephone: contact.phone.replace(/\s/g, ""),
         founder: { "@id": `${SITE_URL}/#person` },
+        logo: absoluteUrl("/icon.png"),
+        priceRange: "$120+",
         address: { "@type": "PostalAddress", addressCountry: "LB" },
         areaServed: "Worldwide",
-        knowsAbout: ["Backend engineering", "LLM infrastructure", "Next.js", "PostgreSQL", "Go"],
+        knowsAbout: [
+          "Software engineering",
+          "Web development",
+          "Digital marketing",
+          "Social media growth",
+          "Website maintenance",
+          "LLM infrastructure",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Services",
+          itemListElement: services.map((s) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.title,
+              description: s.metaDescription,
+              url: absoluteUrl(`/services/${s.slug}`),
+            },
+          })),
+        },
         sameAs,
       },
     ],

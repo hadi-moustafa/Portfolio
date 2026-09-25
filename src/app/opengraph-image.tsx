@@ -1,13 +1,13 @@
 import { ogCard, ogSize } from "@/lib/og";
 
-export const alt = "Hadi Moustafa — Backend Engineer";
+export const alt = "se.hadi — Hadi Moustafa, software engineer & digital marketer in Lebanon";
 export const size = ogSize;
 export const contentType = "image/png";
 
 export default function OpengraphImage() {
   return ogCard({
-    eyebrow: "SYSTEMS ONLINE",
-    title: "HADI MOUSTAFA",
-    subtitle: "Backend engineer. I build for the moments when the system is under real load — not the demo.",
+    eyebrow: "Hadi Moustafa · Lebanon",
+    title: "I build it. I market it.\nI fix it. I grow it.",
+    subtitle: "Software engineer & digital marketer — from the backend that holds under load to the audience that finds it.",
   });
 }

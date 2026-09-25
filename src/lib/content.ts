@@ -1,17 +1,15 @@
-export const sections = [
-  { id: "hero", label: "01 — hero" },
-  { id: "about", label: "02 — about" },
-  { id: "case-studies", label: "03 — case studies" },
-  { id: "testimonials", label: "04 — reviews" },
-  { id: "faq", label: "05 — faq" },
-  { id: "contact", label: "06 — contact" },
+export const navLinks = [
+  { href: "/#work", label: "Work" },
+  { href: "/#services", label: "Services" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const stats = [
-  { num: "6", label: "systems shipped", amber: true },
-  { num: "3", label: "in production now", amber: false },
-  { num: "1", label: "LLM gateway, public", amber: true },
-  { num: "2+", label: "countries running my code", amber: false },
+  { num: "6", label: "systems shipped", accent: true },
+  { num: "3", label: "in production now", accent: false },
+  { num: "1", label: "LLM gateway, public", accent: true },
+  { num: "2+", label: "countries running my code", accent: false },
 ];
 
 export const timeline = [
@@ -37,7 +35,16 @@ export const timeline = [
   },
 ];
 
+export type Category = "engineering" | "marketing" | "fullstack";
+
+export const categoryLabels: Record<Category, string> = {
+  engineering: "Engineering",
+  marketing: "Marketing",
+  fullstack: "Full-stack",
+};
+
 export type Flagship = {
+  categories: Category[];
   slug: string;
   tag: string;
   title: string;
@@ -56,6 +63,7 @@ export type Flagship = {
 export const flagships: Flagship[] = [
   {
     slug: "governor",
+    categories: ["engineering"],
     metaDescription:
       "How I built Governor, a lightweight Go LLM gateway that enforces hard spend caps with atomic budget checks and mid-stream cancellation.",
     tag: "01 — LLM INFRASTRUCTURE",
@@ -84,6 +92,7 @@ export const flagships: Flagship[] = [
   },
   {
     slug: "m2c-municipality-platform",
+    categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: M2C, a municipality management platform for resident records, requests and internal workflows, built on Next.js and PostgreSQL.",
     tag: "02 — PUBLIC INFRASTRUCTURE",
@@ -106,6 +115,7 @@ export const flagships: Flagship[] = [
   },
   {
     slug: "melhemauto",
+    categories: ["fullstack"],
     metaDescription:
       "Case study: MelhemAuto, a React, Node.js and MongoDB management system running in production for an auto-service business in Africa.",
     tag: "03 — SHIPPED & RUNNING",
@@ -127,36 +137,165 @@ export const flagships: Flagship[] = [
   },
 ];
 
-export const secondaryProjects = [
+export type SecondaryProject = {
+  title: string;
+  description: string;
+  categories: Category[];
+  href?: string;
+  badge?: string;
+};
+
+export const secondaryProjects: SecondaryProject[] = [
+  {
+    title: "se.hadi/ — brand & Instagram launch",
+    description:
+      "My own brand, built like a client project: identity and wordmark, a navy/teal/coral visual system, post templates, and a content plan across four pillars (showcases, quick tips, behind-the-scenes, results). Running now on @se.hadimoustafa.",
+    categories: ["marketing"],
+    href: "https://instagram.com/se.hadimoustafa",
+    badge: "IN PROGRESS",
+  },
   {
     title: "Paws",
     description:
       "Animal shelter management system built to organize pets and products, with vet integration and medical records for each pet. Originally built to digitise stray animal tracking and adoption for a village in South Lebanon.",
+    categories: ["fullstack"],
     href: "https://paws-gamma-three.vercel.app/",
-    badge: undefined,
   },
   {
     title: "TechTalks (LFM)",
     description:
       "A centralized freelance marketplace empowering local Lebanese talent — creatives display portfolios and reach clients directly. Built as a collaborative internship project with TechTalks on the T3 stack (Next.js & Supabase).",
+    categories: ["fullstack"],
     href: "https://techtalks-lebanese-freelance-market.vercel.app/",
-    badge: undefined,
   },
   {
     title: "Njoum",
     description:
       "A full system (mobile app + web platform) for enhancing the safety and support of girls and young women — real-time SOS emergency alerts and live location sharing via map APIs.",
-    href: undefined,
+    categories: ["fullstack"],
     badge: "IN PROGRESS",
   },
   {
     title: "Nexus",
     description:
       "A multi-platform news app (Flutter/Next.js) with a world-map UI. Supabase/PostgreSQL-backed, using Gemini AI for summaries, quizzes, and toxicity filtering — schema tracks users, articles, and engagement across web and mobile.",
-    href: undefined,
+    categories: ["fullstack", "engineering"],
     badge: "CLIENT PROJECT",
   },
 ];
+
+export type ServiceSlug = "engineering" | "marketing" | "support" | "growth";
+
+export type Service = {
+  slug: ServiceSlug;
+  word: string;
+  pronunciation: string;
+  tagline: string;
+  /** Page title / H1 on /services/[slug] */
+  title: string;
+  metaDescription: string;
+  includes: string[];
+  intro: string;
+  outcomes: string[];
+  /** Which work filter proves this service */
+  proof: Category | "all";
+};
+
+export const services: Service[] = [
+  {
+    slug: "engineering",
+    word: "engineer",
+    pronunciation: "/ˌen.dʒɪˈnɪər/ · v.",
+    tagline: "building the thing that holds.",
+    title: "Web & software development",
+    metaDescription:
+      "Web apps, e-commerce, management systems and financial trackers, built by a software engineer in Lebanon to hold up under real load.",
+    includes: ["Web apps", "E-commerce", "Management systems", "Financial trackers"],
+    intro:
+      "Most software works in the demo. I build for the day after launch: real users, real data, and the moment a request fails halfway through. Backend-first, with a clean front end on top.",
+    outcomes: [
+      "A system designed around how your business actually works, not a generic template.",
+      "APIs and databases built to handle load and failure without losing data.",
+      "Code you own, documented so any engineer can pick it up.",
+    ],
+    proof: "engineering",
+  },
+  {
+    slug: "marketing",
+    word: "market",
+    pronunciation: "/ˈmɑː.kɪt/ · v.",
+    tagline: "getting it in front of the right people.",
+    title: "Digital marketing",
+    metaDescription:
+      "Paid ads, growth strategy and content from an engineer who also markets, so what gets built also gets seen. Based in Lebanon, working worldwide.",
+    includes: ["Paid ads", "Growth strategy", "Content"],
+    intro:
+      "A product nobody finds is a product nobody uses. I plan and run the marketing around what I build, with the same approach I use for systems: measure, find the bottleneck, fix it.",
+    outcomes: [
+      "A clear strategy: who you're for, where they are, and what to say to them.",
+      "Paid campaigns set up with proper tracking, so you know what each result cost.",
+      "Content that is consistent with your brand and actually gets published.",
+    ],
+    proof: "marketing",
+  },
+  {
+    slug: "support",
+    word: "support",
+    pronunciation: "/səˈpɔːt/ · v.",
+    tagline: "keeping it running.",
+    title: "Website support & maintenance",
+    metaDescription:
+      "Client onboarding, website maintenance and troubleshooting to keep your site or system fast, secure and online after launch.",
+    includes: ["Client onboarding", "Website maintenance", "Troubleshooting"],
+    intro:
+      "Launch is the start, not the finish. Several of my systems are still in production; I keep them updated, fix what breaks, and train the people who use them.",
+    outcomes: [
+      "Updates, backups and security patches handled for you.",
+      "A real person to call when something breaks, who knows the system.",
+      "Your team onboarded so they can use the system with confidence.",
+    ],
+    proof: "all",
+  },
+  {
+    slug: "growth",
+    word: "grow",
+    pronunciation: "/ɡrəʊ/ · v.",
+    tagline: "turning an audience into a community.",
+    title: "Social media growth",
+    metaDescription:
+      "Social strategy, content creation and community management to turn followers into a community around your brand.",
+    includes: ["Social strategy", "Content creation", "Community management"],
+    intro:
+      "Followers are a number; a community is an asset. I build social presence as a system: content pillars, a consistent visual identity, and a rhythm you can keep up.",
+    outcomes: [
+      "A content system with pillars, templates and a posting rhythm.",
+      "A consistent visual identity across every post and highlight.",
+      "Community management that turns comments and DMs into relationships.",
+    ],
+    proof: "marketing",
+  },
+];
+
+export const processSteps = [
+  {
+    title: "Discovery call",
+    body: "A free call to understand what you're building, who it's for and what success looks like.",
+  },
+  {
+    title: "Proposal",
+    body: "A written scope with milestones, timeline and price, agreed before any work starts.",
+  },
+  {
+    title: "Build",
+    body: "Regular working demos while I build. You see progress every week, not just at the end.",
+  },
+  {
+    title: "Launch & grow",
+    body: "Go live, then support, marketing and growth, as much or as little as you need.",
+  },
+];
+
+export const budgetRanges = ["$120–$500", "$500–$1,500", "$1,500–$5,000", "$5,000+", "Not sure yet"];
 
 export const quotes = [
   "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
@@ -176,24 +315,28 @@ export const responseTime = "24 hours";
 
 export const faqs = [
   {
-    q: "What kind of projects do you take on?",
-    a: "Backend-heavy work: APIs, databases, internal business systems, integrations, and LLM/AI tooling. I also build the full stack (Next.js/React front ends) when a project needs one person end-to-end.",
+    q: "What services do you offer?",
+    a: "Four, which can be combined: engineering (web apps, e-commerce, management systems), marketing (paid ads, growth strategy, content), support (onboarding, maintenance, troubleshooting) and growth (social strategy, content creation, community management).",
   },
   {
-    q: "Do you work remotely and across time zones?",
-    a: "Yes. I work remotely as a freelancer, and my code already runs in more than one country. I'm based in Lebanon (UTC+2/+3) and plan overlap hours with your team.",
+    q: "How much does a project cost?",
+    a: "Projects start from $120 for small jobs like fixes, landing pages or a content package. Larger systems are quoted after a free discovery call, with the price agreed in the proposal.",
   },
   {
     q: "How quickly will you reply to an inquiry?",
-    a: `Within ${responseTime}. Send a short description of what you're building and I'll reply with questions or a next step.`,
+    a: `Within ${responseTime}, by email, Instagram DM or WhatsApp, whichever you used to reach me.`,
   },
   {
-    q: "What does a project look like from start to finish?",
-    a: "A short call to understand the problem, a written scope with milestones, then regular working demos. I care about where the load lands and what happens when things fail, so that's designed in from the start.",
+    q: "Do you work remotely and across time zones?",
+    a: "Yes. I'm based in Lebanon (UTC+2/+3) and work remotely with clients in other countries, and I plan overlap hours with your team.",
+  },
+  {
+    q: "Can you both build and market my product?",
+    a: "Yes, that's the point of se.hadi. The same person who builds your system can market it, keep it running and grow its audience, so nothing gets lost between agencies.",
   },
   {
     q: "Do you support the system after launch?",
-    a: "Yes. Several of my systems are still in production, and I stay on for fixes, monitoring and improvements if you want me to.",
+    a: "Yes. Several of my systems are still in production, and I offer ongoing maintenance, fixes and improvements.",
   },
 ];
 
@@ -211,6 +354,11 @@ export const testimonials: {
 
 export const contact = {
   email: "hadimoustafa3@gmail.com",
+  instagram: "https://instagram.com/se.hadimoustafa",
+  instagramHandle: "@se.hadimoustafa",
+  instagramDM: "https://ig.me/m/se.hadimoustafa",
+  /** TEMPORARY number — will be replaced with a dedicated business line. */
+  whatsapp: "https://wa.me/96181277281",
   github: "https://github.com/hadi-moustafa",
   linkedin: "https://linkedin.com/in/hadi-moustafa-3a30b3363",
   phone: "+961 81 277 281",

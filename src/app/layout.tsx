@@ -1,47 +1,39 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, EB_Garamond } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
-import { ThemeProvider, NO_FLASH_SCRIPT } from "@/components/ThemeProvider";
-import ThemeFX from "@/components/ThemeFX";
-import { DEFAULT_THEME } from "@/lib/theme";
 import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 import MobileCTA from "@/components/MobileCTA";
+import SiteNav from "@/components/SiteNav";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, siteJsonLd } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-});
-
-const accentSerif = EB_Garamond({
-  variable: "--font-accent-serif",
-  subsets: ["latin"],
-  style: ["italic"],
+  weight: ["500", "600", "700"],
 });
 
 const defaultTitle = `${SITE_NAME} — ${SITE_TAGLINE}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: defaultTitle, template: `%s | ${SITE_NAME}` },
+  title: { default: defaultTitle, template: `%s | se.hadi` },
   description: SITE_DESCRIPTION,
-  applicationName: SITE_NAME,
+  applicationName: "se.hadi",
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
-  generator: null,
   alternates: { canonical: "/" },
   openGraph: {
     title: defaultTitle,
     description: SITE_DESCRIPTION,
     url: "/",
-    siteName: SITE_NAME,
+    siteName: "se.hadi",
     type: "website",
     locale: "en_US",
   },
@@ -54,8 +46,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0b09",
+  themeColor: "#F5F5F0",
 };
+
+// Marks JS as running so scroll-reveal can hide content until it animates in.
+// Without JS, content stays visible.
+const JS_FLAG = `document.documentElement.classList.add("js")`;
 
 export default function RootLayout({
   children,
@@ -63,22 +59,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${accentSerif.variable} h-full antialiased`}
-      data-theme={DEFAULT_THEME}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${inter.variable} ${poppins.variable} antialiased`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: NO_FLASH_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: JS_FLAG }} />
       </head>
-      <body className="min-h-full flex flex-col bg-bg text-ink">
-        <ThemeProvider>
-          <CustomCursor />
-          <ThemeFX />
-          {children}
-          <MobileCTA />
-        </ThemeProvider>
+      <body className="min-h-dvh flex flex-col font-sans text-base">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-navy focus:px-4 focus:py-2 focus:text-offwhite"
+        >
+          Skip to content
+        </a>
+        <CustomCursor />
+        <SiteNav />
+        {children}
+        <MobileCTA />
         <JsonLd data={siteJsonLd()} />
         <Analytics />
       </body>

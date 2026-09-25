@@ -16,14 +16,14 @@ const UPDATED = "25 September 2026";
 export default function PrivacyPage() {
   return (
     <PageShell crumbs={[{ name: "Privacy policy", path: "/privacy" }]}>
-      <h1 className="text-4xl font-extrabold tracking-tight mb-2">Privacy policy</h1>
-      <p className="font-mono text-xs text-ink-dim mb-10">Last updated: {UPDATED}</p>
+      <h1 className="mb-2 font-display text-4xl font-bold tracking-tight text-navy">Privacy policy</h1>
+      <p className="mb-10 text-sm text-muted">Last updated: {UPDATED}</p>
 
-      <div className="space-y-8 text-ink-dim [&_h2]:text-ink [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mb-2 [&_a]:text-amber">
+      <div className="space-y-8 [&_a]:font-semibold [&_a]:text-teal-ink [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mb-2 [&_h2]:font-display [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-navy">
         <section>
           <h2>Who I am</h2>
           <p>
-            This website ({SITE_URL}) is run by Hadi Moustafa, a freelance backend engineer. For any
+            This website ({SITE_URL}) is run by Hadi Moustafa (se.hadi), a freelance software engineer and digital marketer based in Lebanon. For any
             privacy question, email <a href={`mailto:${contact.email}`}>{contact.email}</a>.
           </p>
         </section>
@@ -32,15 +32,15 @@ export default function PrivacyPage() {
           <h2>What I collect</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong className="text-ink">Contact form.</strong> If you send an inquiry, I receive
-              the name, email address and message you enter. The form is processed by{" "}
+              <strong className="text-navy">Contact form.</strong> If you send an inquiry, I receive
+              the name, email address, project type, budget range and message you enter. The form is processed by{" "}
               <a href="https://formspree.io/legal/privacy-policy" rel="noopener">
                 Formspree
               </a>
               , which delivers it to my inbox.
             </li>
             <li>
-              <strong className="text-ink">Analytics.</strong> I use Google Analytics 4 to see
+              <strong className="text-navy">Analytics.</strong> I use Google Analytics 4 to see
               aggregate usage (pages visited, referrer, device type, approximate location). IP
               addresses are anonymised. Google&apos;s handling is described in its{" "}
               <a href="https://policies.google.com/privacy" rel="noopener">
@@ -49,8 +49,9 @@ export default function PrivacyPage() {
               .
             </li>
             <li>
-              <strong className="text-ink">Theme preference.</strong> Your chosen colour theme is
-              stored in your browser&apos;s local storage. It never leaves your device.
+              <strong className="text-navy">Direct messages.</strong> If you contact me on
+              Instagram or WhatsApp, those messages are handled under Meta&apos;s own privacy
+              policies. I only use them to reply to you.
             </li>
           </ul>
         </section>

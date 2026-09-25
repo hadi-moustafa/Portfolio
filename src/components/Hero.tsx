@@ -1,15 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { responseTime } from "@/lib/content";
 
 const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
+function Note() {
+  return (
+    <div className="max-w-sm rounded-md border border-line bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-charcoal shadow-[0_10px_30px_-12px_rgba(13,27,42,0.25)] -rotate-1">
+      <span className="font-semibold text-navy">quick note:</span>{" "}I write every line myself —
+      AI-assisted, never AI-authored. …and I market and grow what I build, so it doesn&apos;t just
+      work — it gets seen.
+    </div>
+  );
+}
+
+function Definition() {
+  return (
+    <div className="max-w-sm rounded-md bg-navy px-5 py-4 text-offwhite shadow-[0_10px_30px_-12px_rgba(13,27,42,0.5)] rotate-1">
+      <div className="font-display text-lg font-semibold">reliable</div>
+      <div className="mb-2 text-xs text-offwhite/70">/rɪˈlaɪ.ə.bəl/ · adj.</div>
+      <p className="text-sm leading-relaxed">
+        from Old French <i>relier</i> — to bind together again. what I&apos;m optimizing for in
+        everything I ship: <b className="text-teal">it holds, even after it breaks.</b>
+      </p>
+    </div>
+  );
+}
+
 export default function Hero() {
-  // The canvas is only shown at lg+ (hidden via CSS below that), so only
-  // download three.js on screens that will actually render it.
+  // The canvas only renders at lg+, so only download three.js on those screens.
   const [showCanvas, setShowCanvas] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -20,112 +41,55 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="stack-panel z-[10]">
-      <div className="stack-panel-scroll">
-        <div className="stack-panel-inner relative max-w-[1000px] mx-auto w-full px-6 py-10">
-          {showCanvas && <HeroCanvas />}
+    <section id="hero" aria-labelledby="hero-title" className="mx-auto w-full max-w-6xl px-4 pb-14 pt-10 sm:px-6 lg:pb-24 lg:pt-20">
+      <div className="lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-10">
+        <div>
+          <p className="eyebrow mb-4">01 — hero</p>
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal/50 bg-teal/10 px-3 py-1 font-display text-[0.7rem] font-semibold tracking-wider text-teal-ink md:hidden">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal animate-[pulse-dot_2s_infinite]" />
+            AVAILABLE FOR PROJECTS
+          </span>
+          <h1
+            id="hero-title"
+            className="font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-navy sm:text-6xl lg:text-7xl"
+          >
+            I build it. I <span className="text-teal-ink">market</span> it. I fix it. I{" "}
+            <span className="text-teal-ink">grow</span> it.
+          </h1>
+          <p className="mt-5 max-w-xl text-lg text-charcoal sm:text-xl">
+            Software engineer &amp; digital marketer based in Lebanon — from the backend that holds
+            under load to the audience that finds it.
+          </p>
 
-          <div className="relative z-10">
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-1.5 font-mono text-xs px-2.5 py-1 rounded-full border border-amber-dim text-amber">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber animate-[pulse-dot_2s_infinite]" />
-                SYSTEMS ONLINE
-              </span>
-            </div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-[1]"
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href="#contact"
+              className="flex min-h-12 items-center justify-center rounded-lg bg-coral px-6 font-display font-semibold text-navy hover:brightness-95"
             >
-              HADI MOUSTAFA
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-              className="mt-5 max-w-xl text-lg sm:text-xl text-ink-dim"
+              Start a project →
+            </a>
+            <a
+              href="#work"
+              className="flex min-h-12 items-center justify-center rounded-lg border-2 border-navy px-6 font-display font-semibold text-navy hover:bg-navy hover:text-offwhite"
             >
-              Backend engineer. I build for the moments when the system is under{" "}
-              <em className="not-italic font-serif italic text-amber">real</em> load — not the
-              demo.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-              className="mt-8 flex gap-3.5 flex-wrap items-center"
-            >
-              <a
-                href="#contact"
-                className="font-mono text-sm font-bold px-5 py-3 rounded-md bg-amber text-[#161105]"
-              >
-                Start a project →
-              </a>
-              <a
-                href="#case-studies"
-                className="font-mono text-sm px-5 py-3 rounded-md border border-line text-ink"
-              >
-                See case studies
-              </a>
-              <span className="w-full font-mono text-xs text-ink-dim">
-                Available for freelance work · I reply within {responseTime}
-              </span>
-            </motion.div>
-
-            {/* mobile annotation stack — same content as the floating desktop cards, laid out inline instead of absolutely positioned */}
-            <div className="lg:hidden mt-10 flex flex-col gap-4">
-              <div
-                className="w-full max-w-xs bg-paper text-paper-ink px-4 py-4 rounded-sm shadow-xl text-sm leading-snug -rotate-1"
-                style={{ fontFamily: "var(--font-accent-serif)" }}
-              >
-                quick note: I write every line myself — AI-assisted, never AI-authored.
-              </div>
-              <div className="w-full max-w-xs bg-paper text-paper-ink px-5 py-4 rounded shadow-xl rotate-1">
-                <div className="font-extrabold text-base">reliable</div>
-                <div className="font-mono text-xs text-paper-ink/60 mb-2">
-                  /rɪˈlaɪ.ə.bəl/ · adj.
-                </div>
-                <div className="text-[0.82rem] leading-relaxed">
-                  from Old French <i>relier</i> — to bind together again. what I&apos;m actually
-                  optimizing for in every system:{" "}
-                  <b className="text-amber-dim">it holds, even after it breaks.</b>
-                </div>
-              </div>
-            </div>
+              See my work
+            </a>
           </div>
+          <p className="mt-4 text-sm text-muted">
+            Projects from $120 · I reply within {responseTime}
+          </p>
+        </div>
 
-          {/* annotation objects (desktop only, absolutely positioned) — offset below the fixed
-              toolbar so they never get clipped underneath it */}
-          <motion.div
-            initial={{ opacity: 0, rotate: 6, y: 10 }}
-            whileInView={{ opacity: 1, rotate: 3, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="z-10 hidden lg:block absolute top-20 right-2 w-[220px] bg-paper text-paper-ink px-4 py-4 rounded-sm shadow-2xl text-sm leading-snug"
-            style={{ fontFamily: "var(--font-accent-serif)" }}
-          >
-            quick note: I write every line myself — AI-assisted, never AI-authored.
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, rotate: -4, y: 10 }}
-            whileInView={{ opacity: 1, rotate: -1.5, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-            className="z-10 hidden lg:block absolute top-56 right-[-30px] w-[300px] bg-paper text-paper-ink px-5 py-4 rounded shadow-2xl"
-          >
-            <div className="font-extrabold text-base">reliable</div>
-            <div className="font-mono text-xs text-paper-ink/60 mb-2">/rɪˈlaɪ.ə.bəl/ · adj.</div>
-            <div className="text-[0.82rem] leading-relaxed">
-              from Old French <i>relier</i> — to bind together again. what I&apos;m actually
-              optimizing for in every system:{" "}
-              <b className="text-amber-dim">it holds, even after it breaks.</b>
+        <div className="relative mt-12 flex flex-col gap-5 lg:mt-0 lg:min-h-[480px] lg:justify-center lg:pl-6">
+          {showCanvas && (
+            <div className="absolute inset-0 -z-10" aria-hidden="true">
+              <HeroCanvas />
             </div>
-          </motion.div>
+          )}
+          <Note />
+          <div className="lg:ml-12">
+            <Definition />
+          </div>
         </div>
       </div>
     </section>

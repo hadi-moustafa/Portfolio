@@ -8,7 +8,7 @@ export default function CustomCursor() {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (!window.matchMedia("(pointer: fine) and (min-width: 1024px)").matches) return;
 
     document.documentElement.classList.add("cursor-none-desktop");
     if (wrapperRef.current) wrapperRef.current.style.opacity = "1";
@@ -28,13 +28,13 @@ export default function CustomCursor() {
       dot.style.transform = `translate(${targetX}px, ${targetY}px)`;
     };
 
-    const interactiveSelector = "a, button, input, textarea, [role='button']";
+    const interactiveSelector = "a, button, input, textarea, select, summary, [role='button']";
     const onOver = (e: MouseEvent) => {
       const target = (e.target as Element)?.closest(interactiveSelector);
       hovering = Boolean(target);
       ring.style.width = hovering ? "44px" : "28px";
       ring.style.height = hovering ? "44px" : "28px";
-      ring.style.borderColor = hovering ? "var(--amber)" : "rgba(245,158,11,0.5)";
+      ring.style.borderColor = hovering ? "var(--teal-ink)" : "rgba(13,27,42,0.35)";
     };
 
     const tick = () => {
@@ -60,12 +60,12 @@ export default function CustomCursor() {
     <div ref={wrapperRef} className="opacity-0">
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[300] w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full bg-amber"
+        className="pointer-events-none fixed top-0 left-0 z-[300] w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full bg-navy"
       />
       <div
         ref={ringRef}
         className="pointer-events-none fixed top-0 left-0 z-[300] w-7 h-7 -ml-3.5 -mt-3.5 rounded-full border transition-[width,height,border-color] duration-150"
-        style={{ borderColor: "rgba(245,158,11,0.5)" }}
+        style={{ borderColor: "rgba(13,27,42,0.35)" }}
       />
     </div>
   );

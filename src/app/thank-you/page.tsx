@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { flagships, responseTime } from "@/lib/content";
+import { contact, flagships, responseTime } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Thanks for your inquiry",
@@ -13,27 +13,31 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return (
     <PageShell crumbs={[{ name: "Thank you", path: "/thank-you" }]}>
-      <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">
-        Thanks, your message is in<span className="text-amber">.</span>
+      <h1 className="mb-5 font-display text-4xl font-bold tracking-tight text-navy sm:text-5xl">
+        Thanks, your message is in<span className="text-teal">/</span>
       </h1>
-      <p className="text-lg text-ink-dim mb-10">
+      <p className="mb-10 text-lg">
         I read every inquiry myself and will reply within{" "}
-        <strong className="text-ink">{responseTime}</strong>. Keep an eye on your inbox (and your spam
-        folder, just in case).
+        <strong className="text-navy">{responseTime}</strong>. Keep an eye on your inbox (and your spam
+        folder, just in case). Meanwhile, you can follow along on Instagram at{" "}
+        <a href={contact.instagram} className="font-semibold text-teal-ink underline underline-offset-4">
+          {contact.instagramHandle}
+        </a>
+        .
       </p>
 
-      <h2 className="text-xl font-bold mb-4">While you wait, read a case study</h2>
-      <ul className="space-y-3 mb-10">
+      <h2 className="mb-4 font-display text-xl font-bold text-navy">While you wait, read a case study</h2>
+      <ul className="mb-10">
         {flagships.map((p) => (
           <li key={p.slug}>
-            <Link href={`/work/${p.slug}`} className="text-amber">
+            <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
               {p.title} →
             </Link>
           </li>
         ))}
       </ul>
 
-      <Link href="/" className="font-mono text-sm px-5 py-3 rounded-md border border-line inline-block">
+      <Link href="/" className="flex min-h-12 items-center justify-center rounded-lg border-2 border-navy px-6 font-display font-semibold text-navy sm:inline-flex">
         ← Back to home
       </Link>
     </PageShell>

@@ -1,49 +1,64 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { flagships } from "@/lib/content";
-import { SiteLinks } from "@/components/PageShell";
+import { flagships, services } from "@/lib/content";
+import SiteFooter from "@/components/SiteFooter";
+import Wordmark from "@/components/Wordmark";
 
 export const metadata: Metadata = {
   title: "Page not found",
-  description: "This page doesn't exist on hadimoustafa.dev. Head back home or read a case study.",
+  description: "This page doesn't exist on hadimoustafa.dev. Head back home, see my services or read a case study.",
   alternates: { canonical: null },
   robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <div className="flex-1 flex flex-col pb-28 sm:pb-0">
-      <main className="flex-1 max-w-[760px] w-full mx-auto px-6 py-24">
-        <div className="font-mono text-xs text-amber mb-4">ERROR 404 · ROUTE NOT FOUND</div>
-        <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight mb-5">
-          This endpoint doesn&apos;t exist<span className="text-amber">.</span>
+    <>
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-4 py-16 sm:px-6 lg:py-24">
+        <p className="eyebrow mb-4">error 404 · route not found</p>
+        <h1 className="font-display text-5xl font-bold tracking-tight text-navy sm:text-6xl">
+          This page doesn&apos;t exist<span className="text-teal">/</span>
         </h1>
-        <p className="text-lg text-ink-dim mb-10">
-          The page you asked for isn&apos;t here. It may have moved, or the link may have a typo.
+        <p className="mt-5 text-lg">
+          The page you asked for isn&apos;t on <Wordmark /> — it may have moved, or the link may
+          have a typo.
         </p>
-        <div className="flex flex-wrap gap-3.5 mb-12">
-          <Link
-            href="/"
-            className="font-mono text-sm font-bold px-5 py-3 rounded-md bg-amber text-[#161105]"
-          >
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link href="/" className="flex min-h-12 items-center justify-center rounded-lg bg-coral px-6 font-display font-semibold text-navy">
             ← Back to home
           </Link>
-          <Link href="/#contact" className="font-mono text-sm px-5 py-3 rounded-md border border-line">
+          <Link href="/#contact" className="flex min-h-12 items-center justify-center rounded-lg border-2 border-navy px-6 font-display font-semibold text-navy">
             Contact me
           </Link>
         </div>
-        <h2 className="font-mono text-xs uppercase tracking-wide text-ink-dim mb-3">Case studies</h2>
-        <ul className="space-y-2">
-          {flagships.map((p) => (
-            <li key={p.slug}>
-              <Link href={`/work/${p.slug}`} className="text-amber">
-                {p.title} →
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          <nav aria-label="Services">
+            <h2 className="eyebrow mb-2">services</h2>
+            <ul>
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
+                    {s.title} →
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Case studies">
+            <h2 className="eyebrow mb-2">case studies</h2>
+            <ul>
+              {flagships.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
+                    {p.title.split(" — ")[0]} →
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </main>
-      <SiteLinks />
-    </div>
+      <SiteFooter />
+    </>
   );
 }

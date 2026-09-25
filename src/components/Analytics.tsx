@@ -1,5 +1,6 @@
 import Script from "next/script";
 import { GA_ID } from "@/lib/site";
+import ClickTracker from "./ClickTracker";
 
 /** Google Analytics 4. Renders nothing until NEXT_PUBLIC_GA_ID is set. */
 export default function Analytics() {
@@ -10,6 +11,7 @@ export default function Analytics() {
       <Script id="ga4" strategy="afterInteractive">
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`}
       </Script>
+      <ClickTracker />
     </>
   );
 }

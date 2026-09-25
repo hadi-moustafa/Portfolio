@@ -3,36 +3,27 @@ import Reveal from "./Reveal";
 
 export default function StatBar() {
   return (
-    <section id="stats" className="stack-panel z-[20]">
-      <div className="stack-panel-scroll">
-        <div className="stack-panel-inner max-w-[1000px] mx-auto w-full px-6">
-          <Reveal>
-            <div className="font-mono text-xs tracking-wide uppercase text-amber mb-8 text-center">
-              by the numbers
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 border-y border-line">
-              {stats.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={`px-5 py-10 text-center ${
-                    i < stats.length - 1 ? "sm:border-r border-line" : ""
+    <section id="proof" aria-labelledby="proof-title" className="bg-navy text-offwhite">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
+        <Reveal>
+          <h2 id="proof-title" className="eyebrow mb-8 text-center !text-teal">
+            02 — by the numbers
+          </h2>
+          <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col-reverse px-2 text-center">
+                <dt className="mt-2 text-sm text-offwhite/75">{s.label}</dt>
+                <dd
+                  className={`font-display text-5xl font-bold tabular-nums lg:text-6xl ${
+                    s.accent ? "text-teal" : "text-offwhite"
                   }`}
                 >
-                  <div
-                    className={`text-5xl sm:text-6xl font-extrabold ${
-                      s.amber ? "text-amber" : "text-ink"
-                    }`}
-                  >
-                    {s.num}
-                  </div>
-                  <div className="text-[0.7rem] uppercase tracking-wide text-ink-dim font-mono mt-3">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
+                  {s.num}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </section>
   );

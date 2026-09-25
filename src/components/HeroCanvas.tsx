@@ -14,15 +14,9 @@ import {
   WebGLRenderer,
   WireframeGeometry,
 } from "three";
-import { useTheme } from "./ThemeProvider";
 
 export default function HeroCanvas() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const materialsRef = useRef<{
-    lines?: LineBasicMaterial;
-    points?: PointsMaterial;
-  }>({});
-  const { theme } = useTheme();
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -42,15 +36,14 @@ export default function HeroCanvas() {
 
     const group = new Group();
 
-    const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
-    const accentColor = accentHex ? new Color(accentHex) : new Color(0xf59e0b);
+    const accentColor = new Color(0x00c2cb);
 
     const coreGeo = new IcosahedronGeometry(2.1, 1);
     const coreWire = new WireframeGeometry(coreGeo);
     const lineMaterial = new LineBasicMaterial({
       color: accentColor,
       transparent: true,
-      opacity: 0.28,
+      opacity: 0.45,
     });
     const coreLines = new LineSegments(coreWire, lineMaterial);
     group.add(coreLines);
@@ -60,13 +53,11 @@ export default function HeroCanvas() {
       color: accentColor,
       size: 0.05,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.9,
     });
     const points = new Points(pointsGeo, pointsMaterial);
     group.add(points);
 
-    materialsRef.current.lines = lineMaterial;
-    materialsRef.current.points = pointsMaterial;
 
     scene.add(group);
 
@@ -102,25 +93,14 @@ export default function HeroCanvas() {
       pointsMaterial.dispose();
       renderer.dispose();
       mount.removeChild(renderer.domElement);
-      materialsRef.current = {};
     };
   }, []);
-
-  // Re-tint the wireframe whenever the active theme's accent color changes,
-  // instead of tearing down and rebuilding the whole WebGL scene.
-  useEffect(() => {
-    const accentHex = getComputedStyle(document.documentElement).getPropertyValue("--amber").trim();
-    if (!accentHex) return;
-    const color = new Color(accentHex);
-    materialsRef.current.lines?.color.set(color);
-    materialsRef.current.points?.color.set(color);
-  }, [theme]);
 
   return (
     <div
       ref={mountRef}
       aria-hidden="true"
-      className="pointer-events-none absolute right-[-8%] top-1/2 -translate-y-1/2 w-[520px] h-[520px] hidden lg:block"
+      className="pointer-events-none absolute inset-0"
     />
   );
 }

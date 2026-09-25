@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { contact } from "@/lib/content";
+import { budgetRanges, contact, services } from "@/lib/content";
 import { FORMSPREE_ID } from "@/lib/site";
 
 declare global {
@@ -11,8 +11,10 @@ declare global {
   }
 }
 
+// 16px text prevents iOS zoom-on-focus.
 const field =
-  "w-full rounded-md border border-line bg-bg px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-dim/60 focus:outline-none focus:border-amber";
+  "w-full min-h-12 rounded-lg border-2 border-line bg-offwhite px-4 py-3 text-base text-charcoal placeholder:text-muted focus:border-teal-ink focus:outline-none";
+const label = "grid gap-1.5 text-sm font-semibold text-navy";
 
 export default function ContactForm() {
   const router = useRouter();
@@ -49,43 +51,70 @@ export default function ContactForm() {
       onSubmit={onSubmit}
       action={`https://formspree.io/f/${FORMSPREE_ID}`}
       method="POST"
-      className="grid gap-4"
+      className="grid gap-5"
     >
-      <div className="grid sm:grid-cols-2 gap-4">
-        <label className="grid gap-1.5 text-xs font-mono text-ink-dim">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className={label}>
           Name
           <input name="name" required autoComplete="name" className={field} />
         </label>
-        <label className="grid gap-1.5 text-xs font-mono text-ink-dim">
+        <label className={label}>
           Email
-          <input name="email" type="email" required autoComplete="email" className={field} />
+          <input name="email" type="email" required autoComplete="email" inputMode="email" className={field} />
         </label>
       </div>
-      <label className="grid gap-1.5 text-xs font-mono text-ink-dim">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className={label}>
+          Project type
+          <select name="project_type" required defaultValue="" className={field}>
+            <option value="" disabled>
+              Choose one…
+            </option>
+            {services.map((s) => (
+              <option key={s.slug} value={s.title}>
+                {s.title}
+              </option>
+            ))}
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </label>
+        <label className={label}>
+          Budget
+          <select name="budget" required defaultValue="" className={field}>
+            <option value="" disabled>
+              Choose a range…
+            </option>
+            {budgetRanges.map((b) => (
+              <option key={b} value={b}>
+                {b}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <label className={label}>
         What are you building?
-        <textarea name="message" required rows={4} className={field} />
+        <textarea name="message" required rows={5} className={field} />
       </label>
       <input type="hidden" name="_subject" value="New project inquiry — hadimoustafa.dev" />
       {/* honeypot for bots */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-      <div className="flex flex-wrap items-center gap-4">
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="font-mono text-sm font-bold px-5 py-3 rounded-md bg-amber text-[#161105] disabled:opacity-60"
-        >
-          {status === "sending" ? "Sending…" : "Send inquiry →"}
-        </button>
-        {status === "error" && (
-          <p role="alert" className="text-sm text-ink-dim">
-            {error ?? "Something went wrong."} You can also email me at{" "}
-            <a href={`mailto:${contact.email}`} className="text-amber">
-              {contact.email}
-            </a>
-            .
-          </p>
-        )}
-      </div>
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="min-h-12 w-full rounded-lg bg-coral px-6 font-display font-semibold text-navy hover:brightness-95 disabled:opacity-60 sm:w-auto sm:justify-self-start"
+      >
+        {status === "sending" ? "Sending…" : "Send inquiry →"}
+      </button>
+      {status === "error" && (
+        <p role="alert" className="text-sm">
+          {error ?? "Something went wrong."} You can also email me at{" "}
+          <a href={`mailto:${contact.email}`} className="font-semibold text-coral-ink underline">
+            {contact.email}
+          </a>
+          .
+        </p>
+      )}
     </form>
   );
 }
