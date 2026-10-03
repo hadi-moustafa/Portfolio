@@ -114,7 +114,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
       <section className="mt-10">
         <h2 className="mb-4 font-display text-2xl font-bold text-navy">How it works</h2>
         <p>
-          A free discovery call, a written proposal, weekly progress while I work, then launch and
+          A discovery call at $25/hour, a written proposal, weekly progress while I work, then launch and
           ongoing support. Projects start from $120.{" "}
           <Link href="/#process" className="font-semibold text-teal-ink underline underline-offset-4">
             See the full process

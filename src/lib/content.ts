@@ -279,7 +279,7 @@ export const services: Service[] = [
 export const processSteps = [
   {
     title: "Discovery call",
-    body: "A free call to understand what you're building, who it's for and what success looks like.",
+    body: "A paid consultation at $25/hour to understand what you're building, who it's for and what success looks like.",
   },
   {
     title: "Proposal",
@@ -320,7 +320,7 @@ export const faqs = [
   },
   {
     q: "How much does a project cost?",
-    a: "Projects start from $120 for small jobs like fixes, landing pages or a content package. Larger systems are quoted after a free discovery call, with the price agreed in the proposal.",
+    a: "Projects start from $120 for small jobs like fixes, landing pages or a content package. Larger systems are quoted after a discovery call (billed at $25/hour), with the price agreed in the proposal.",
   },
   {
     q: "How quickly will you reply to an inquiry?",
