@@ -41,6 +41,8 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
   const caseStudies = flagships.filter((p) => inProof(p.categories));
   const projects = secondaryProjects.filter((p) => inProof(p.categories));
   const others = services.filter((o) => o.slug !== s.slug);
+  const priceFrom = s.price?.from ?? 120;
+  const priceLabel = `$${priceFrom.toLocaleString("en-US")}${s.price?.per ? `/${s.price.per}` : ""}`;
 
   return (
     <PageShell crumbs={[{ name: "Services", path: "/#services" }, { name: s.title, path: `/services/${s.slug}` }]}>
@@ -54,7 +56,12 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
           serviceType: s.title,
           areaServed: "Worldwide",
           provider: { "@id": `${SITE_URL}/#business` },
-          offers: { "@type": "Offer", priceCurrency: "USD", price: "120", description: "Projects from $120" },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: String(priceFrom),
+            description: `${s.title} from ${priceLabel}`,
+          },
         }}
       />
       <ServiceIcon slug={s.slug} className="mb-5 h-11 w-11 text-teal-ink" />
@@ -115,7 +122,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
         <h2 className="mb-4 font-display text-2xl font-bold text-navy">How it works</h2>
         <p>
           A discovery call at $25/hour, a written proposal, weekly progress while I work, then launch and
-          ongoing support. Projects start from $120.{" "}
+          ongoing support. {s.title} starts from <strong className="text-navy">{priceLabel}</strong>.{" "}
           <Link href="/#process" className="font-semibold text-teal-ink underline underline-offset-4">
             See the full process
           </Link>
