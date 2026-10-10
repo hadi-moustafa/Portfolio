@@ -8,22 +8,23 @@ const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 
 function Note() {
   return (
-    <div className="max-w-sm rounded-md border border-line bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-charcoal shadow-[0_10px_30px_-12px_rgba(13,27,42,0.25)] -rotate-1">
-      <span className="font-semibold text-navy">how I work:</span>{" "}I build the system, then I get it
-      seen. One person, start to finish: the platform an ISP now collects 75% faster with, and the ads
-      that turned $68 into 88,701 impressions.
+    <div className="max-w-sm rounded-md border border-line bg-surface px-5 py-4 text-base leading-relaxed text-charcoal shadow-[0_10px_30px_-12px_rgba(13,27,42,0.25)] -rotate-1">
+      <div className="font-display text-lg font-semibold text-navy">Bring me a problem, not a spec.</div>
+      <p className="mt-1">
+        Spreadsheets you&apos;ve outgrown, a site nobody visits, a system that keeps breaking. Tell me
+        what&apos;s wrong and I&apos;ll work out what to build.
+      </p>
     </div>
   );
 }
 
-function Definition() {
+function Direct() {
   return (
     <div className="max-w-sm rounded-md bg-navy px-5 py-4 text-offwhite shadow-[0_10px_30px_-12px_rgba(13,27,42,0.5)] rotate-1">
-      <div className="font-display text-lg font-semibold">reliable</div>
-      <div className="mb-2 text-xs text-offwhite/70">/rɪˈlaɪ.ə.bəl/ · adj.</div>
-      <p className="text-sm leading-relaxed">
-        from Old French <i>relier</i> — to bind together again. what I&apos;m optimizing for in
-        everything I ship: <b className="text-teal">it holds, even after it breaks.</b>
+      <div className="font-display text-lg font-semibold">Who you&apos;ll talk to</div>
+      <p className="mt-1 text-base leading-relaxed">
+        Me. The same person who writes the code, runs the ads and picks up when something breaks.{" "}
+        <b className="text-teal">No account managers, no handoffs.</b>
       </p>
     </div>
   );
@@ -88,7 +89,7 @@ export default function Hero() {
           )}
           <Note />
           <div className="lg:ml-12">
-            <Definition />
+            <Direct />
           </div>
         </div>
       </div>
