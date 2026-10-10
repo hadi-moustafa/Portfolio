@@ -92,6 +92,16 @@ export default function Work() {
                   </p>
                 )}
                 <p className="mt-3 text-[0.95rem]">{p.description}</p>
+                {p.metrics && (
+                  <dl className="mt-4 grid grid-cols-2 gap-2">
+                    {p.metrics.slice(0, 2).map((m) => (
+                      <div key={m.label} className="flex flex-col rounded-md bg-offwhite px-3 py-2">
+                        <dt className="text-xs text-muted">{m.label}</dt>
+                        <dd className="order-first font-display text-xl font-bold tabular-nums text-navy">{m.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Chips categories={p.categories} />
                   {p.stack.map((s) => (

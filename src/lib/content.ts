@@ -58,20 +58,136 @@ export type Flagship = {
   /** Meta description for the case-study page, ≤ 160 chars. */
   metaDescription: string;
   caseStudy: { problem: string; approach: string[]; result: string };
+  /** Real, client-reported numbers only. The block renders only when set. */
+  metrics?: { value: string; label: string }[];
+  metricsNote?: string;
+  /** Extra detail section on the case-study page, e.g. "What's inside". */
+  highlights?: { title: string; items: { title: string; body: string }[] };
+  ctaTitle?: string;
 };
 
 export const flagships: Flagship[] = [
+  {
+    slug: "isp-net",
+    categories: ["engineering", "fullstack"],
+    metaDescription:
+      "Case study: ISP.NET, a secure management platform that moved a local internet provider off Excel and paper, with 75% faster collection.",
+    tag: "01 — BUSINESS SYSTEMS",
+    title: "ISP.NET — ISP Management Platform",
+    description:
+      "A secure management platform for a local internet provider that ran on Excel and paper. Finance, collections, products, technicians and WhatsApp reminders, all in one system.",
+    stack: ["React", "TypeScript", "Supabase", "Offline-first PWA"],
+    caseStudy: {
+      problem:
+        "A local internet provider wrote down every collection in Excel sheets, and sometimes on pen and paper. There was no single place to see the month's billing, who had paid and who still owed.",
+      approach: [
+        "Finance: income and reports in one place.",
+        "Collections: every subscriber's payment tracked, with a Pay button on every row.",
+        "Products: stock, equipment and sales.",
+        "Technicians: field jobs assigned by location.",
+        "WhatsApp automation: debt warnings and payment confirmations sent for the owner, in the customer's own language.",
+        "Security first: protected access because it holds a business's money, and every action logged in a plain-English history.",
+      ],
+      result:
+        "The business now runs on one system instead of spreadsheets and notebooks. It was built for one business, not the public, so there is no public URL or live demo.",
+    },
+    metrics: [
+      { value: "90%", label: "better money management" },
+      { value: "75%", label: "faster collection" },
+    ],
+    metricsNote: "Compared with Excel sheets and pen and paper.",
+    highlights: {
+      title: "What's inside",
+      items: [
+        {
+          title: "The whole month at a glance",
+          body: "How much of this month's billing is settled, paid vs. unpaid subscribers with overdue flagged, what was collected today and over the last 5 days, and product sales one tap away.",
+        },
+        {
+          title: "Every subscriber, one tap from paid",
+          body: "The full list in one place, searchable by name and filterable by payment, debt or expiry. The Pay button on each row logs the payment.",
+        },
+        {
+          title: "Reminders that send themselves",
+          body: "WhatsApp debt warnings and payment confirmations with fully customisable wording and a live preview. Names, amounts and dates fill in automatically.",
+        },
+        {
+          title: "Every payment leaves a trail",
+          body: "A monthly log you can filter by company, service, owner, collector and status, then export to Excel, plus an activity log of every action.",
+        },
+        {
+          title: "And a lot more under the hood",
+          body: "Tasks, collectors, technicians, owners, addresses, products and sales, Excel import with duplicate checks, a financial report, an offline field view and collection feedback.",
+        },
+      ],
+    },
+    ctaTitle: "Need a system for your business?",
+  },
+  {
+    slug: "meta-tiktok-ad-campaign",
+    categories: ["marketing"],
+    metaDescription:
+      "Case study: what $68 of Meta and TikTok ads got. 88,701 impressions at $0.77 per 1,000, and 6,092 post engagements at $0.01 each.",
+    tag: "02 — PAID SOCIAL",
+    title: "$68 ad campaign — Meta + TikTok",
+    description:
+      "What $68 of ads actually got: 88,701 impressions across Instagram, Facebook and TikTok at $0.77 per 1,000. For an anonymous client, with help from @zeinabali_93, October 2026.",
+    stack: ["Meta Ads", "TikTok Ads", "Instagram", "Facebook"],
+    caseStudy: {
+      problem:
+        "An anonymous client had two goals and one tight budget: get engagement on the posts, and send people to the profile, across Instagram, Facebook and TikTok.",
+      approach: [
+        "Worked on the ads together with @zeinabali_93.",
+        "Split the Meta budget into two ad sets, each optimised for one goal: post engagement ($19.91) and profile visits ($28.44).",
+        "Ran a $20 TikTok campaign alongside it from Oct 4 to Oct 10, 2026.",
+        "Reported every number straight from TikTok Ads Manager and Meta Ads Manager.",
+      ],
+      result:
+        "$68.35 in total ad spend bought 88,701 impressions. On Meta, 60,906 people were reached and 6,092 post engagements cost $0.01 each. On TikTok, $20 bought 14,235 impressions in one week.",
+    },
+    metrics: [
+      { value: "88,701", label: "impressions" },
+      { value: "$68.35", label: "total ad spend" },
+      { value: "$0.77", label: "per 1,000 impressions" },
+      { value: "6,092", label: "post engagements" },
+      { value: "60,906", label: "people reached on Meta" },
+      { value: "218", label: "profile visits" },
+    ],
+    metricsNote: "Numbers from TikTok Ads Manager and Meta Ads Manager, October 2026.",
+    highlights: {
+      title: "The breakdown",
+      items: [
+        {
+          title: "TikTok ads: $20.00",
+          body: "14,235 impressions in one week (Oct 4–10, 2026), with the peak on Oct 8.",
+        },
+        {
+          title: "Meta, engagement ad set: $19.91",
+          body: "53,513 people reached and 3,743 post engagements, at $0.01 each.",
+        },
+        {
+          title: "Meta, profile-visits ad set: $28.44",
+          body: "8,119 people reached and 218 profile visits, at $0.13 each.",
+        },
+        {
+          title: "Meta overall: $48.35",
+          body: "74,466 impressions across Instagram and Facebook, at an average frequency of 1.22.",
+        },
+      ],
+    },
+    ctaTitle: "Want results like these for your brand?",
+  },
   {
     slug: "governor",
     categories: ["engineering"],
     metaDescription:
       "How I built Governor, a lightweight Go LLM gateway that enforces hard spend caps with atomic budget checks and mid-stream cancellation.",
-    tag: "01 — LLM INFRASTRUCTURE",
+    tag: "03 — LLM INFRASTRUCTURE",
     title: "Governor",
     description:
       "A lightweight LLM gateway, built in Go (learning Go as I go). Real-time cost visibility and hard spend caps — atomic budget checks before a request goes out, mid-stream cancellation the instant one is hit — without standing up LiteLLM/Helicone-style infrastructure.",
     stack: ["Go", "LLM Gateway", "Cost Enforcement"],
-    github: "https://github.com/hadi-moustafa",
+    github: "https://github.com/hadi-moustafa/Governor",
     definition: {
       word: "governor",
       pronunciation: "/ˈɡʌv.ər.nər/ · n.",
@@ -95,12 +211,12 @@ export const flagships: Flagship[] = [
     categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: M2C, a municipality management platform for resident records, requests and internal workflows, built on Next.js and PostgreSQL.",
-    tag: "02 — PUBLIC INFRASTRUCTURE",
+    tag: "04 — PUBLIC INFRASTRUCTURE",
     title: "M2C — Municipality Management Platform",
     description:
       "Resident records, requests, internal workflows — built to hold up under the unglamorous, high-stakes load public systems actually see.",
     stack: ["Next.js", "PostgreSQL", "REST"],
-    github: "https://github.com/hadi-moustafa",
+    github: "https://github.com/hadi-moustafa/Graduation-Project-M2C-Municipality-Managment-System",
     caseStudy: {
       problem:
         "Municipal work runs on resident records, requests and internal approvals, and it's often tracked on paper or in scattered spreadsheets. Public systems get unglamorous but high-stakes load: every record matters, and downtime means residents can't be served.",
@@ -118,12 +234,11 @@ export const flagships: Flagship[] = [
     categories: ["fullstack"],
     metaDescription:
       "Case study: MelhemAuto, a React, Node.js and MongoDB management system running in production for an auto-service business in Africa.",
-    tag: "03 — SHIPPED & RUNNING",
+    tag: "05 — SHIPPED & RUNNING",
     title: "MelhemAuto",
     description:
       "A management system for a working auto-service business in Africa — real customers, still in production. Built for reliability first: this one can't go down mid-shift.",
     stack: ["React", "Node.js", "MongoDB"],
-    github: "https://github.com/hadi-moustafa",
     caseStudy: {
       problem:
         "A working auto-service business in Africa needed to manage customers and day-to-day operations. The system has to be up during every shift, because when it goes down the business stops.",
@@ -173,6 +288,7 @@ export const secondaryProjects: SecondaryProject[] = [
     description:
       "A full system (mobile app + web platform) for enhancing the safety and support of girls and young women — real-time SOS emergency alerts and live location sharing via map APIs.",
     categories: ["fullstack"],
+    href: "https://github.com/hadi-moustafa/Njoum",
     badge: "IN PROGRESS",
   },
   {
@@ -180,6 +296,7 @@ export const secondaryProjects: SecondaryProject[] = [
     description:
       "A multi-platform news app (Flutter/Next.js) with a world-map UI. Supabase/PostgreSQL-backed, using Gemini AI for summaries, quizzes, and toxicity filtering — schema tracks users, articles, and engagement across web and mobile.",
     categories: ["fullstack", "engineering"],
+    href: "https://github.com/hadi-moustafa/Nexus",
     badge: "CLIENT PROJECT",
   },
 ];
@@ -199,6 +316,8 @@ export type Service = {
   outcomes: string[];
   /** Which work filter proves this service */
   proof: Category | "all";
+  /** Real starting price in USD. Until set, the page falls back to the site-wide "from $120". */
+  price?: { from: number; per?: "month" };
 };
 
 export const services: Service[] = [

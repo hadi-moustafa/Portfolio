@@ -11,6 +11,8 @@
 
 ## Case studies
 
+- [ISP.NET](https://hadimoustafa.dev/work/isp-net): secure management platform for a local internet provider (finance, collections, products, technicians, WhatsApp reminders); 75% faster collection than Excel and paper
+- [$68 ad campaign (Meta + TikTok)](https://hadimoustafa.dev/work/meta-tiktok-ad-campaign): paid social for an anonymous client; 88,701 impressions at $0.77 CPM and 6,092 post engagements at $0.01 each
 - [Governor](https://hadimoustafa.dev/work/governor): lightweight Go LLM gateway with atomic budget checks and mid-stream cancellation
 - [M2C municipality platform](https://hadimoustafa.dev/work/m2c-municipality-platform): resident records, requests and workflows on Next.js + PostgreSQL
 - [MelhemAuto](https://hadimoustafa.dev/work/melhemauto): production management system for an auto-service business in Africa

@@ -68,6 +68,23 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           />
         )}
 
+        {p.metrics && (
+          <section aria-labelledby="numbers-title" className="mt-10">
+            <h2 id="numbers-title" className="eyebrow mb-4">the numbers</h2>
+            <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {p.metrics.map((m) => (
+                <div key={m.label} className="flex flex-col rounded-xl border border-line bg-surface p-4 sm:p-5">
+                  <dt className="text-sm text-muted">{m.label}</dt>
+                  <dd className="order-first font-display text-2xl font-bold tabular-nums text-navy sm:text-4xl">
+                    {m.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            {p.metricsNote && <p className="mt-3 text-sm text-muted">{p.metricsNote}</p>}
+          </section>
+        )}
+
         <div className="mt-12 space-y-10">
           <section>
             <h2 className="mb-3 font-display text-2xl font-bold text-navy">The problem</h2>
@@ -84,6 +101,19 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
               ))}
             </ul>
           </section>
+          {p.highlights && (
+            <section>
+              <h2 className="mb-4 font-display text-2xl font-bold text-navy">{p.highlights.title}</h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {p.highlights.items.map((h) => (
+                  <div key={h.title} className="rounded-xl border border-line bg-surface p-5">
+                    <h3 className="font-display text-lg font-semibold text-navy">{h.title}</h3>
+                    <p className="mt-2">{h.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
           <section>
             <h2 className="mb-3 font-display text-2xl font-bold text-navy">The result</h2>
             <p>{p.caseStudy.result}</p>
@@ -106,7 +136,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
         )}
       </article>
 
-      <CtaBox title="Need a system like this?" />
+      <CtaBox title={p.ctaTitle ?? "Need a system like this?"} />
 
       <nav aria-label="Related services" className="mb-10">
         <h2 className="eyebrow mb-3">related services</h2>

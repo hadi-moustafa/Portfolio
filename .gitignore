@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# client-work slides: keep out of the public repo and the deployed site
+/brand/work/isp-net/
+/brand/work/ad-campaign/
