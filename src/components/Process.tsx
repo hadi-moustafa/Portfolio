@@ -1,7 +1,7 @@
 import { processSteps } from "@/lib/content";
 import Reveal from "./Reveal";
 
-export default function Process({ n }: { n: string }) {
+export default function Process() {
   return (
     <section
       id="process"
@@ -9,7 +9,7 @@ export default function Process({ n }: { n: string }) {
       className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24"
     >
       <Reveal>
-        <p className="eyebrow mb-3">{n} — how we work</p>
+        <p className="eyebrow mb-3">how we work</p>
         <h2
           id="process-title"
           className="font-display text-3xl font-bold text-navy sm:text-4xl"

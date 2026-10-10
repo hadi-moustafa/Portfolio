@@ -9,17 +9,12 @@ import Process from "@/components/Process";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import SiteFooter from "@/components/SiteFooter";
-import { testimonials } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
 export default function Home() {
-  // Keep section numbers sequential while the testimonials section is hidden.
-  const offset = testimonials.length > 0 ? 1 : 0;
-  const num = (n: number) => String(n + offset).padStart(2, "0");
-
   return (
     <>
       <main id="main" className="flex-1">
@@ -28,12 +23,12 @@ export default function Home() {
         <About />
         <Services />
         <Work />
-        <Testimonials n="06" />
-        <Process n={num(6)} />
+        <Testimonials />
+        <Process />
         <FAQ />
-        <Contact n={num(7)} />
+        <Contact />
       </main>
-      <SiteFooter n={num(8)} />
+      <SiteFooter />
     </>
   );
 }

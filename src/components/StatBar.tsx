@@ -7,7 +7,7 @@ export default function StatBar() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
         <Reveal>
           <h2 id="proof-title" className="eyebrow mb-8 text-center !text-teal">
-            02 — by the numbers
+            by the numbers
           </h2>
           <dl className="grid grid-cols-2 gap-y-10 lg:flex lg:justify-center [&>*:last-child:nth-child(odd)]:col-span-2">
             {stats.map((s) => (

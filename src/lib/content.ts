@@ -73,7 +73,7 @@ export const flagships: Flagship[] = [
     categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: ISP.NET, a secure management platform that moved a local internet provider off Excel and paper, with 75% faster collection.",
-    tag: "01 — BUSINESS SYSTEMS",
+    tag: "BUSINESS SYSTEMS",
     title: "ISP.NET — ISP Management Platform",
     description:
       "A secure management platform for a local internet provider that ran on Excel and paper. Finance, collections, products, technicians and WhatsApp reminders, all in one system.",
@@ -130,7 +130,7 @@ export const flagships: Flagship[] = [
     categories: ["marketing"],
     metaDescription:
       "Case study: what $68 of Meta and TikTok ads got. 88,701 impressions at $0.77 per 1,000, and 6,092 post engagements at $0.01 each.",
-    tag: "02 — PAID SOCIAL",
+    tag: "PAID SOCIAL",
     title: "$68 ad campaign — Meta + TikTok",
     description:
       "What $68 of ads actually got: 88,701 impressions across Instagram, Facebook and TikTok at $0.77 per 1,000. For an anonymous client, with help from @zeinabali_93, October 2026.",
@@ -185,7 +185,7 @@ export const flagships: Flagship[] = [
     categories: ["engineering"],
     metaDescription:
       "How I built Governor, a lightweight Go LLM gateway that enforces hard spend caps with atomic budget checks and mid-stream cancellation.",
-    tag: "03 — LLM INFRASTRUCTURE",
+    tag: "LLM INFRASTRUCTURE",
     title: "Governor",
     description:
       "A lightweight LLM gateway, built in Go (learning Go as I go). Real-time cost visibility and hard spend caps — atomic budget checks before a request goes out, mid-stream cancellation the instant one is hit — without standing up LiteLLM/Helicone-style infrastructure.",
@@ -215,7 +215,7 @@ export const flagships: Flagship[] = [
     categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: M2C, a municipality management platform for resident records, requests and internal workflows, built on Next.js and PostgreSQL.",
-    tag: "04 — PUBLIC INFRASTRUCTURE",
+    tag: "PUBLIC INFRASTRUCTURE",
     title: "M2C — Municipality Management Platform",
     description:
       "Resident records, requests, internal workflows — built to hold up under the unglamorous, high-stakes load public systems actually see.",

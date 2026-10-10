@@ -45,7 +45,6 @@ export default function Hero() {
     <section id="hero" aria-labelledby="hero-title" className="mx-auto w-full max-w-6xl px-4 pb-14 pt-10 sm:px-6 lg:pb-24 lg:pt-20">
       <div className="lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-10">
         <div>
-          <p className="eyebrow mb-4">01 — hero</p>
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal/50 bg-teal/10 px-3 py-1 font-display text-[0.7rem] font-semibold tracking-wider text-teal-ink md:hidden">
             <span className="h-1.5 w-1.5 rounded-full bg-teal animate-[pulse-dot_2s_infinite]" />
             AVAILABLE FOR PROJECTS

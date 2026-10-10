@@ -13,7 +13,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const p = flagships.find((f) => f.slug === slug)!;
   return ogCard({
-    eyebrow: `Case study · ${p.tag.split(" — ")[1]}`,
+    eyebrow: `Case study · ${p.tag}`,
     title: p.title,
     subtitle: p.stack.join(" · "),
   });

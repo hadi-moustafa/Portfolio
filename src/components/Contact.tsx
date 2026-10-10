@@ -3,12 +3,12 @@ import ChannelLinks from "./ChannelLinks";
 import ContactForm from "./ContactForm";
 import Reveal from "./Reveal";
 
-export default function Contact({ n }: { n: string }) {
+export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="border-t border-line bg-surface">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
         <Reveal>
-          <p className="eyebrow mb-3">{n} — contact</p>
+          <p className="eyebrow mb-3">contact</p>
           <h2 id="contact-title" className="font-display text-3xl font-bold text-navy sm:text-4xl">
             Start a project
           </h2>

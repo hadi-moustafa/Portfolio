@@ -51,7 +51,7 @@ body {
   border-radius: 4px;
 }
 
-/* Section label: "01 — HERO" */
+/* Section label, e.g. "SELECTED WORK" */
 .eyebrow {
   font-family: var(--font-poppins);
   font-weight: 600;

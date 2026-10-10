@@ -8,7 +8,7 @@ export default function Services() {
     <section id="services" aria-labelledby="services-title" className="border-y border-line bg-surface">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
         <Reveal>
-          <p className="eyebrow mb-3">04 — services</p>
+          <p className="eyebrow mb-3">services</p>
           <h2 id="services-title" className="font-display text-3xl font-bold text-navy sm:text-4xl">
             One person. Four ways to help.
           </h2>

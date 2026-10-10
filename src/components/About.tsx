@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
       <Reveal>
-        <p className="eyebrow mb-3">03 — about</p>
+        <p className="eyebrow mb-3">about</p>
         <h2 id="about-title" className="mb-8 font-display text-3xl font-bold text-navy sm:text-4xl">
           Architecture over stack.
         </h2>

@@ -47,7 +47,7 @@ export default function Work() {
 
   return (
     <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-      <p className="eyebrow mb-3">05 — selected work</p>
+      <p className="eyebrow mb-3">selected work</p>
       <h2 id="work-title" className="font-display text-3xl font-bold text-navy sm:text-4xl">
         Case studies &amp; projects
       </h2>
