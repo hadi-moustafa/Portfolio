@@ -1,18 +1,15 @@
 import Link from "next/link";
 import { contact, flagships, navLinks, services } from "@/lib/content";
-import Quotes from "./Quotes";
 import Wordmark from "./Wordmark";
 
 const link = "inline-flex min-h-11 items-center text-offwhite/85 hover:text-teal";
 
 /** Site-wide footer (navy band). `n` is the section number on the home page. */
-export default function SiteFooter({ n, showQuotes = false }: { n?: string; showQuotes?: boolean }) {
+export default function SiteFooter({ n }: { n?: string }) {
   return (
     <footer className="bg-navy pb-32 text-offwhite sm:pb-10">
       <div className="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
-        {showQuotes && <Quotes />}
-
-        <div className={`grid gap-10 ${showQuotes ? "mt-12 border-t border-offwhite/15 pt-12" : ""} sm:grid-cols-2 lg:grid-cols-4`}>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             {n && <p className="eyebrow mb-3 !text-teal">{n} — footer</p>}
             <Link href="/" aria-label="se.hadi — home" className="inline-flex min-h-11 items-center text-2xl">

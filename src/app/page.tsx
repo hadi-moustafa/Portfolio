@@ -33,7 +33,7 @@ export default function Home() {
         <FAQ />
         <Contact n={num(7)} />
       </main>
-      <SiteFooter n={num(8)} showQuotes />
+      <SiteFooter n={num(8)} />
     </>
   );
 }

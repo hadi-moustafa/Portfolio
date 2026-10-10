@@ -229,27 +229,6 @@ export const flagships: Flagship[] = [
         "One system of record for residents, requests and internal workflows, built to hold up under the load public services actually see.",
     },
   },
-  {
-    slug: "melhemauto",
-    categories: ["fullstack"],
-    metaDescription:
-      "Case study: MelhemAuto, a React, Node.js and MongoDB management system running in production for an auto-service business in Africa.",
-    tag: "05 — SHIPPED & RUNNING",
-    title: "MelhemAuto",
-    description:
-      "A management system for a working auto-service business in Africa — real customers, still in production. Built for reliability first: this one can't go down mid-shift.",
-    stack: ["React", "Node.js", "MongoDB"],
-    caseStudy: {
-      problem:
-        "A working auto-service business in Africa needed to manage customers and day-to-day operations. The system has to be up during every shift, because when it goes down the business stops.",
-      approach: [
-        "A React front end on a Node.js + MongoDB backend, built around the shop's real workflow.",
-        "Reliability first: simple, predictable flows over clever features.",
-        "Shipped to production and supported with real customers.",
-      ],
-      result: "In production today, serving a real business with real customers.",
-    },
-  },
 ];
 
 export type SecondaryProject = {
@@ -260,46 +239,8 @@ export type SecondaryProject = {
   badge?: string;
 };
 
-export const secondaryProjects: SecondaryProject[] = [
-  {
-    title: "se.hadi/ — brand & Instagram launch",
-    description:
-      "My own brand, built like a client project: identity and wordmark, a navy/teal/coral visual system, post templates, and a content plan across four pillars (showcases, quick tips, behind-the-scenes, results). Running now on @se.hadimoustafa.",
-    categories: ["marketing"],
-    href: "https://instagram.com/se.hadimoustafa",
-    badge: "IN PROGRESS",
-  },
-  {
-    title: "Paws",
-    description:
-      "Animal shelter management system built to organize pets and products, with vet integration and medical records for each pet. Originally built to digitise stray animal tracking and adoption for a village in South Lebanon.",
-    categories: ["fullstack"],
-    href: "https://paws-gamma-three.vercel.app/",
-  },
-  {
-    title: "TechTalks (LFM)",
-    description:
-      "A centralized freelance marketplace empowering local Lebanese talent — creatives display portfolios and reach clients directly. Built as a collaborative internship project with TechTalks on the T3 stack (Next.js & Supabase).",
-    categories: ["fullstack"],
-    href: "https://techtalks-lebanese-freelance-market.vercel.app/",
-  },
-  {
-    title: "Njoum",
-    description:
-      "A full system (mobile app + web platform) for enhancing the safety and support of girls and young women — real-time SOS emergency alerts and live location sharing via map APIs.",
-    categories: ["fullstack"],
-    href: "https://github.com/hadi-moustafa/Njoum",
-    badge: "IN PROGRESS",
-  },
-  {
-    title: "Nexus",
-    description:
-      "A multi-platform news app (Flutter/Next.js) with a world-map UI. Supabase/PostgreSQL-backed, using Gemini AI for summaries, quizzes, and toxicity filtering — schema tracks users, articles, and engagement across web and mobile.",
-    categories: ["fullstack", "engineering"],
-    href: "https://github.com/hadi-moustafa/Nexus",
-    badge: "CLIENT PROJECT",
-  },
-];
+// Bench projects return once each has real photos and a case study.
+export const secondaryProjects: SecondaryProject[] = [];
 
 export type ServiceSlug = "engineering" | "marketing" | "support" | "growth";
 
@@ -415,19 +356,6 @@ export const processSteps = [
 ];
 
 export const budgetRanges = ["$120–$500", "$500–$1,500", "$1,500–$5,000", "$5,000+", "Not sure yet"];
-
-export const quotes = [
-  "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
-  "Two things fill the mind with ever new and increasing admiration and awe: the starry heavens above me and the moral law within me.",
-  "Science is organized knowledge. Wisdom is organized life.",
-  "He who is cruel to animals becomes hard also in his dealings with men.",
-  "Enlightenment is man's emergence from his self-incurred immaturity.",
-  "The mystery of human existence lies not in just staying alive, but in finding something to live for.",
-  "Man is what he believes.",
-  "To live without Hope is to Cease to live.",
-  "Much unhappiness has come into the world because of bewilderment and things left unsaid.",
-  "Above all, don't lie to yourself.",
-];
 
 /** Shown next to every CTA. Only promise what you can keep. */
 export const responseTime = "24 hours";

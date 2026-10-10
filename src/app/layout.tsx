@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "@/components/CustomCursor";
 import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
 import MobileCTA from "@/components/MobileCTA";
@@ -70,7 +69,6 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <CustomCursor />
         <SiteNav />
         {children}
         <MobileCTA />

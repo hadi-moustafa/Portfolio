@@ -9,9 +9,9 @@ const HeroCanvas = dynamic(() => import("./HeroCanvas"), { ssr: false });
 function Note() {
   return (
     <div className="max-w-sm rounded-md border border-line bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-charcoal shadow-[0_10px_30px_-12px_rgba(13,27,42,0.25)] -rotate-1">
-      <span className="font-semibold text-navy">quick note:</span>{" "}I write every line myself —
-      AI-assisted, never AI-authored. …and I market and grow what I build, so it doesn&apos;t just
-      work — it gets seen.
+      <span className="font-semibold text-navy">how I work:</span>{" "}I build the system, then I get it
+      seen. One person, start to finish: the platform an ISP now collects 75% faster with, and the ads
+      that turned $68 into 88,701 impressions.
     </div>
   );
 }
