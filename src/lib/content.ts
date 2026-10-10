@@ -5,13 +5,6 @@ export const navLinks = [
   { href: "/#contact", label: "Contact" },
 ] as const;
 
-export const stats = [
-  { num: "6", label: "systems shipped", accent: true },
-  { num: "3", label: "in production now", accent: false },
-  { num: "1", label: "LLM gateway, public", accent: true },
-  { num: "2+", label: "countries running my code", accent: false },
-];
-
 export const timeline = [
   {
     date: "FEB 2026 — PRESENT",
@@ -43,8 +36,14 @@ export const categoryLabels: Record<Category, string> = {
   fullstack: "Full-stack",
 };
 
+/** Drives the "by the numbers" strip. "completed" = delivered, e.g. a finished campaign. */
+export type ProjectStatus = "in-production" | "completed" | "in-development" | "paused";
+
 export type Flagship = {
   categories: Category[];
+  status: ProjectStatus;
+  /** Where the client/users are. Only set when known; counted in the stats. */
+  country?: string;
   slug: string;
   tag: string;
   title: string;
@@ -69,6 +68,8 @@ export type Flagship = {
 export const flagships: Flagship[] = [
   {
     slug: "isp-net",
+    status: "in-production",
+    country: "Lebanon",
     categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: ISP.NET, a secure management platform that moved a local internet provider off Excel and paper, with 75% faster collection.",
@@ -125,6 +126,7 @@ export const flagships: Flagship[] = [
   },
   {
     slug: "meta-tiktok-ad-campaign",
+    status: "completed",
     categories: ["marketing"],
     metaDescription:
       "Case study: what $68 of Meta and TikTok ads got. 88,701 impressions at $0.77 per 1,000, and 6,092 post engagements at $0.01 each.",
@@ -179,6 +181,7 @@ export const flagships: Flagship[] = [
   },
   {
     slug: "governor",
+    status: "in-development",
     categories: ["engineering"],
     metaDescription:
       "How I built Governor, a lightweight Go LLM gateway that enforces hard spend caps with atomic budget checks and mid-stream cancellation.",
@@ -208,6 +211,7 @@ export const flagships: Flagship[] = [
   },
   {
     slug: "m2c-municipality-platform",
+    status: "paused",
     categories: ["engineering", "fullstack"],
     metaDescription:
       "Case study: M2C, a municipality management platform for resident records, requests and internal workflows, built on Next.js and PostgreSQL.",
@@ -235,12 +239,33 @@ export type SecondaryProject = {
   title: string;
   description: string;
   categories: Category[];
+  status: ProjectStatus;
+  country?: string;
   href?: string;
   badge?: string;
 };
 
 // Bench projects return once each has real photos and a case study.
 export const secondaryProjects: SecondaryProject[] = [];
+
+const allProjects = [...flagships, ...secondaryProjects];
+const shipped = allProjects.filter((p) => p.status === "in-production" || p.status === "completed");
+const countries = new Set(shipped.flatMap((p) => (p.country ? [p.country] : [])));
+const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
+
+/** Computed from the projects above, so it updates as projects are added. Zero/weak stats are hidden. */
+export const stats = [
+  { n: shipped.length, label: plural(shipped.length, "project shipped", "projects shipped"), min: 1 },
+  {
+    n: allProjects.filter((p) => p.status === "in-production").length,
+    label: "in production now",
+    min: 1,
+  },
+  { n: flagships.length, label: plural(flagships.length, "case study", "case studies"), min: 1 },
+  { n: countries.size, label: "countries running my work", min: 2 },
+]
+  .filter((s) => s.n >= s.min)
+  .map((s, i) => ({ num: String(s.n), label: s.label, accent: i % 2 === 0 }));
 
 export type ServiceSlug = "engineering" | "marketing" | "support" | "growth";
 
@@ -308,7 +333,7 @@ export const services: Service[] = [
       "Client onboarding, website maintenance and troubleshooting to keep your site or system fast, secure and online after launch.",
     includes: ["Client onboarding", "Website maintenance", "Troubleshooting"],
     intro:
-      "Launch is the start, not the finish. Several of my systems are still in production; I keep them updated, fix what breaks, and train the people who use them.",
+      "Launch is the start, not the finish. I keep what I ship updated, fix what breaks, and train the people who use it.",
     outcomes: [
       "Updates, backups and security patches handled for you.",
       "A real person to call when something breaks, who knows the system.",
@@ -383,7 +408,7 @@ export const faqs = [
   },
   {
     q: "Do you support the system after launch?",
-    a: "Yes. Several of my systems are still in production, and I offer ongoing maintenance, fixes and improvements.",
+    a: "Yes. I offer ongoing maintenance, fixes and improvements for what I build, including systems already running in production.",
   },
 ];
 

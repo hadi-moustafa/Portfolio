@@ -9,9 +9,9 @@ export default function StatBar() {
           <h2 id="proof-title" className="eyebrow mb-8 text-center !text-teal">
             02 — by the numbers
           </h2>
-          <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 gap-y-10 lg:flex lg:justify-center [&>*:last-child:nth-child(odd)]:col-span-2">
             {stats.map((s) => (
-              <div key={s.label} className="flex flex-col-reverse px-2 text-center">
+              <div key={s.label} className="flex flex-col-reverse px-2 text-center lg:flex-1">
                 <dt className="mt-2 text-sm text-offwhite/75">{s.label}</dt>
                 <dd
                   className={`font-display text-5xl font-bold tabular-nums lg:text-6xl ${
