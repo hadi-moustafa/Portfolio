@@ -107,3 +107,12 @@ body {
 #work-grid[data-filter="marketing"] .work-card:not([data-cats~="marketing"]) {
   display: none;
 }
+
+/* Arabic (/ar): letter-spacing breaks Arabic letter joining; give the script more line height. */
+[lang="ar"] {
+  line-height: 1.8;
+}
+[lang="ar"] .eyebrow {
+  letter-spacing: 0;
+  font-size: 0.85rem;
+}
