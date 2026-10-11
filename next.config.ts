@@ -33,8 +33,13 @@ const nextConfig: NextConfig = {
   // Don't advertise the framework in response headers.
   poweredByHeader: false,
   async redirects() {
-    // Temporarily pulled until it has real photos and a full case study.
-    return [{ source: "/work/melhemauto", destination: "/#work", permanent: false }];
+    return [
+      // Temporarily pulled until it has real photos and a full case study.
+      { source: "/work/melhemauto", destination: "/#work", permanent: false },
+      // Developer projects moved off the client grid to /engineering.
+      { source: "/work/governor", destination: "/engineering/governor", permanent: true },
+      { source: "/work/m2c-municipality-platform", destination: "/engineering/m2c", permanent: true },
+    ];
   },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
