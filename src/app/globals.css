@@ -100,3 +100,10 @@ body {
     animation: none !important;
   }
 }
+
+/* Work grid filter (see WorkFilter.tsx): hide cards outside the active category. */
+#work-grid[data-filter="systems"] .work-card:not([data-cats~="systems"]),
+#work-grid[data-filter="websites"] .work-card:not([data-cats~="websites"]),
+#work-grid[data-filter="marketing"] .work-card:not([data-cats~="marketing"]) {
+  display: none;
+}

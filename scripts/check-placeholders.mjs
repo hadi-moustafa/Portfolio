@@ -34,7 +34,7 @@ if (built) {
   process.exit(0);
 }
 
-const re = /\[\[PLACEHOLDER:\s*([^\]]*)\]\]|\bph\(\s*(["'`])((?:\\.|(?!\2).)*)\2/g;
+const re = /\[\[PLACEHOLDER:\s*(.*?)\]\]|\bph\(\s*(["'`])((?:\\.|(?!\2).)*)\2/g;
 const files = [...walk(join(root, "src"), [".ts", ".tsx"]), join(root, "public/llms.txt")];
 const hits = [];
 for (const f of files) {

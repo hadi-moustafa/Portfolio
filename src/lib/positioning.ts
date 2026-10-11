@@ -38,6 +38,3 @@ export const positioning = {
   /** Footer + OG brand line (no longer the hero headline). */
   tagline: "I build it. I market it. I fix it. I grow it.",
 } as const;
-
-/** Prefilled WhatsApp message (the [my business] part is for the visitor to fill in). */
-export const whatsappPrefill = "Hi Hadi, I saw your website and I'd like to talk about [my business]";

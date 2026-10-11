@@ -11,7 +11,7 @@ export const SHOW_PLACEHOLDERS =
   process.env.VERCEL_ENV === "preview" ||
   process.env.SHOW_PLACEHOLDERS === "1";
 
-const TOKEN = /\s*\[\[PLACEHOLDER:[^\]]*\]\]/g;
+const TOKEN = /\s*\[\[PLACEHOLDER:.*?\]\]/g;
 
 /** Marks content Hadi still has to supply. */
 export const ph = (what: string) => `[[PLACEHOLDER: ${what}]]`;

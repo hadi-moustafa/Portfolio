@@ -1,15 +1,14 @@
 import { contact, services } from "./content";
+import { positioning } from "./positioning";
 
 export const SITE_URL = "https://hadimoustafa.dev";
 export const SITE_NAME = "Hadi Moustafa";
 export const BRAND = "se.hadi";
-export const SITE_TAGLINE = "Software Engineer & Digital Marketer in Lebanon";
+export const SITE_TAGLINE = "Web Developer & Digital Marketer in Lebanon";
 export const SITE_DESCRIPTION =
-  "I build it, market it, fix it and grow it. Hadi Moustafa (se.hadi) is a software engineer and digital marketer in Lebanon: web apps, marketing, support and social growth.";
+  "Websites and billing systems that bring you customers, built, run and marketed by one person. Hadi Moustafa (se.hadi), web developer and digital marketer in Lebanon. Free 20-minute call.";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-// Formspree form IDs are public (they appear in the form action), so a default is safe.
-export const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "maendpak";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, SITE_URL).toString();
@@ -26,7 +25,8 @@ export function siteJsonLd() {
         "@id": `${SITE_URL}/#person`,
         name: SITE_NAME,
         jobTitle: "Software Engineer & Digital Marketer",
-        image: absoluteUrl("/images/hadi-moustafa-headshot.webp"),
+        address: { "@type": "PostalAddress", addressCountry: "LB" },
+        image: absoluteUrl("/images/hadi-headshot.webp"),
         url: SITE_URL,
         email: `mailto:${contact.email}`,
         telephone: contact.phone.replace(/\s/g, ""),
@@ -44,11 +44,12 @@ export function siteJsonLd() {
         telephone: contact.phone.replace(/\s/g, ""),
         founder: { "@id": `${SITE_URL}/#person` },
         logo: absoluteUrl("/icon.png"),
-        priceRange: "$120+",
         address: { "@type": "PostalAddress", addressCountry: "LB" },
-        areaServed: "Worldwide",
+        areaServed: { "@type": "Country", name: "Lebanon" },
+        slogan: positioning.tagline,
         knowsAbout: [
-          "Software engineering",
+          "Billing and collections software",
+          "Subscription billing for internet providers",
           "Web development",
           "Digital marketing",
           "Social media growth",
