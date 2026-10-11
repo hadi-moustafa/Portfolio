@@ -31,10 +31,9 @@ export default function Zoomable({
         type="button"
         onClick={() => ref.current?.showModal()}
         className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border border-line bg-surface"
-        aria-label={`Enlarge image: ${alt}`}
       >
         <Image src={src} alt={alt} width={width} height={height} sizes={sizes} className="h-auto w-full transition duration-200 group-hover:scale-[1.01]" />
-        <span aria-hidden="true" className="absolute right-3 bottom-3 rounded-md bg-navy/85 px-2 py-1 text-xs font-semibold text-offwhite">
+        <span className="absolute right-3 bottom-3 rounded-md bg-navy/85 px-2 py-1 text-xs font-semibold text-offwhite">
           Tap to zoom
         </span>
       </button>

@@ -83,7 +83,7 @@ export default function IspNetStudy() {
         <div className="mt-10 grid gap-12">
           {modules.map((m, i) => (
             <article key={m.title} className="grid items-center gap-6 md:grid-cols-[minmax(0,15rem)_1fr] md:gap-10">
-              <div className={`mx-auto w-full max-w-[15rem] ${i % 2 ? "md:order-last" : ""}`}>
+              <div className={`order-last mx-auto w-full max-w-[15rem] ${i % 2 ? "" : "md:order-first"}`}>
                 {m.image ? (
                   <PhoneFrame src={m.image.src} alt={m.image.alt} width={m.image.w} height={m.image.h} sizes="240px" />
                 ) : (
