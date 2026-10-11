@@ -1,29 +1,41 @@
-import Link from "next/link";
-import { contact, responseTime } from "@/lib/content";
+"use client";
 
-/** Sticky bottom call-to-action, mobile only. */
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { contact, responseTime } from "@/lib/links";
+import { btnPrimary } from "@/lib/styles";
+import WhatsAppIcon from "./WhatsAppIcon";
+
+/**
+ * Sticky WhatsApp call-to-action, mobile only. It slides away while the
+ * contact form is on screen so it never covers the fields or the submit button.
+ */
 export default function MobileCTA() {
+  const ar = usePathname().startsWith("/ar");
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const form = document.getElementById("contact");
+    if (!form) return;
+    const io = new IntersectionObserver(([e]) => setHidden(e.isIntersecting), { rootMargin: "0px 0px -10% 0px" });
+    io.observe(form);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="sm:hidden fixed inset-x-0 bottom-0 z-[110] border-t border-line bg-offwhite/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md">
-      <div className="flex gap-2">
-        <Link
-          href="/#contact"
-          className="flex min-h-12 flex-1 items-center justify-center rounded-lg bg-coral font-display font-semibold text-navy"
-        >
-          Start a project →
-        </Link>
-        <a
-          href={contact.whatsapp}
-          aria-label="Message me on WhatsApp"
-          className="flex min-h-12 w-12 items-center justify-center rounded-lg border-2 border-navy text-navy"
-        >
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" aria-hidden="true">
-            <path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z" />
-            <path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1a4 4 0 0 1-2-2l1-1-1-2z" />
-          </svg>
-        </a>
-      </div>
-      <p className="mt-1.5 text-center text-xs text-muted">I reply within {responseTime}</p>
+    <div
+      aria-hidden={hidden}
+      className={`fixed inset-x-0 bottom-0 z-[110] border-t border-line bg-offwhite/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md transition-transform duration-200 sm:hidden ${
+        hidden ? "pointer-events-none translate-y-full" : ""
+      }`}
+    >
+      <a href={contact.whatsappChat} className={`${btnPrimary} w-full`} data-track="whatsapp" tabIndex={hidden ? -1 : undefined}>
+        <WhatsAppIcon />
+        {ar ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
+      </a>
+      <p className="mt-1.5 text-center text-sm text-charcoal">
+        {ar ? "أرد خلال 24 ساعة" : `I reply within ${responseTime}`}
+      </p>
     </div>
   );
 }

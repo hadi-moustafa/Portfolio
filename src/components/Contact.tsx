@@ -1,28 +1,37 @@
-import { responseTime } from "@/lib/content";
+import { contact, responseTime } from "@/lib/links";
 import ChannelLinks from "./ChannelLinks";
 import ContactForm from "./ContactForm";
 import Reveal from "./Reveal";
+import { Section, SectionHeading } from "./ui";
 
 export default function Contact() {
   return (
-    <section id="contact" aria-labelledby="contact-title" className="border-t border-line bg-surface">
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+    <Section id="contact" className="border-t border-line bg-surface">
+      <Reveal>
+        <SectionHeading
+          id="contact"
+          eyebrow="Contact"
+          title="Tell me what's slowing your business down"
+          intro={
+            <>
+              The fastest way is WhatsApp. Or use the form, and{" "}
+              <strong className="text-navy">I&apos;ll reply within {responseTime}.</strong>
+            </>
+          }
+        />
+      </Reveal>
+      <div className="mt-10 grid gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:gap-14">
         <Reveal>
-          <p className="eyebrow mb-3">contact</p>
-          <h2 id="contact-title" className="font-display text-3xl font-bold text-navy sm:text-4xl">
-            Start a project
-          </h2>
-          <p className="mt-3 text-lg">
-            Tell me what you&apos;re building and where it hurts.{" "}
-            <strong className="text-navy">I reply within {responseTime}.</strong>
-          </p>
-          <div className="mt-8">
-            <ContactForm />
-          </div>
-          <p className="mt-10 mb-4 font-display font-semibold text-navy">Prefer to message directly?</p>
-          <ChannelLinks />
+          <ContactForm />
+        </Reveal>
+        <Reveal delay={0.05}>
+          <aside className="rounded-xl border border-line bg-offwhite p-6">
+            <h3 className="font-display text-lg font-semibold text-navy">Message me directly</h3>
+            <p className="mt-1 mb-5 text-[0.95rem]">WhatsApp {contact.phone}</p>
+            <ChannelLinks stacked />
+          </aside>
         </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }

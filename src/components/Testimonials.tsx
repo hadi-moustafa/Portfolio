@@ -1,45 +1,46 @@
 import Image from "next/image";
 import { testimonials } from "@/lib/content";
+import { real } from "@/lib/placeholder";
 import Reveal from "./Reveal";
+import { Section, SectionHeading, T } from "./ui";
 
-/** Real client reviews. Renders nothing until `testimonials` has entries. */
+/** Real client reviews only. Renders nothing in production until a real one exists. */
 export default function Testimonials() {
-  if (testimonials.length === 0) return null;
+  const items = real(testimonials, (t) => t.quote);
+  if (items.length === 0) return null;
 
   return (
-    <section id="testimonials" aria-labelledby="testimonials-title" className="bg-navy text-offwhite">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-        <Reveal>
-          <p className="eyebrow mb-3 !text-teal">testimonials</p>
-          <h2 id="testimonials-title" className="mb-10 font-display text-3xl font-bold sm:text-4xl">
-            What clients say
-          </h2>
-        </Reveal>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <Reveal key={t.name}>
-              <figure className="h-full rounded-xl border border-offwhite/15 p-6">
-                <blockquote className="text-lg leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  {t.photo && (
-                    <Image
-                      src={t.photo}
-                      alt={`Photo of ${t.name}`}
-                      width={48}
-                      height={48}
-                      className="h-12 w-12 rounded-full object-cover"
-                    />
-                  )}
-                  <div>
-                    <div className="font-display font-semibold">{t.name}</div>
-                    <div className="text-sm text-offwhite/75">{t.role}</div>
+    <Section id="testimonials" className="bg-navy text-offwhite">
+      <Reveal>
+        <SectionHeading id="testimonials" eyebrow="Testimonials" title="What clients say" onDark />
+      </Reveal>
+      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {items.map((t, i) => (
+          <Reveal key={i} delay={i * 0.05}>
+            <figure className="flex h-full flex-col rounded-xl border border-offwhite/15 bg-offwhite/5 p-6">
+              <blockquote className="text-lg leading-relaxed">
+                &ldquo;<T>{t.quote}</T>&rdquo;
+              </blockquote>
+              <figcaption className="mt-auto flex items-center gap-3 pt-6">
+                {t.photo && !t.short && (
+                  <Image src={t.photo} alt={`Photo of ${t.name}`} width={96} height={96} className="h-12 w-12 rounded-full object-cover" />
+                )}
+                <div>
+                  <T as="div" className="font-display font-semibold">{t.name}</T>
+                  <div className="text-sm text-offwhite/80">
+                    {!t.short && t.role && (
+                      <>
+                        <T>{t.role}</T>,{" "}
+                      </>
+                    )}
+                    <T>{t.business}</T>
                   </div>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
+                </div>
+              </figcaption>
+            </figure>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

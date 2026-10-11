@@ -1,159 +1,119 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { categoryLabels, flagships, secondaryProjects, type Category } from "@/lib/content";
+import { caseStudies, categoryLabels, type CaseStudy, type Category } from "@/lib/content";
+import { SHOW_PLACEHOLDERS } from "@/lib/placeholder";
+import Reveal from "./Reveal";
+import WorkFilter from "./WorkFilter";
+import { Ph, Section, SectionHeading, T, textLink } from "./ui";
 
-type Filter = Category | "all";
+const visible = caseStudies.filter((c) => SHOW_PLACEHOLDERS || !c.placeholder);
 
-// Only offer filters that have at least one project behind them.
-const available = (Object.keys(categoryLabels) as Category[]).filter((c) =>
-  [...flagships, ...secondaryProjects].some((p) => p.categories.includes(c))
-);
-
-function Chips({ categories }: { categories: Category[] }) {
+export function GitHubButton({ href, name }: { href: string; name: string }) {
   return (
-    <>
-      {categories.map((c) => (
-        <span key={c} className="rounded-full bg-teal/15 px-2.5 py-0.5 text-xs font-semibold text-teal-ink">
-          {categoryLabels[c]}
-        </span>
-      ))}
-    </>
+    <a
+      href={href}
+      aria-label={`${name} source code on GitHub`}
+      className="inline-flex h-11 w-11 items-center justify-center rounded-lg border-2 border-line text-navy transition-colors duration-200 hover:border-navy"
+    >
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+        <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
+      </svg>
+    </a>
+  );
+}
+
+function Card({ p }: { p: CaseStudy }) {
+  const featured = !!p.featured;
+  return (
+    <article
+      data-cats={p.categories.join(" ")}
+      className={`work-card group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-[0_6px_20px_-14px_rgba(13,27,42,0.35)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_16px_32px_-16px_rgba(13,27,42,0.4)] ${
+        featured ? "lg:grid lg:grid-cols-[1.15fr_1fr]" : ""
+      }`}
+    >
+      <div className={`aspect-video overflow-hidden border-b border-line bg-offwhite ${featured ? "lg:aspect-auto lg:border-r lg:border-b-0" : ""}`}>
+        {p.placeholder ? (
+          <Ph block>case study image</Ph>
+        ) : (
+          <Image
+            src={p.image.src}
+            alt={p.image.alt}
+            width={1600}
+            height={900}
+            sizes={featured ? "(min-width: 1024px) 620px, 100vw" : "(min-width: 1024px) 560px, 100vw"}
+            className={`h-full w-full ${featured ? "object-contain" : "object-cover object-top"}`}
+          />
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-6 sm:p-7">
+        <p className="eyebrow">{p.label}</p>
+        <h3 className={`mt-2 font-display font-bold text-navy ${featured ? "text-2xl sm:text-3xl" : "text-2xl"}`}>
+          <T>{p.title}</T>
+        </h3>
+        <T as="p" className="mt-3">{p.description}</T>
+        {p.stats.length > 0 && (
+          <dl className="mt-5 grid grid-cols-2 gap-3">
+            {p.stats.slice(0, 2).map((m) => (
+              <div key={m.label} className="flex flex-col rounded-lg bg-offwhite px-3 py-2.5">
+                <dt className="text-sm text-charcoal">{m.label}</dt>
+                <dd className="order-first font-display text-2xl font-bold tabular-nums text-navy">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {p.tags.length > 0 && (
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tags">
+            {p.tags.slice(0, 3).map((t) => (
+              <li key={t} className="rounded-full bg-teal/15 px-3 py-1 text-sm font-medium text-teal-ink">
+                {t}
+              </li>
+            ))}
+          </ul>
+        )}
+        {!p.placeholder && (
+          <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+            <Link href={`/work/${p.slug}`} className={textLink} data-track="case_study">
+              Read the case study&nbsp;→
+            </Link>
+            {p.github && <GitHubButton href={p.github} name={p.name} />}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }
 
 export default function Work() {
-  const [filter, setFilter] = useState<Filter>("all");
-
-  // Service cards link to #work-<category> to pre-filter this section.
-  useEffect(() => {
-    const apply = () => {
-      const m = window.location.hash.match(/^#work-(\w+)$/);
-      if (m && available.includes(m[1] as Category)) {
-        setFilter(m[1] as Category);
-        document.getElementById("work")?.scrollIntoView();
-      }
-    };
-    apply();
-    window.addEventListener("hashchange", apply);
-    return () => window.removeEventListener("hashchange", apply);
-  }, []);
-
-  const show = (cats: Category[]) => filter === "all" || cats.includes(filter);
-  const flag = flagships.filter((p) => show(p.categories));
-  const rest = secondaryProjects.filter((p) => show(p.categories));
+  const featured = visible.filter((p) => p.featured);
+  const rest = visible.filter((p) => !p.featured);
+  const cats = (Object.keys(categoryLabels) as Category[]).filter((c) => visible.some((p) => p.categories.includes(c)));
+  const cols = rest.length % 3 === 0 ? "lg:grid-cols-3" : "lg:grid-cols-2";
 
   return (
-    <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-      <p className="eyebrow mb-3">selected work</p>
-      <h2 id="work-title" className="font-display text-3xl font-bold text-navy sm:text-4xl">
-        Case studies &amp; projects
-      </h2>
-
-      <div role="group" aria-label="Filter projects" className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
-        {(["all", ...available] as Filter[]).map((f) => (
-          <button
-            key={f}
-            type="button"
-            aria-pressed={filter === f}
-            onClick={() => setFilter(f)}
-            className={`min-h-11 shrink-0 rounded-full border-2 px-4 text-sm font-semibold ${
-              filter === f ? "border-navy bg-navy text-offwhite" : "border-line text-navy"
-            }`}
-          >
-            {f === "all" ? "All" : categoryLabels[f]}
-          </button>
+    <Section id="work">
+      <Reveal>
+        <SectionHeading id="work" eyebrow="Selected work" title="Proof, not promises" intro="Real projects, real numbers, straight from the dashboards and ad accounts." />
+      </Reveal>
+      {visible.length >= 3 && <WorkFilter target="work-grid" filters={cats.map((c) => ({ id: c, label: categoryLabels[c] }))} />}
+      <div id="work-grid" data-filter="all" className="mt-8 grid gap-6">
+        {featured.map((p) => (
+          <Card key={p.slug} p={p} />
         ))}
-      </div>
-
-      {flag.length > 0 && (
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {flag.map((p) => (
-            <article key={p.slug} className="flex flex-col overflow-hidden rounded-xl border border-line bg-surface">
-              {p.image && (
-                <Image
-                  src={p.image.src}
-                  alt={p.image.alt}
-                  width={p.image.width}
-                  height={p.image.height}
-                  className="h-auto w-full border-b border-line"
-                />
-              )}
-              <div className="flex flex-1 flex-col p-6">
-                <p className="text-xs font-semibold tracking-wide text-teal-ink">{p.tag}</p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-navy">{p.title}</h3>
-                {p.definition && (
-                  <p className="mt-3 rounded-md bg-offwhite px-3 py-2 text-sm">
-                    <b className="font-display text-navy">{p.definition.word}</b>{" "}
-                    <span className="text-muted">{p.definition.pronunciation}</span> —{" "}
-                    {p.definition.body}
-                  </p>
-                )}
-                <p className="mt-3 text-[0.95rem]">{p.description}</p>
-                {p.metrics && (
-                  <dl className="mt-4 grid grid-cols-2 gap-2">
-                    {p.metrics.slice(0, 2).map((m) => (
-                      <div key={m.label} className="flex flex-col rounded-md bg-offwhite px-3 py-2">
-                        <dt className="text-xs text-muted">{m.label}</dt>
-                        <dd className="order-first font-display text-xl font-bold tabular-nums text-navy">{m.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Chips categories={p.categories} />
-                  {p.stack.map((s) => (
-                    <span key={s} className="rounded-full border border-line px-2.5 py-0.5 text-xs text-muted">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-auto flex flex-wrap gap-x-5 pt-5 text-sm font-semibold">
-                  <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center text-coral-ink hover:underline">
-                    Read the case study →
-                  </Link>
-                  {p.github && (
-                    <a href={p.github} className="inline-flex min-h-11 items-center text-navy hover:underline">
-                      GitHub
-                    </a>
-                  )}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
-
-      {rest.length > 0 && (
-        <>
-          <h3 className="eyebrow mt-14 mb-4">also on the bench</h3>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {rest.length > 0 && (
+          <div className={`grid gap-6 sm:grid-cols-2 ${cols}`}>
             {rest.map((p) => (
-              <article key={p.title} className="flex flex-col rounded-xl border border-line bg-surface p-5">
-                <h4 className="flex flex-wrap items-center gap-2 font-display text-lg font-semibold text-navy">
-                  {p.title}
-                  {p.badge && (
-                    <span className="rounded border border-coral px-1.5 py-0.5 text-[0.65rem] font-semibold text-coral-ink">
-                      {p.badge}
-                    </span>
-                  )}
-                </h4>
-                <p className="mt-2 text-[0.95rem]">{p.description}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <Chips categories={p.categories} />
-                </div>
-                {p.href && (
-                  <a href={p.href} className="mt-auto inline-flex min-h-11 items-center pt-3 text-sm font-semibold text-coral-ink hover:underline">
-                    View →
-                  </a>
-                )}
-              </article>
+              <Card key={p.slug} p={p} />
             ))}
           </div>
-        </>
-      )}
-    </section>
+        )}
+      </div>
+      <p className="mt-8 text-[0.95rem]">
+        Looking for the developer side?{" "}
+        <Link href="/engineering" className="font-semibold text-teal-ink underline underline-offset-4">
+          Engineering notes: Governor and M2C
+        </Link>
+        .
+      </p>
+    </Section>
   );
 }

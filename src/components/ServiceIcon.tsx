@@ -1,7 +1,13 @@
 import type { ServiceSlug } from "@/lib/content";
 
-/** One consistent line-icon set (24px grid, 1.75 stroke) for the four services. */
+/** One consistent line-icon set (24px grid, 1.75 stroke) for the services. */
 const paths: Record<ServiceSlug, React.ReactNode> = {
+  "billing-system": (
+    <>
+      <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+      <path d="M9 8h6M9 12h6M9 16h3" />
+    </>
+  ),
   engineering: (
     <>
       <path d="M8 6l-6 6 6 6" />
