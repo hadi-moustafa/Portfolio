@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { contact, flagships, responseTime } from "@/lib/content";
+import { caseStudies, contact, responseTime } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Thanks for your inquiry",
@@ -18,8 +18,7 @@ export default function ThankYouPage() {
       </h1>
       <p className="mb-10 text-lg">
         I read every inquiry myself and will reply within{" "}
-        <strong className="text-navy">{responseTime}</strong>. Keep an eye on your inbox (and your spam
-        folder, just in case). Meanwhile, you can follow along on Instagram at{" "}
+        <strong className="text-navy">{responseTime}</strong>. I&apos;ll reply on WhatsApp or by email, whichever you gave me (check your spam folder, just in case). Meanwhile, you can follow along on Instagram at{" "}
         <a href={contact.instagram} className="font-semibold text-teal-ink underline underline-offset-4">
           {contact.instagramHandle}
         </a>
@@ -28,10 +27,10 @@ export default function ThankYouPage() {
 
       <h2 className="mb-4 font-display text-xl font-bold text-navy">While you wait, read a case study</h2>
       <ul className="mb-10">
-        {flagships.map((p) => (
+        {caseStudies.filter((p) => !p.placeholder).map((p) => (
           <li key={p.slug}>
-            <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
-              {p.title} →
+            <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-teal-ink hover:underline">
+              {p.name}&nbsp;→
             </Link>
           </li>
         ))}

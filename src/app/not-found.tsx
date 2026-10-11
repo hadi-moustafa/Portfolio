@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { flagships, services } from "@/lib/content";
+import { caseStudies, services } from "@/lib/content";
 import SiteFooter from "@/components/SiteFooter";
 import Wordmark from "@/components/Wordmark";
 
@@ -37,8 +37,8 @@ export default function NotFound() {
             <ul>
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
-                    {s.title} →
+                  <Link href={`/services/${s.slug}`} className="inline-flex min-h-11 items-center font-semibold text-teal-ink hover:underline">
+                    {s.title}&nbsp;→
                   </Link>
                 </li>
               ))}
@@ -47,10 +47,10 @@ export default function NotFound() {
           <nav aria-label="Case studies">
             <h2 className="eyebrow mb-2">case studies</h2>
             <ul>
-              {flagships.map((p) => (
+              {caseStudies.filter((p) => !p.placeholder).map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-coral-ink hover:underline">
-                    {p.title.split(" — ")[0]} →
+                  <Link href={`/work/${p.slug}`} className="inline-flex min-h-11 items-center font-semibold text-teal-ink hover:underline">
+                    {p.name}&nbsp;→
                   </Link>
                 </li>
               ))}

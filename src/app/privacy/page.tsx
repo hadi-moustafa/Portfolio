@@ -7,11 +7,11 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy policy",
   description:
-    "What data hadimoustafa.dev collects (Google Analytics, contact form via Formspree), why, how long it's kept, and how to request deletion.",
+    "What data hadimoustafa.dev collects (Google Analytics events, the contact form via Formspree, Vercel hosting logs), why, how long it's kept, and how to request deletion.",
   alternates: { canonical: "/privacy" },
 };
 
-const UPDATED = "25 September 2026";
+const UPDATED = "11 October 2026";
 
 export default function PrivacyPage() {
   return (
@@ -33,20 +33,32 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 space-y-2">
             <li>
               <strong className="text-navy">Contact form.</strong> If you send an inquiry, I receive
-              the name, email address, project type, budget range and message you enter. The form is processed by{" "}
+              your name, the WhatsApp number or email address you give, what you need, your message and,
+              if you choose to share it, a budget range. The form is processed by{" "}
               <a href="https://formspree.io/legal/privacy-policy" rel="noopener">
                 Formspree
               </a>
-              , which delivers it to my inbox.
+              , which delivers it to my inbox. To limit spam, your browser stores the time of your last
+              submission (local storage, never sent anywhere) so the form can&apos;t be sent again within a minute.
             </li>
             <li>
               <strong className="text-navy">Analytics.</strong> I use Google Analytics 4 to see
-              aggregate usage (pages visited, referrer, device type, approximate location). IP
-              addresses are anonymised. Google&apos;s handling is described in its{" "}
+              aggregate usage (pages visited, referrer, device type, approximate location) and a few
+              events: clicks on WhatsApp, Instagram and email links, contact form submissions, résumé
+              downloads, case-study opens and demo clicks. IP addresses are anonymised. Google&apos;s
+              handling is described in its{" "}
               <a href="https://policies.google.com/privacy" rel="noopener">
                 privacy policy
               </a>
               .
+            </li>
+            <li>
+              <strong className="text-navy">Hosting.</strong> The site is hosted on{" "}
+              <a href="https://vercel.com/legal/privacy-policy" rel="noopener">
+                Vercel
+              </a>
+              , which keeps short-lived request logs (such as IP address and user agent) to run and
+              secure the service.
             </li>
             <li>
               <strong className="text-navy">Direct messages.</strong> If you contact me on
@@ -69,7 +81,7 @@ export default function PrivacyPage() {
           <h2>How long I keep it</h2>
           <p>
             Inquiry emails are kept for as long as needed to handle the conversation and any
-            resulting project. Google Analytics data is retained for up to 14 months.
+            resulting project. Google Analytics data is retained for up to 14 months; Vercel request logs are kept for a short period under Vercel&apos;s own policy.
           </p>
         </section>
 
