@@ -425,7 +425,7 @@ export const testimonials: {
 }[] = [];
 
 export const contact = {
-  email: "hadimoustafa3@gmail.com",
+  email: "se.hadimoustafa@gmail.com",
   instagram: "https://instagram.com/se.hadimoustafa",
   instagramHandle: "@se.hadimoustafa",
   instagramDM: "https://ig.me/m/se.hadimoustafa",
