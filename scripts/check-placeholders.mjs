@@ -34,7 +34,7 @@ if (built) {
   process.exit(0);
 }
 
-const re = /\[\[PLACEHOLDER:\s*(.*?)\]\]|\bph\(\s*(["'`])((?:\\.|(?!\2).)*)\2/g;
+const re = /\[\[PLACEHOLDER:\s*(.*?)\]\]|\bph\(\s*(["'`])((?:\\.|(?!\2).)*)\2|<Ph(?: block)?>([^<{]+)/g;
 const files = [...walk(join(root, "src"), [".ts", ".tsx"]), join(root, "public/llms.txt")];
 const hits = [];
 for (const f of files) {
@@ -42,7 +42,7 @@ for (const f of files) {
   readFileSync(f, "utf8")
     .split("\n")
     .forEach((line, i) => {
-      for (const m of line.matchAll(re)) hits.push(`${relative(root, f)}:${i + 1}  ${(m[1] ?? m[3]).trim()}`);
+      for (const m of line.matchAll(re)) hits.push(`${relative(root, f)}:${i + 1}  ${(m[1] ?? m[3] ?? `asset: ${m[4]}`).trim()}`);
     });
 }
 if (hits.length === 0) {
