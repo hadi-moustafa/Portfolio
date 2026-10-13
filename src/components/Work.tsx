@@ -81,6 +81,11 @@ function Card({ p }: { p: CaseStudy }) {
                   {new URL(p.live).hostname.replace(/^www\./, "")}&nbsp;↗
                 </a>
               )}
+              {p.instagram && (
+                <a href={p.instagram} className={textLink}>
+                  Instagram post&nbsp;↗
+                </a>
+              )}
               {p.github && <GitHubButton href={p.github} name={p.name} />}
             </div>
           </div>

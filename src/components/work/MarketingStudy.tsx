@@ -1,6 +1,6 @@
 import { ph } from "@/lib/placeholder";
 import Zoomable from "../Zoomable";
-import { T } from "../ui";
+import { T, textLink } from "../ui";
 
 const h2 = "font-display text-2xl font-bold text-navy sm:text-3xl";
 
@@ -42,6 +42,11 @@ export default function MarketingStudy() {
         A small paid-social test for a fashion brand in Africa, run together with @zeinabali_93.{" "}
         <strong className="text-navy">Objective: reach and engagement, not sales.</strong> Every number below comes straight from Meta
         Ads Manager and TikTok Ads Manager.
+      </p>
+      <p className="mt-4">
+        <a href="https://www.instagram.com/p/DeT_KwAjWt3/" className={textLink}>
+          See the results post on Instagram&nbsp;↗
+        </a>
       </p>
       <div className="mt-5">
         <T as="div" className="rounded-xl border-2 border-dashed border-coral p-4">{ph("pilot: leads/messages, cost per result, testimonial (real client marketing pilot goes here)")}</T>

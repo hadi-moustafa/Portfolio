@@ -3,7 +3,7 @@ import { ph } from "@/lib/placeholder";
 import IspPhones from "../IspPhones";
 import PhoneFrame from "../PhoneFrame";
 import Zoomable from "../Zoomable";
-import { Ph, T, WhatsAppButton } from "../ui";
+import { Ph, T, textLink, WhatsAppButton } from "../ui";
 
 const h2 = "font-display text-2xl font-bold text-navy sm:text-3xl";
 
@@ -54,8 +54,11 @@ export default function IspNetStudy() {
           <T as="p" className="mt-5 border-l-4 border-teal pl-4 text-lg italic">
             {ph('client name or "Owner, local ISP, (town)" + one-line quote')}
           </T>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <WhatsAppButton label="Get a system like this" />
+            <a href="https://www.instagram.com/p/DeT5y8Rja4j/" className={textLink}>
+              See it on Instagram&nbsp;↗
+            </a>
           </div>
         </div>
         <div className="mt-14 lg:mt-0">

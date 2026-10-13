@@ -38,6 +38,8 @@ export type CaseStudy = {
   tags: string[];
   github?: string;
   live?: string;
+  /** The project's Instagram post on @se.hadimoustafa. */
+  instagram?: string;
   metaDescription: string;
   featured?: boolean;
   /** Not a real project yet: a dev-only slot that never renders in production. */
@@ -63,6 +65,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "71%", label: "of this month's billing settled" },
     ],
     tags: ["Billing", "Collections", "WhatsApp reminders"],
+    instagram: "https://www.instagram.com/p/DeT5y8Rja4j/",
     metaDescription:
       "Case study: ISP.NET, billing and collections software that moved a local internet provider in Lebanon off Excel and paper. 236 subscribers, one-tap WhatsApp reminders.",
   },
@@ -124,6 +127,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "6,092", label: "engagements at about $0.01 each" },
     ],
     tags: ["Instagram & Facebook ads", "TikTok ads", "Test budget"],
+    instagram: "https://www.instagram.com/p/DeT_KwAjWt3/",
     metaDescription:
       "A $68 Meta + TikTok test campaign, honestly reported: 218 profile visits at $0.13, 6,092 engagements at about $0.01 and 88,701 impressions.",
   },
