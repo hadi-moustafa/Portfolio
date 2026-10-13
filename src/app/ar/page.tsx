@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { arAddOns, arFaqs, arFlagship, arForm, arHero, arProcess, reviewNote } from "@/lib/ar";
+import { arFaqs, arForm, arHero, arProcess, arServices, arServicesHeading as sh, reviewNote } from "@/lib/ar";
 import { contact } from "@/lib/links";
 import ChannelLinks from "@/components/ChannelLinks";
 import ContactForm from "@/components/ContactForm";
@@ -66,41 +66,45 @@ export default function ArabicHome() {
         </section>
 
         <Section id="services" className="border-t border-line">
-          <SectionHeading id="services" eyebrow="الخدمات" title="خدمة أساسية، وإضافات عند الحاجة" />
-          <article className={`${card} mt-10 lg:grid lg:grid-cols-2 lg:gap-10 lg:p-10`}>
-            <div>
-              <div className="flex items-center gap-3">
-                <ServiceIcon slug="billing-system" className="h-10 w-10 shrink-0 text-teal-ink" />
-                <h3 className="text-2xl font-bold text-navy sm:text-3xl">{arFlagship.title}</h3>
-              </div>
-              <p className="mt-4 text-lg">
-                <strong className="text-navy">لمن:</strong> {arFlagship.forWho}
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
-                <WhatsAppButton label="تحدّث معي عن الفوترة" />
-                <Link href="/work/isp-net" hrefLang="en" className={textLink}>
-                  شاهد مشروع ISP.NET&nbsp;←
-                </Link>
-              </div>
-            </div>
-            <ul className="mt-6 space-y-3 lg:mt-0">
-              {arFlagship.includes.map((x) => (
-                <li key={x} className="flex gap-3">
-                  <span aria-hidden="true" className="font-bold text-teal-ink">/</span>
-                  {x}
-                </li>
-              ))}
-            </ul>
-          </article>
-          <h3 className="mt-14 text-xl font-semibold text-navy">خدمات إضافية</h3>
-          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {arAddOns.map((s) => (
+          <SectionHeading id="services" eyebrow={sh.eyebrow} title={sh.title} intro={sh.intro} />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {arServices.map((s) => (
               <article key={s.slug} className={card}>
-                <ServiceIcon slug={s.slug} className="mb-4 h-9 w-9 text-teal-ink" />
-                <h4 className="text-xl font-bold text-navy">{s.title}</h4>
-                <p className="mt-2 text-[0.95rem]">{s.forWho}</p>
+                <p className="eyebrow">{sh.youSay}</p>
+                <p className="mt-2 text-lg font-semibold text-navy">{s.pain}</p>
+                <div className="mt-5 flex items-center gap-3 border-t border-line pt-5">
+                  <ServiceIcon slug={s.slug} className="h-9 w-9 shrink-0 text-teal-ink" />
+                  <h3 className="text-xl font-bold text-navy">{s.fix}</h3>
+                </div>
+                <ul className="mt-3 space-y-1 text-[0.95rem]">
+                  {s.includes.map((x) => (
+                    <li key={x} className="flex gap-2">
+                      <span aria-hidden="true" className="text-teal-ink">/</span>
+                      {x}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 grid gap-1 text-[0.95rem]">
+                  <div>{s.timeline}</div>
+                  <div className="font-semibold text-navy">{s.price}</div>
+                </div>
+                <div className="mt-auto flex flex-wrap items-center gap-x-5 pt-5">
+                  <Link href={`/services/${s.slug}`} hrefLang="en" className={textLink}>
+                    {sh.learnMore}&nbsp;←
+                  </Link>
+                  <Link href={s.proof.href} hrefLang="en" className={`${textLink} text-sm`}>
+                    {s.proof.label}
+                  </Link>
+                </div>
               </article>
             ))}
+            <div className="flex h-full flex-col justify-center rounded-xl border-2 border-dashed border-line p-6">
+              <h3 className="text-xl font-bold text-navy">{sh.notSure}</h3>
+              <p className="mt-2">{sh.notSureBody}</p>
+              <div className="mt-5">
+                <WhatsAppButton label={sh.notSureCta} />
+              </div>
+            </div>
           </div>
         </Section>
 

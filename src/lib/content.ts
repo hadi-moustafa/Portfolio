@@ -252,8 +252,8 @@ export const services: Service[] = [
       "Monthly reports and Excel export",
       "A full activity log of every payment and change",
     ],
-    timeline: ph("typical timeline for a billing system"),
-    priceFrom: ph("from $X for a billing system"),
+    timeline: "Typical timeline: 6–10 weeks",
+    priceFrom: "From $1,500",
     intro:
       "If your billing lives in Excel, on paper or in a notebook, you're losing money you've already earned. I build a private, login-only system around how your business actually collects: subscribers, collectors, payments and reminders, in one place on your phone.",
     outcomes: [
@@ -274,8 +274,8 @@ export const services: Service[] = [
       "Websites and web apps for small businesses in Lebanon, with an admin panel so you can update content yourself. Built by a web developer who also markets.",
     forWho: "Small businesses that need a website that brings in customers, and that they can update themselves.",
     includes: ["A fast, mobile-first website", "An admin panel to edit photos, prices and text", "Contact forms and WhatsApp buttons wired up", "Search basics and analytics set up"],
-    timeline: ph("typical timeline for a website"),
-    priceFrom: ph("from $X for a website"),
+    timeline: "Typical timeline: 2–4 weeks",
+    priceFrom: "From $500",
     intro:
       "Most small-business websites look fine and do nothing. I build sites around one job, getting you customers, with a clear offer, an easy way to contact you and an admin panel so you're never waiting on a developer to change a price.",
     outcomes: [
@@ -295,8 +295,8 @@ export const services: Service[] = [
       "Paid ads and campaign setup on Instagram, Facebook and TikTok for small businesses in Lebanon, with honest reporting on what each result cost.",
     forWho: "Businesses that get attention online but not enough messages, calls or sales.",
     includes: ["Instagram, Facebook and TikTok ads", "Audience and offer planning", "Tracking so you know what each result cost"],
-    timeline: ph("typical timeline for a marketing campaign"),
-    priceFrom: ph("from $X for marketing"),
+    timeline: "First ads live within a week",
+    priceFrom: "From $150 per month, plus your ad budget",
     intro:
       "A campaign is only as good as what it's measured against. I set a plain objective, run the ads, and report exactly what each result cost, including what didn't work.",
     outcomes: [
@@ -316,8 +316,8 @@ export const services: Service[] = [
       "Ongoing support for websites and business systems in Lebanon: updates, fixes, backups and training for your team, from the person who built it.",
     forWho: "Businesses with a website or system already running that need someone reliable to keep it that way.",
     includes: ["Updates, fixes and backups", "Training for your team", "A real person to message when something breaks"],
-    timeline: ph("support terms (monthly, response times)"),
-    priceFrom: ph("from $X per month for support"),
+    timeline: "Monthly, with a reply within 24 hours",
+    priceFrom: "From $50 per month",
     intro:
       "Launch is the start, not the finish. I keep what I ship updated, fix what breaks and train the people who use it.",
     outcomes: [
@@ -337,8 +337,8 @@ export const services: Service[] = [
       "Social media strategy, content and community management for small businesses in Lebanon, so your posts turn followers into customers.",
     forWho: "Businesses that post but don't see followers turn into messages or customers.",
     includes: ["Content plan and post templates", "A consistent visual identity", "Comments and DMs handled"],
-    timeline: ph("typical timeline / monthly scope for social growth"),
-    priceFrom: ph("from $X per month for social growth"),
+    timeline: "First content plan within 2 weeks, then monthly",
+    priceFrom: "From $250 per month",
     intro:
       "Followers are a number; customers are the point. I set up a content system you can keep up with: what to post, how it looks and how to answer the people who reply.",
     outcomes: [
@@ -374,7 +374,7 @@ export const processSteps = [
 export const faqs = [
   {
     q: "How long does a project take?",
-    a: `It depends on the scope, and you get a timeline in the written proposal before any work starts. For reference, the Zack Production website took about three weeks and the ISP.NET billing system about ten. ${ph("typical timelines per project type")}`,
+    a: `It depends on the scope, and you get a timeline in the written proposal before any work starts. For reference, the Zack Production website took about three weeks and the ISP.NET billing system about ten. Typical timelines: a website 2–4 weeks, a billing system 6–10 weeks, and ads go live within a week.`,
   },
   {
     q: "How do I pay, and is there a deposit?",
