@@ -71,11 +71,18 @@ function Card({ p }: { p: CaseStudy }) {
           </ul>
         )}
         {!p.placeholder && (
-          <div className="mt-auto flex items-center justify-between gap-4 pt-6">
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-6">
             <Link href={`/work/${p.slug}`} className={textLink} data-track="case_study">
               Read the case study&nbsp;→
             </Link>
-            {p.github && <GitHubButton href={p.github} name={p.name} />}
+            <div className="flex items-center gap-4">
+              {p.live && (
+                <a href={p.live} className={textLink}>
+                  {new URL(p.live).hostname.replace(/^www\./, "")}&nbsp;↗
+                </a>
+              )}
+              {p.github && <GitHubButton href={p.github} name={p.name} />}
+            </div>
           </div>
         )}
       </div>
