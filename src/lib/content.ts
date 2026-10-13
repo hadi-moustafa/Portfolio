@@ -107,6 +107,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "$0.07", label: "per profile visit" },
     ],
     tags: ["Instagram & Facebook ads", "Profile visits", "Technology store"],
+    instagram: "https://www.instagram.com/p/DebkLSZtoiF/",
     metaDescription:
       "Case study: a Meta ads campaign for a technology store. 98 Instagram profile visits for $6.83 (about $0.07 each), 9,659 people reached, 10,241 impressions.",
   },

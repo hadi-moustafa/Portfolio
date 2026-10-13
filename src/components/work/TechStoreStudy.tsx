@@ -1,6 +1,6 @@
 import { ph } from "@/lib/placeholder";
 import Zoomable from "../Zoomable";
-import { T } from "../ui";
+import { T, textLink } from "../ui";
 
 const h2 = "font-display text-2xl font-bold text-navy sm:text-3xl";
 
@@ -38,6 +38,11 @@ export default function TechStoreStudy() {
         Hadi runs a technology store and wanted more people visiting the store&apos;s Instagram account.{" "}
         <strong className="text-navy">Objective: Instagram profile visits.</strong> One Meta campaign, one ad set, and every number below
         comes straight from Meta Ads Manager.
+      </p>
+      <p className="mt-4">
+        <a href="https://www.instagram.com/p/DebkLSZtoiF/" className={textLink}>
+          See the results post on Instagram&nbsp;↗
+        </a>
       </p>
 
       <section className="mt-14">
@@ -92,7 +97,7 @@ export default function TechStoreStudy() {
             height={1350}
             sizes="(min-width: 768px) 448px, 100vw"
             className="max-w-md"
-            caption="The results summary, built from the same Ads Manager numbers."
+            caption="The results post, as shared on Instagram."
           />
         </div>
       </section>
