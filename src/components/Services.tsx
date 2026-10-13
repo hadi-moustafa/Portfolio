@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ownership, packages, paymentTerms, services, servicesByProblem, type Service } from "@/lib/content";
-import { real } from "@/lib/placeholder";
 import Reveal from "./Reveal";
 import ServiceIcon from "./ServiceIcon";
 import { Section, SectionHeading, T, textLink, WhatsAppButton } from "./ui";
@@ -44,8 +43,6 @@ function ServiceCard({ s }: { s: Service }) {
 }
 
 export default function Services() {
-  const tiers = real(packages, (p) => p.name);
-
   return (
     <Section id="services">
       <Reveal>
@@ -74,26 +71,33 @@ export default function Services() {
         </Reveal>
       </div>
 
-      {tiers.length > 0 && (
-        <>
-          <h3 className="mt-14 font-display text-xl font-semibold text-navy">Packages</h3>
-          <div className="mt-5 grid gap-5 md:grid-cols-3">
-            {tiers.map((p, i) => (
-              <article key={i} className={card}>
-                <T as="h4" className="font-display text-xl font-bold text-navy">{p.name}</T>
-                <T as="p" className="mt-1 font-display text-2xl font-bold text-navy">{p.price}</T>
-                <ul className="mt-3 space-y-1">
-                  {p.includes.map((x, j) => (
-                    <T as="li" key={j}>{x}</T>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </>
-      )}
+      <h3 className="mt-16 font-display text-2xl font-bold text-navy sm:text-3xl">Or pick a package</h3>
+      <p className="mt-3 max-w-2xl">Several services together, for one price. Ad budgets are paid to Meta or TikTok directly, on top.</p>
+      <div className="mt-6 grid gap-5 md:grid-cols-3">
+        {packages.map((p, i) => (
+          <Reveal key={p.name} delay={i * 0.05}>
+            <article className={`${card} ${i === 1 ? "border-2 border-teal" : ""}`}>
+              <h4 className="font-display text-xl font-bold text-navy">{p.name}</h4>
+              <p className="mt-1 font-display text-3xl font-bold text-navy">{p.price}</p>
+              <p className="mt-2 text-[0.95rem]">{p.summary}</p>
+              <ul className="mt-4 space-y-2 border-t border-line pt-4 text-[0.95rem]">
+                {p.includes.map((x) => (
+                  <li key={x} className="flex gap-2">
+                    <span aria-hidden="true" className="text-teal-ink">/</span>
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto pt-6">
+                <WhatsAppButton label={i === packages.length - 1 ? "Ask for a quote" : `Start with ${p.name}`} />
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+
       <p className="mt-8 text-[0.95rem]">
-        <T>{paymentTerms}</T> <strong className="text-navy">{ownership}</strong>
+        {paymentTerms} <strong className="text-navy">{ownership}</strong>
       </p>
     </Section>
   );

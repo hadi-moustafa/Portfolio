@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { arFaqs, arForm, arHero, arProcess, arServices, arServicesHeading as sh, reviewNote } from "@/lib/ar";
+import { arFaqs, arForm, arHero, arPackages, arPackagesHeading as ph, arProcess, arServices, arServicesHeading as sh, reviewNote } from "@/lib/ar";
 import { contact } from "@/lib/links";
 import ChannelLinks from "@/components/ChannelLinks";
 import ContactForm from "@/components/ContactForm";
@@ -106,6 +106,30 @@ export default function ArabicHome() {
               </div>
             </div>
           </div>
+
+          <h3 className="mt-16 text-2xl font-bold text-navy sm:text-3xl">{ph.title}</h3>
+          <p className="mt-3 max-w-2xl">{ph.intro}</p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {arPackages.map((p, i) => (
+              <article key={p.name} className={`${card} ${i === 1 ? "border-2 border-teal" : ""}`}>
+                <h4 className="text-xl font-bold text-navy">{p.name}</h4>
+                <p className="mt-1 text-3xl font-bold text-navy">{p.price}</p>
+                <p className="mt-2 text-[0.95rem]">{p.summary}</p>
+                <ul className="mt-4 space-y-2 border-t border-line pt-4 text-[0.95rem]">
+                  {p.includes.map((x) => (
+                    <li key={x} className="flex gap-2">
+                      <span aria-hidden="true" className="text-teal-ink">/</span>
+                      {x}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto pt-6">
+                  <WhatsAppButton label={p.cta} />
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8 text-[0.95rem]">{ph.payment}</p>
         </Section>
 
         <Section id="process">

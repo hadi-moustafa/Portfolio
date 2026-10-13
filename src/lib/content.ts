@@ -1,6 +1,7 @@
 import { ph } from "./placeholder";
 
 export { contact, navLinks, responseTime } from "./links";
+import { contact } from "./links";
 
 
 
@@ -353,13 +354,45 @@ export const services: Service[] = [
 /** Homepage order: most common problem first. */
 export const servicesByProblem: ServiceSlug[] = ["billing-system", "engineering", "marketing", "growth", "support"];
 
-/** Three tiers. Everything here is a placeholder until Hadi sets real packages. */
-export const packages = [
-  { name: ph("package 1 name"), price: ph("package 1 price"), includes: [ph("package 1 inclusions")] },
-  { name: ph("package 2 name"), price: ph("package 2 price"), includes: [ph("package 2 inclusions")] },
-  { name: ph("package 3 name"), price: ph("package 3 price"), includes: [ph("package 3 inclusions")] },
+/** Three tiers: affordable, mid-range, and custom (no price). Hadi can edit these freely. */
+export const packages: { name: string; price: string; summary: string; includes: string[] }[] = [
+  {
+    name: "Starter",
+    price: "$650",
+    summary: "For a small business getting online properly for the first time.",
+    includes: [
+      "A website you can update yourself (up to 3 pages)",
+      "WhatsApp button and contact form wired up",
+      "Instagram profile tidied up: bio, highlights and link",
+      "1 month of ads management (ad budget not included)",
+      "1 month of support after launch",
+    ],
+  },
+  {
+    name: "Growth",
+    price: "$1,100",
+    summary: "For a business ready to bring in customers every month.",
+    includes: [
+      "A website with an admin panel (up to 6 pages)",
+      "2 months of ads management (ad budget not included)",
+      "1 month of social media: content plan, post templates and a consistent look",
+      "Analytics set up, with a results report straight from Ads Manager",
+      "3 months of support after launch",
+    ],
+  },
+  {
+    name: "Custom",
+    price: "Priced per project",
+    summary: "For a business that needs a system built around how it works.",
+    includes: [
+      "A billing & collections system, or another system built for your business",
+      "Website, ads and social media together",
+      "Ongoing monthly support",
+      "A fixed price and milestones in writing, after a free 20-minute call",
+    ],
+  },
 ];
-export const paymentTerms = ph("deposit %, accepted payment methods");
+export const paymentTerms = "Clients in Lebanon pay by Whish Money. Clients abroad: ask me for payment options.";
 export const ownership = "You own the code and accounts.";
 
 export const processSteps = [
@@ -378,15 +411,15 @@ export const faqs = [
   },
   {
     q: "How do I pay, and is there a deposit?",
-    a: `You pay a fixed price, split into the milestones agreed in the proposal. ${ph("deposit %, accepted payment methods")}`,
+    a: `You pay a fixed price: a deposit before work starts, then the rest at the milestones agreed in the proposal. Clients in Lebanon pay by Whish Money to ${contact.phone}. If you're abroad, message me and we'll agree on a payment method that works for you.`,
   },
   {
     q: "Who owns the code and accounts?",
     a: "You do. The code, domain, hosting and ad accounts are set up in your name, and you get everything at handover.",
   },
   {
-    q: "What if I don't like the result?",
-    a: `You see working demos every week, so we adjust as we go instead of finding out at the end. ${ph("revision / refund policy")}`,
+    q: "What if I don't like the result? Can I get a refund?",
+    a: "Communication comes first. Before any work starts, we agree in writing on exactly what you need, and I ask every question I need answered. Each outcome includes one revision, once we've both confirmed a revision is actually needed. There are no refunds on delivered work: it was done knowing everything we needed to know, based on what we agreed together.",
   },
   {
     q: "Do you work with small budgets?",
