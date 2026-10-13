@@ -61,7 +61,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
         }}
       />
       <ServiceIcon slug={s.slug} className="mb-5 h-11 w-11 text-teal-ink" />
-      <p className="eyebrow mb-3">{s.slug === "billing-system" ? "Main offer" : "Add-on service"}</p>
+      <p className="eyebrow mb-3">Service · Lebanon</p>
       <h1 className="font-display text-4xl font-bold tracking-tight text-navy sm:text-5xl">{s.metaTitle}</h1>
       <p className="mt-5 text-lg">{s.intro}</p>
       <p className="mt-4">

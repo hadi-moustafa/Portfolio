@@ -217,6 +217,10 @@ export type Service = {
   slug: ServiceSlug;
   /** Card/H1 title */
   title: string;
+  /** The owner's problem in their own words (homepage card opener). */
+  pain: string;
+  /** The fix, in plain words (homepage card heading). */
+  fix: string;
   /** <title> tag (keyword-targeted) */
   metaTitle: string;
   metaDescription: string;
@@ -234,6 +238,8 @@ export const services: Service[] = [
   {
     slug: "billing-system",
     title: "Billing & collections system",
+    pain: "I chase payments in Excel or a notebook.",
+    fix: "A billing & collections system",
     metaTitle: "Billing software for internet providers in Lebanon",
     metaDescription:
       "Subscriber billing and collections software for local ISPs and subscription businesses in Lebanon: who paid, who owes, one-tap WhatsApp reminders. Replaces Excel.",
@@ -261,6 +267,8 @@ export const services: Service[] = [
   {
     slug: "engineering",
     title: "Websites & web apps",
+    pain: "People can only find me on Instagram.",
+    fix: "A website you can update yourself",
     metaTitle: "Website for small business in Lebanon",
     metaDescription:
       "Websites and web apps for small businesses in Lebanon, with an admin panel so you can update content yourself. Built by a web developer who also markets.",
@@ -280,6 +288,8 @@ export const services: Service[] = [
   {
     slug: "marketing",
     title: "Digital marketing",
+    pain: "I post, but nobody visits or messages.",
+    fix: "Ads that bring visits and messages",
     metaTitle: "Digital marketing in Lebanon",
     metaDescription:
       "Paid ads and campaign setup on Instagram, Facebook and TikTok for small businesses in Lebanon, with honest reporting on what each result cost.",
@@ -294,11 +304,13 @@ export const services: Service[] = [
       "Campaigns set up with tracking, so you know what each result cost.",
       "Plain-language reports straight from Ads Manager.",
     ],
-    proof: { href: "/work/hadi-tech-store", label: "See a client campaign" },
+    proof: { href: "/work/hadi-tech-store", label: "See 98 visits for $6.83" },
   },
   {
     slug: "support",
     title: "Support & maintenance",
+    pain: "My website or system needs fixing.",
+    fix: "Support & maintenance",
     metaTitle: "Website support & maintenance in Lebanon",
     metaDescription:
       "Ongoing support for websites and business systems in Lebanon: updates, fixes, backups and training for your team, from the person who built it.",
@@ -318,6 +330,8 @@ export const services: Service[] = [
   {
     slug: "growth",
     title: "Social media growth",
+    pain: "I don't have time for social media.",
+    fix: "Social media, handled for you",
     metaTitle: "Social media management in Lebanon",
     metaDescription:
       "Social media strategy, content and community management for small businesses in Lebanon, so your posts turn followers into customers.",
@@ -332,12 +346,12 @@ export const services: Service[] = [
       "One visual identity across every post and highlight.",
       "Comments and DMs answered, so interest turns into conversations.",
     ],
-    proof: { href: "/work/meta-tiktok-ad-campaign", label: "See the marketing work" },
+    proof: { href: "/work/meta-tiktok-ad-campaign", label: "See the $68 test" },
   },
 ];
 
-export const flagshipService = services[0];
-export const addOnServices = services.slice(1);
+/** Homepage order: most common problem first. */
+export const servicesByProblem: ServiceSlug[] = ["billing-system", "engineering", "marketing", "growth", "support"];
 
 /** Three tiers. Everything here is a placeholder until Hadi sets real packages. */
 export const packages = [

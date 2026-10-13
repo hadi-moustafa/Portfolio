@@ -13,7 +13,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug)!;
   return ogCard({
-    eyebrow: s.slug === "billing-system" ? "Main offer · Lebanon" : "Service · Lebanon",
+    eyebrow: "Service · Lebanon",
     title: s.title,
     subtitle: s.forWho,
   });

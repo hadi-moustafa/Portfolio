@@ -1,10 +1,10 @@
 # se.hadi — Hadi Moustafa
 
-> Web developer and digital marketer in Lebanon. Websites and systems that bring you customers, built, run and marketed by one person. Main offer: subscriber billing and collections software for local internet providers and other subscription businesses (generators, water, cable, gyms, schools), replacing Excel and paper. Secondary offer: website + marketing launch for small businesses. Free 20-minute call, fixed price in writing, reply within 24 hours. Contact is WhatsApp-first.
+> Web developer and digital marketer in Lebanon. Websites and systems that bring you customers, built, run and marketed by one person. Services, each matched to a common problem: subscriber billing and collections software for local internet providers and other subscription businesses (generators, water, cable, gyms, schools), replacing Excel and paper; websites small businesses can update themselves; Instagram, Facebook and TikTok ads; social media management; and support & maintenance. Free 20-minute call, fixed price in writing, reply within 24 hours. Contact is WhatsApp-first.
 
 ## Services
 
-- [Billing & collections system](https://hadimoustafa.dev/services/billing-system): billing software for internet providers and subscription businesses in Lebanon (main offer)
+- [Billing & collections system](https://hadimoustafa.dev/services/billing-system): billing software for internet providers and subscription businesses in Lebanon
 - [Websites & web apps](https://hadimoustafa.dev/services/engineering): websites for small businesses, with an admin panel
 - [Digital marketing](https://hadimoustafa.dev/services/marketing): Instagram, Facebook and TikTok ads with honest reporting
 - [Support & maintenance](https://hadimoustafa.dev/services/support)
