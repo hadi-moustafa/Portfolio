@@ -8,6 +8,7 @@ import CtaBox from "@/components/CtaBox";
 import JsonLd from "@/components/JsonLd";
 import IspNetStudy from "@/components/work/IspNetStudy";
 import MarketingStudy from "@/components/work/MarketingStudy";
+import TechStoreStudy from "@/components/work/TechStoreStudy";
 import ZackStudy from "@/components/work/ZackStudy";
 
 export const dynamicParams = false;
@@ -17,6 +18,7 @@ const studies = caseStudies.filter((c) => !c.placeholder);
 const bodies: Record<string, { Body: () => React.ReactNode; cta: string; ctaBody?: string }> = {
   "isp-net": { Body: IspNetStudy, cta: "Run a subscription business? Let's replace your Excel sheet." },
   "zack-production": { Body: ZackStudy, cta: "Want a website you can run yourself?" },
+  "hadi-tech-store": { Body: TechStoreStudy, cta: "Want more people visiting your page?" },
   "meta-tiktok-ad-campaign": { Body: MarketingStudy, cta: "Want to test your own ads, honestly reported?" },
 };
 

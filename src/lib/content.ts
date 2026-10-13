@@ -88,6 +88,26 @@ export const caseStudies: CaseStudy[] = [
       "Case study: a website and admin panel for Zack Production, a photography and film studio in Beirut. The studio updates photos, pricing and text itself.",
   },
   {
+    slug: "hadi-tech-store",
+    categories: ["marketing"],
+    label: "CLIENT CAMPAIGN · PROFILE VISITS",
+    name: "Tech store campaign",
+    title: "Tech store: 98 Instagram profile visits for $6.83",
+    description:
+      "A Meta campaign for Hadi's technology store, built to send new people to the store's Instagram profile. Reported straight from Ads Manager.",
+    image: {
+      src: "/images/hadi-tech-store/card.webp",
+      alt: "Campaign results: 98 Instagram profile visits from a single ad campaign, 9,659 people reached, 10,241 impressions, $6.83 spent",
+    },
+    stats: [
+      { value: "98", label: "Instagram profile visits" },
+      { value: "$0.07", label: "per profile visit" },
+    ],
+    tags: ["Instagram & Facebook ads", "Profile visits", "Technology store"],
+    metaDescription:
+      "Case study: a Meta ads campaign for a technology store. 98 Instagram profile visits for $6.83 (about $0.07 each), 9,659 people reached, 10,241 impressions.",
+  },
+  {
     slug: "meta-tiktok-ad-campaign",
     categories: ["marketing"],
     label: "TEST CAMPAIGN · PAID SOCIAL",
@@ -269,7 +289,7 @@ export const services: Service[] = [
       "Campaigns set up with tracking, so you know what each result cost.",
       "Plain-language reports straight from Ads Manager.",
     ],
-    proof: { href: "/work/meta-tiktok-ad-campaign", label: "See the $68 test" },
+    proof: { href: "/work/hadi-tech-store", label: "See a client campaign" },
   },
   {
     slug: "support",
