@@ -92,6 +92,26 @@ export const caseStudies: CaseStudy[] = [
       "Case study: a website and admin panel for Zack Production, a photography and film studio in Beirut. The studio updates photos, pricing and text itself.",
   },
   {
+    slug: "africa-client-campaign",
+    categories: ["marketing"],
+    label: "CLIENT CAMPAIGN · MESSAGES",
+    name: "Africa client campaign",
+    title: "A client in Africa: 821 customer conversations for $66.31",
+    description:
+      "Two ad campaigns for a business in Africa, built to get new customers messaging the business. About $0.08 per conversation.",
+    image: {
+      src: "/images/africa-client/card.webp",
+      alt: "Results: 821 new customer conversations",
+    },
+    stats: [
+      { value: "821", label: "customer conversations" },
+      { value: "$0.06", label: "per conversation, best campaign" },
+    ],
+    tags: ["Paid ads", "Messages", "Two campaigns"],
+    metaDescription:
+      "Case study: two ad campaigns for a business in Africa. 821 customer conversations for $66.31 in total ad spend, from $0.06 per conversation.",
+  },
+  {
     slug: "hadi-tech-store",
     categories: ["marketing"],
     label: "CLIENT CAMPAIGN · PROFILE VISITS",
@@ -134,17 +154,41 @@ export const caseStudies: CaseStudy[] = [
       "A $68 Meta + TikTok test campaign, honestly reported: 218 profile visits at $0.13, 6,092 engagements at about $0.01 and 88,701 impressions.",
   },
   {
-    slug: "marketing-pilot",
-    placeholder: true,
+    slug: "reach-milestone",
     categories: ["marketing"],
-    label: "MARKETING PILOT",
-    name: "Marketing pilot",
-    title: ph("marketing pilot case study, leads/messages and cost per result"),
-    description: ph("pilot: client, channel, goal, period"),
-    image: { src: "/images/marketing/card.webp", alt: "" },
+    label: "MILESTONE · META INSIGHTS",
+    name: "Reach milestone",
+    title: "Milestone: 192,377 people reached in 15 days",
+    description:
+      "Over 15 days, the work I ran on Meta reached 192,377 people and was shown 248,309 times. Both totals come straight from Meta Insights.",
+    image: {
+      src: "/images/reach-milestone/card.webp",
+      alt: "Milestone: we reached 192,377 people",
+    },
+    stats: [
+      { value: "192,377", label: "people reached" },
+      { value: "248,309", label: "impressions" },
+    ],
+    tags: ["Instagram & Facebook", "Reach", "Meta Insights"],
+    metaDescription:
+      "Milestone: 192,377 people reached and 248,309 impressions in 15 days, straight from Meta Insights. Social media and ads work by Hadi Moustafa (se.hadi).",
+  },
+  {
+    slug: "monday-ritual",
+    categories: ["marketing"],
+    label: "CONTENT · INSTAGRAM CAROUSEL",
+    name: "Monday ritual carousel",
+    title: "Monday ritual: I plan my week in 5 minutes",
+    description:
+      "A five-slide Instagram carousel on planning the week with Claude, ending in a comment-to-DM offer: send \"MONDAY\" for the exact prompt.",
+    image: {
+      src: "/images/monday-ritual/card.webp",
+      alt: "Carousel cover: I plan my week in 5 minutes. Every Monday I sit down with Claude and turn a messy week into a clear plan.",
+    },
     stats: [],
-    tags: [],
-    metaDescription: "",
+    tags: ["Instagram content", "Carousel design", "Comment-to-DM"],
+    metaDescription:
+      "An Instagram carousel by se.hadi: how I plan my week in 5 minutes with Claude, the planned week, and a comment-to-DM offer for the exact planning prompt.",
   },
 ];
 
@@ -305,7 +349,7 @@ export const services: Service[] = [
       "Campaigns set up with tracking, so you know what each result cost.",
       "Plain-language reports straight from Ads Manager.",
     ],
-    proof: { href: "/work/hadi-tech-store", label: "See 98 visits for $6.83" },
+    proof: { href: "/work/africa-client-campaign", label: "See 821 conversations for $66" },
   },
   {
     slug: "support",
@@ -347,7 +391,7 @@ export const services: Service[] = [
       "One visual identity across every post and highlight.",
       "Comments and DMs answered, so interest turns into conversations.",
     ],
-    proof: { href: "/work/meta-tiktok-ad-campaign", label: "See the $68 test" },
+    proof: { href: "/work/reach-milestone", label: "See 192,377 people reached" },
   },
 ];
 

@@ -61,7 +61,7 @@ export const arServices = [
     includes: ["إعلانات إنستغرام وفيسبوك وتيك توك", "تحديد الجمهور والعرض", "تتبّع يوضح كلفة كل نتيجة"],
     timeline: "أول إعلان يعمل خلال أسبوع",
     price: "ابتداءً من 150$ شهرياً، إضافةً إلى ميزانية الإعلانات",
-    proof: { href: "/work/hadi-tech-store", label: "شاهد 98 زيارة مقابل 6.83$" },
+    proof: { href: "/work/africa-client-campaign", label: "شاهد 821 محادثة مقابل 66.31$" },
   },
   {
     slug: "growth",
@@ -70,7 +70,7 @@ export const arServices = [
     includes: ["خطة محتوى وقوالب للمنشورات", "هوية بصرية موحّدة", "ردود على التعليقات والرسائل"],
     timeline: "أول خطة محتوى خلال أسبوعين، ثم شهرياً",
     price: "ابتداءً من 250$ شهرياً",
-    proof: { href: "/work/meta-tiktok-ad-campaign", label: "شاهد حملة الـ68$" },
+    proof: { href: "/work/reach-milestone", label: "شاهد الوصول إلى 192,377 شخصاً" },
   },
   {
     slug: "support",

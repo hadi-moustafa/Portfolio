@@ -52,7 +52,7 @@ export default function TechStoreStudy() {
             <strong className="text-navy">Client:</strong> Hadi, owner of a technology store.
           </li>
           <li>
-            <strong className="text-navy">Goal:</strong> get new people to visit the store&apos;s Instagram profile.
+            <strong className="text-navy">Goal:</strong>{" "}get new people to visit the store&apos;s Instagram profile.
           </li>
           <li>
             <strong className="text-navy">Setup:</strong> a single Meta campaign with one ad set, optimised for Instagram profile visits.

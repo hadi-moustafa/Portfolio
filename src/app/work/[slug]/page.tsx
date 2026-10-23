@@ -6,8 +6,11 @@ import { absoluteUrl, SITE_URL } from "@/lib/site";
 import PageShell from "@/components/PageShell";
 import CtaBox from "@/components/CtaBox";
 import JsonLd from "@/components/JsonLd";
+import AfricaClientStudy from "@/components/work/AfricaClientStudy";
 import IspNetStudy from "@/components/work/IspNetStudy";
 import MarketingStudy from "@/components/work/MarketingStudy";
+import MondayRitualStudy from "@/components/work/MondayRitualStudy";
+import ReachMilestoneStudy from "@/components/work/ReachMilestoneStudy";
 import TechStoreStudy from "@/components/work/TechStoreStudy";
 import ZackStudy from "@/components/work/ZackStudy";
 
@@ -18,8 +21,11 @@ const studies = caseStudies.filter((c) => !c.placeholder);
 const bodies: Record<string, { Body: () => React.ReactNode; cta: string; ctaBody?: string }> = {
   "isp-net": { Body: IspNetStudy, cta: "Run a subscription business? Let's replace your Excel sheet." },
   "zack-production": { Body: ZackStudy, cta: "Want a website you can run yourself?" },
+  "africa-client-campaign": { Body: AfricaClientStudy, cta: "Want customers messaging your business?" },
   "hadi-tech-store": { Body: TechStoreStudy, cta: "Want more people visiting your page?" },
   "meta-tiktok-ad-campaign": { Body: MarketingStudy, cta: "Want to test your own ads, honestly reported?" },
+  "reach-milestone": { Body: ReachMilestoneStudy, cta: "Want your brand in front of more people?" },
+  "monday-ritual": { Body: MondayRitualStudy, cta: "Want content like this for your brand?" },
 };
 
 export function generateStaticParams() {

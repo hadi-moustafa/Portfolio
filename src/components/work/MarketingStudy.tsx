@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ph } from "@/lib/placeholder";
 import Zoomable from "../Zoomable";
 import { T, textLink } from "../ui";
@@ -48,9 +49,13 @@ export default function MarketingStudy() {
           See the results post on Instagram&nbsp;↗
         </a>
       </p>
-      <div className="mt-5">
-        <T as="div" className="rounded-xl border-2 border-dashed border-coral p-4">{ph("pilot: leads/messages, cost per result, testimonial (real client marketing pilot goes here)")}</T>
-      </div>
+      <p className="mt-5 rounded-xl border border-line bg-surface p-4">
+        <strong className="text-navy">Looking for messages, not reach?</strong> See the client campaign that started{" "}
+        <Link href="/work/africa-client-campaign" className={textLink}>
+          821 customer conversations for $66.31
+        </Link>
+        .
+      </p>
 
       <section className="mt-14">
         <h2 className={h2}>Goal and context</h2>
@@ -93,7 +98,7 @@ export default function MarketingStudy() {
           ))}
         </div>
         <p className="mt-4 text-[0.95rem]">
-          <strong className="text-navy">Note:</strong> the two Meta ad sets use different attribution settings (1-day click for profile visits,
+          <strong className="text-navy">Note:</strong>{" "}the two Meta ad sets use different attribution settings (1-day click for profile visits,
           7-day click or 1-day view for engagement), so their cost per result isn&apos;t directly comparable.
         </p>
       </section>
