@@ -128,6 +128,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "2,904", label: "profile visits, under 2 cents each" },
     ],
     tags: ["Instagram ads", "Social media management", "Auto parts shop"],
+    instagram: "https://www.instagram.com/reel/De9yPH-NfGT/",
     metaDescription:
       "Case study: ads and social media for Melhem Auto Service in Abidjan. Two Instagram boosts: 5,090 engagements under half a cent each, 2,904 profile visits under 2 cents each.",
   },

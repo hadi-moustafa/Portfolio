@@ -1,5 +1,6 @@
 import Slides from "./Slides";
 import Zoomable from "../Zoomable";
+import { textLink } from "../ui";
 
 const h2 = "font-display text-2xl font-bold text-navy sm:text-3xl";
 
@@ -108,6 +109,11 @@ export default function MelhemAutoStudy() {
       <section className="mt-14">
         <h2 className={h2}>The results post</h2>
         <p className="mt-3">The carousel I published with these numbers. Tap a slide to zoom.</p>
+        <p className="mt-4">
+          <a href="https://www.instagram.com/reel/De9yPH-NfGT/" className={textLink}>
+            See the results post on Instagram&nbsp;↗
+          </a>
+        </p>
         <div className="mt-6">
           <Slides slides={slides} />
         </div>
