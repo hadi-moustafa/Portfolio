@@ -1,6 +1,7 @@
 import Slides from "./Slides";
 import Zoomable from "../Zoomable";
 import { textLink } from "../ui";
+import { contact } from "@/lib/content";
 
 const h2 = "font-display text-2xl font-bold text-navy sm:text-3xl";
 
@@ -53,16 +54,16 @@ export default function MelhemAutoStudy() {
         <h2 className={h2}>The brief</h2>
         <ul className="mt-4 space-y-2">
           <li>
-            <strong className="text-navy">Client:</strong> Melhem Auto Service, an auto parts shop in Abidjan.
+            <strong className="text-navy">Client:</strong>{" "}Melhem Auto Service, an auto parts shop in Abidjan.
           </li>
           <li>
-            <strong className="text-navy">Goal 1:</strong> get more people engaging with their posts.
+            <strong className="text-navy">Goal 1:</strong>{" "}get more people engaging with their posts.
           </li>
           <li>
-            <strong className="text-navy">Goal 2:</strong> send more people to their Instagram profile.
+            <strong className="text-navy">Goal 2:</strong>{" "}send more people to their Instagram profile.
           </li>
           <li>
-            <strong className="text-navy">Setup:</strong> two boosts, one per goal, on a small budget.
+            <strong className="text-navy">Setup:</strong>{" "}two boosts, one per goal, on a small budget.
           </li>
         </ul>
       </section>
@@ -130,6 +131,11 @@ export default function MelhemAutoStudy() {
           sizes="(min-width: 640px) 420px, 100vw"
           className="mt-6 max-w-md"
         />
+        <p className="mt-4">
+          <a href={contact.instagram} className={textLink}>
+            Follow {contact.instagramHandle}{" "}on Instagram&nbsp;↗
+          </a>
+        </p>
       </section>
     </>
   );
