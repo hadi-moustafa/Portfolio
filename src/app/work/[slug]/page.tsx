@@ -9,6 +9,7 @@ import JsonLd from "@/components/JsonLd";
 import AfricaClientStudy from "@/components/work/AfricaClientStudy";
 import IspNetStudy from "@/components/work/IspNetStudy";
 import MarketingStudy from "@/components/work/MarketingStudy";
+import MelhemAutoStudy from "@/components/work/MelhemAutoStudy";
 import MondayRitualStudy from "@/components/work/MondayRitualStudy";
 import ReachMilestoneStudy from "@/components/work/ReachMilestoneStudy";
 import TechStoreStudy from "@/components/work/TechStoreStudy";
@@ -22,6 +23,7 @@ const bodies: Record<string, { Body: () => React.ReactNode; cta: string; ctaBody
   "isp-net": { Body: IspNetStudy, cta: "Run a subscription business? Let's replace your Excel sheet." },
   "zack-production": { Body: ZackStudy, cta: "Want a website you can run yourself?" },
   "africa-client-campaign": { Body: AfricaClientStudy, cta: "Want customers messaging your business?" },
+  "melhem-auto-service": { Body: MelhemAutoStudy, cta: "Want your posts working this hard for your shop?" },
   "hadi-tech-store": { Body: TechStoreStudy, cta: "Want more people visiting your page?" },
   "meta-tiktok-ad-campaign": { Body: MarketingStudy, cta: "Want to test your own ads, honestly reported?" },
   "reach-milestone": { Body: ReachMilestoneStudy, cta: "Want your brand in front of more people?" },

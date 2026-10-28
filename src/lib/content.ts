@@ -112,6 +112,26 @@ export const caseStudies: CaseStudy[] = [
       "Case study: two ad campaigns for a business in Africa. 821 customer conversations for $66.31 in total ad spend, from $0.06 per conversation.",
   },
   {
+    slug: "melhem-auto-service",
+    categories: ["marketing"],
+    label: "CLIENT · ADS & SOCIAL MEDIA",
+    name: "Melhem Auto Service",
+    title: "Melhem Auto Service: pennies per result from two Instagram boosts",
+    description:
+      "Ads and social media for an auto parts shop in Abidjan. Two small Instagram boosts: 5,090 engagements and 2,904 profile visits, at cents per result.",
+    image: {
+      src: "/images/melhem-auto/card.webp",
+      alt: "Pennies per result. How two small Instagram boosts put a retail brand in front of tens of thousands of people.",
+    },
+    stats: [
+      { value: "5,090", label: "post engagements" },
+      { value: "2,904", label: "profile visits, under 2 cents each" },
+    ],
+    tags: ["Instagram ads", "Social media management", "Auto parts shop"],
+    metaDescription:
+      "Case study: ads and social media for Melhem Auto Service in Abidjan. Two Instagram boosts: 5,090 engagements under half a cent each, 2,904 profile visits under 2 cents each.",
+  },
+  {
     slug: "hadi-tech-store",
     categories: ["marketing"],
     label: "CLIENT CAMPAIGN · PROFILE VISITS",
